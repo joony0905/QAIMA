@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1566" viewBox="0 0 1024 1566" role="img" aria-labelledby="erd-title erd-desc">
+<title id="erd-title">QAIMA / Core data model</title><desc id="erd-desc">QAIMA core table relationships. Selected tables and key columns; consult full.svg for the complete schema. Foreign keys: 12. Source: docs/erd/qaima_flyway_v51.dbml.</desc>
+<rect width="1024" height="1566" fill="#ffffff"/>
+<rect width="1024" height="122" fill="#10243a"/>
+<rect x="0" y="0" width="8" height="122" fill="#43c6ac"/>
+<text x="30" y="43" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">QAIMA / Core data model</text>
+<text x="31" y="73" font-family="Arial, sans-serif" font-size="14" fill="#c8d7e9">14 core tables · key columns only · all 47 tables are available in the detailed views</text>
+<text x="31" y="99" font-family="Arial, sans-serif" font-size="12" fill="#8fb5cf">MYSQL / FLYWAY V1–V51 / QAIMA</text>
+<g transform="translate(67.00,146)">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 1346)">
+<title>QAIMA</title>
+<polygon fill="#ffffff" stroke="none" points="-18,18 -18,-1346 872,-1346 872,18 -18,18"/>
+<!-- industry&#45;&gt;stock -->
+<g id="fk&#45;fk_stock_industry" class="edge">
+<title>industry:e&#45;&gt;stock:w</title>
+<g id="a_fk&#45;fk_stock_industry"><a xlink:title="fk_stock_industry: stock.industry_id &#45;&gt; industry.industry_id | parent per child: 0..1 | children per parent: 0..N | ON DELETE set null | ON UPDATE cascade">
+<path fill="none" stroke="#185a9d" stroke-width="1.5" d="M260.77,-759.63C268.39,-759.52 278.7,-759.36 287.1,-759.23"/>
+<polygon fill="#185a9d" stroke="#185a9d" stroke-width="1.5" points="250.81,-763.39 250.69,-756.19 252.13,-756.17 252.25,-763.37 250.81,-763.39"/>
+<polyline fill="none" stroke="#185a9d" stroke-width="1.5" points="250.03,-759.8 253.63,-759.74"/>
+<ellipse fill="none" stroke="#185a9d" stroke-width="1.5" cx="257.26" cy="-759.69" rx="2.88" ry="2.88"/>
+<polygon fill="#185a9d" stroke="#185a9d" stroke-width="1.5" points="294.3,-759.12 301.55,-762.25 298.4,-759.06 301,-759.02 301,-759.02 301,-759.02 298.4,-759.06 301.45,-755.77 294.3,-759.12"/>
+<ellipse fill="none" stroke="#185a9d" stroke-width="1.5" cx="288.84" cy="-759.2" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- stock&#45;&gt;price_ohlcv -->
+<g id="fk&#45;fk_price_ohlcv_stock" class="edge">
+<title>stock:e&#45;&gt;price_ohlcv:w</title>
+<g id="a_fk&#45;fk_price_ohlcv_stock"><a xlink:title="fk_price_ohlcv_stock: price_ohlcv.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#087f8c" stroke-width="1.5" d="M555.91,-780.57C564.36,-767.53 584.51,-736.46 595.86,-718.95"/>
+<polygon fill="#087f8c" stroke="#087f8c" stroke-width="1.5" points="555.43,-787.93 549.39,-784.01 550.17,-782.8 556.21,-786.72 555.43,-787.93"/>
+<polyline fill="none" stroke="#087f8c" stroke-width="1.5" points="552.02,-786.57 553.97,-783.55"/>
+<polygon fill="#087f8c" stroke="#087f8c" stroke-width="1.5" points="557.4,-784.88 551.36,-780.97 552.15,-779.76 558.19,-783.68 557.4,-784.88"/>
+<polyline fill="none" stroke="#087f8c" stroke-width="1.5" points="553.99,-783.53 555.95,-780.51"/>
+<polygon fill="#087f8c" stroke="#087f8c" stroke-width="1.5" points="599.81,-712.86 606.45,-708.58 602.04,-709.42 603.45,-707.24 603.45,-707.24 603.45,-707.24 602.04,-709.42 601.01,-705.06 599.81,-712.86"/>
+<ellipse fill="none" stroke="#087f8c" stroke-width="1.5" cx="596.84" cy="-717.44" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- stock&#45;&gt;financial -->
+<g id="fk&#45;fk_financial_stock" class="edge">
+<title>stock:e&#45;&gt;financial:w</title>
+<g id="a_fk&#45;fk_financial_stock"><a xlink:title="fk_financial_stock: financial.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#92600b" stroke-width="1.5" d="M555.91,-792.57C564.36,-805.48 584.51,-836.24 595.86,-853.57"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="549.4,-789.2 555.42,-785.26 556.21,-786.46 550.19,-790.4 549.4,-789.2"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="552.02,-786.63 553.99,-789.64"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="551.39,-792.24 557.41,-788.29 558.2,-789.5 552.18,-793.44 551.39,-792.24"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="554.01,-789.66 555.98,-792.67"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="599.78,-859.56 601.01,-867.36 602.03,-862.99 603.45,-865.16 603.45,-865.16 603.45,-865.16 602.03,-862.99 606.44,-863.81 599.78,-859.56"/>
+<ellipse fill="none" stroke="#92600b" stroke-width="1.5" cx="596.79" cy="-854.99" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- stock&#45;&gt;news_security_map -->
+<g id="fk&#45;fk_news_security_map_stock" class="edge">
+<title>stock:e&#45;&gt;news_security_map:w</title>
+<g id="a_fk&#45;fk_news_security_map_stock"><a xlink:title="fk_news_security_map_stock: news_security_map.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#aa446b" stroke-width="1.5" d="M553.5,-793.49C560.59,-826.07 590.84,-964.98 600.8,-1010.73"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="548.64,-788.1 555.68,-786.57 555.98,-787.97 548.95,-789.51 548.64,-788.1"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="552.01,-786.63 552.77,-790.15"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="549.41,-791.65 556.45,-790.11 556.76,-791.52 549.72,-793.05 549.41,-791.65"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="552.78,-790.18 553.54,-793.69"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="602.36,-1017.87 600.73,-1025.6 603.23,-1021.88 603.79,-1024.42 603.79,-1024.42 603.79,-1024.42 603.23,-1021.88 607.06,-1024.22 602.36,-1017.87"/>
+<ellipse fill="none" stroke="#aa446b" stroke-width="1.5" cx="601.2" cy="-1012.54" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- stock&#45;&gt;watchlist_item -->
+<g id="fk&#45;fk_watchlist_item_stock" class="edge">
+<title>stock:e&#45;&gt;watchlist_item:w</title>
+<g id="a_fk&#45;fk_watchlist_item_stock"><a xlink:title="fk_watchlist_item_stock: watchlist_item.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#bf4a28" stroke-width="1.5" d="M553.04,-779.6C559.38,-736.87 592.9,-511 601.82,-450.9"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="555.67,-786.39 548.55,-785.33 548.76,-783.91 555.88,-784.96 555.67,-786.39"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="552,-786.57 552.53,-783.01"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="556.2,-782.8 549.08,-781.74 549.29,-780.31 556.42,-781.37 556.2,-782.8"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="552.54,-782.98 553.07,-779.42"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="602.87,-443.82 607.13,-437.17 603.47,-439.76 603.85,-437.19 603.85,-437.19 603.85,-437.19 603.47,-439.76 600.72,-436.22 602.87,-443.82"/>
+<ellipse fill="none" stroke="#bf4a28" stroke-width="1.5" cx="602.07" cy="-449.22" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- news&#45;&gt;news_security_map -->
+<g id="fk&#45;fk_news_security_map_news" class="edge">
+<title>news:e&#45;&gt;news_security_map:w</title>
+<g id="a_fk&#45;fk_news_security_map_news"><a xlink:title="fk_news_security_map_news: news_security_map.news_id &#45;&gt; news.news_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#aa446b" stroke-width="1.5" d="M558.8,-1052.83C566.4,-1052.86 578.94,-1052.9 588.89,-1052.94"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="552.74,-1056.4 552.76,-1049.2 554.2,-1049.21 554.18,-1056.41 552.74,-1056.4"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="552.03,-1052.8 555.63,-1052.81"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="556.37,-1056.42 556.39,-1049.22 557.83,-1049.22 557.81,-1056.42 556.37,-1056.42"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="555.66,-1052.81 559.26,-1052.83"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="596.3,-1052.97 603.49,-1056.24 600.4,-1052.99 603,-1053 603,-1053 603,-1053 600.4,-1052.99 603.51,-1049.76 596.3,-1052.97"/>
+<ellipse fill="none" stroke="#aa446b" stroke-width="1.5" cx="590.84" cy="-1052.95" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- users&#45;&gt;portfolio -->
+<g id="fk&#45;fk_portfolio_user" class="edge">
+<title>users:e&#45;&gt;portfolio:w</title>
+<g id="a_fk&#45;fk_portfolio_user"><a xlink:title="fk_portfolio_user: portfolio.user_id &#45;&gt; users.user_id | parent per child: 1 | children per parent: 0..1">
+<path fill="none" stroke="#bf4a28" stroke-width="1.5" d="M256.8,-229.7C265.61,-229.56 281.06,-229.32 291.41,-229.16"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="250.81,-233.39 250.69,-226.19 252.13,-226.17 252.25,-233.37 250.81,-233.39"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="250.03,-229.8 253.63,-229.74"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="254.43,-233.33 254.32,-226.13 255.76,-226.11 255.87,-233.31 254.43,-233.33"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="253.66,-229.74 257.26,-229.69"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="301.19,-225.41 301.31,-232.61 299.87,-232.63 299.75,-225.43 301.19,-225.41"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="301.97,-229 298.37,-229.06"/>
+<ellipse fill="none" stroke="#bf4a28" stroke-width="1.5" cx="294.74" cy="-229.11" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- users&#45;&gt;watchlist -->
+<g id="fk&#45;fk_watchlist_user" class="edge">
+<title>users:e&#45;&gt;watchlist:w</title>
+<g id="a_fk&#45;fk_watchlist_user"><a xlink:title="fk_watchlist_user: watchlist.user_id &#45;&gt; users.user_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#bf4a28" stroke-width="1.5" d="M251.73,-236.46C259.08,-264.75 287.8,-375.34 298.21,-415.41"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="246.7,-231.43 253.67,-229.62 254.03,-231.01 247.07,-232.82 246.7,-231.43"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="250.01,-229.83 250.91,-233.31"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="247.62,-234.94 254.59,-233.13 254.95,-234.53 247.98,-236.34 247.62,-234.94"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="250.92,-233.34 251.83,-236.83"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="300.06,-422.55 298.74,-430.33 301.09,-426.52 301.75,-429.03 301.75,-429.03 301.75,-429.03 301.09,-426.52 305.01,-428.7 300.06,-422.55"/>
+<ellipse fill="none" stroke="#bf4a28" stroke-width="1.5" cx="298.69" cy="-417.26" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- users&#45;&gt;analysis_report -->
+<g id="fk&#45;fk_analysis_report_user" class="edge">
+<title>users:e&#45;&gt;analysis_report:w</title>
+<g id="a_fk&#45;fk_analysis_report_user"><a xlink:title="fk_analysis_report_user: analysis_report.user_id &#45;&gt; users.user_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#bf4a28" stroke-width="1.5" d="M251.85,-223.12C259.34,-196.06 287.51,-94.34 298.01,-56.39"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="253.67,-230.04 246.73,-228.12 247.11,-226.73 254.05,-228.65 253.67,-230.04"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="250.01,-229.77 250.97,-226.3"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="254.64,-226.54 247.7,-224.62 248.08,-223.23 255.02,-225.15 254.64,-226.54"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="250.98,-226.27 251.94,-222.8"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="299.94,-49.42 304.99,-43.35 301.04,-45.47 301.73,-42.97 301.73,-42.97 301.73,-42.97 301.04,-45.47 298.74,-41.62 299.94,-49.42"/>
+<ellipse fill="none" stroke="#bf4a28" stroke-width="1.5" cx="298.49" cy="-54.68" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- portfolio&#45;&gt;portfolio_holding -->
+<g id="fk&#45;fk_portfolio_holding_portfolio" class="edge">
+<title>portfolio:e&#45;&gt;portfolio_holding:w</title>
+<g id="a_fk&#45;fk_portfolio_holding_portfolio"><a xlink:title="fk_portfolio_holding_portfolio: portfolio_holding.portfolio_id &#45;&gt; portfolio.portfolio_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#bf4a28" stroke-width="1.5" d="M558.8,-255.61C566.51,-254.48 579.3,-252.61 589.32,-251.15"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="553.26,-260.05 552.22,-252.93 553.65,-252.72 554.69,-259.85 553.26,-260.05"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="552.03,-256.6 555.59,-256.07"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="556.85,-259.53 555.81,-252.4 557.24,-252.2 558.28,-259.32 556.85,-259.53"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="555.62,-256.07 559.18,-255.55"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="596.38,-250.11 603.97,-252.28 600.44,-249.52 603.01,-249.15 603.01,-249.15 603.01,-249.15 600.44,-249.52 603.03,-245.87 596.38,-250.11"/>
+<ellipse fill="none" stroke="#bf4a28" stroke-width="1.5" cx="590.98" cy="-250.9" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- watchlist&#45;&gt;watchlist_item -->
+<g id="fk&#45;fk_watchlist_item_watchlist" class="edge">
+<title>watchlist:e&#45;&gt;watchlist_item:w</title>
+<g id="a_fk&#45;fk_watchlist_item_watchlist"><a xlink:title="fk_watchlist_item_watchlist: watchlist_item.watchlist_id &#45;&gt; watchlist.watchlist_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#bf4a28" stroke-width="1.5" d="M558.8,-458.41C566.51,-459.33 579.3,-460.86 589.32,-462.05"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="552.32,-461.26 553.17,-454.11 554.6,-454.28 553.75,-461.43 552.32,-461.26"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="552.03,-457.6 555.6,-458.03"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="555.92,-461.69 556.78,-454.54 558.21,-454.71 557.35,-461.86 555.92,-461.69"/>
+<polyline fill="none" stroke="#bf4a28" stroke-width="1.5" points="555.63,-458.03 559.21,-458.46"/>
+<polygon fill="#bf4a28" stroke="#bf4a28" stroke-width="1.5" points="596.35,-462.89 603.12,-466.96 600.43,-463.37 603,-463.68 603,-463.68 603,-463.68 600.43,-463.37 603.89,-460.52 596.35,-462.89"/>
+<ellipse fill="none" stroke="#bf4a28" stroke-width="1.5" cx="590.93" cy="-462.24" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- dictionary&#45;&gt;dictionary_alias -->
+<g id="fk&#45;fk_dictionary_alias_canonical_term" class="edge">
+<title>dictionary:e&#45;&gt;dictionary_alias:w</title>
+<g id="a_fk&#45;fk_dictionary_alias_canonical_term"><a xlink:title="fk_dictionary_alias_canonical_term: dictionary_alias.canonical_term &#45;&gt; dictionary.term | parent per child: 1 | children per parent: 0..N | ON DELETE cascade">
+<path fill="none" stroke="#247a78" stroke-width="1.5" d="M256.8,-1212.7C264.4,-1212.58 276.94,-1212.39 286.89,-1212.23"/>
+<polygon fill="#247a78" stroke="#247a78" stroke-width="1.5" points="250.81,-1216.39 250.69,-1209.19 252.13,-1209.17 252.25,-1216.37 250.81,-1216.39"/>
+<polyline fill="none" stroke="#247a78" stroke-width="1.5" points="250.03,-1212.8 253.63,-1212.74"/>
+<polygon fill="#247a78" stroke="#247a78" stroke-width="1.5" points="254.43,-1216.33 254.32,-1209.13 255.76,-1209.11 255.87,-1216.31 254.43,-1216.33"/>
+<polyline fill="none" stroke="#247a78" stroke-width="1.5" points="253.66,-1212.74 257.26,-1212.69"/>
+<polygon fill="#247a78" stroke="#247a78" stroke-width="1.5" points="294.3,-1212.12 301.55,-1215.25 298.4,-1212.06 301,-1212.02 301,-1212.02 301,-1212.02 298.4,-1212.06 301.45,-1208.77 294.3,-1212.12"/>
+<ellipse fill="none" stroke="#247a78" stroke-width="1.5" cx="288.84" cy="-1212.2" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- industry -->
+<g id="table&#45;industry" class="node">
+<title>industry</title>
+<g id="a_table&#45;industry"><a xlink:title="거래소·섹터·분류 체계별 산업 마스터&#10;industry_id bigint NOT NULL AUTO_INCREMENT | 산업 ID&#10;exchange_id bigint NOT NULL | 거래소 ID&#10;sector_id bigint NOT NULL | 섹터 ID&#10;scheme varchar(30) NOT NULL | 분류 체계 코드&#10;code varchar(50) NOT NULL | 코드&#10;name varchar(100) NOT NULL | 산업명&#10;UNIQUE uk_industry_exchange_sector_scheme_code (exchange_id, sector_id, scheme, code)&#10;INDEX idx_industry_exchange_id (exchange_id)&#10;INDEX idx_industry_name (name)&#10;INDEX idx_industry_sector_id (sector_id)">
+<polygon fill="none" stroke="#c8d2e0" points="0,-717.8 0,-848.2 250,-848.2 250,-717.8 0,-717.8"/>
+<polygon fill="#185a9d" stroke="none" points="1,-802.8 1,-847.2 249,-847.2 249,-802.8 1,-802.8"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-820.9" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">industry</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-773.6 1,-802.8 249,-802.8 249,-773.6 1,-773.6"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-783.8" font-family="Arial" font-size="11.00" fill="#43536a">Reference data</text>
+<polygon fill="#ffffff" stroke="none" points="1,-746 1,-773.6 49,-773.6 49,-746 1,-746"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-757.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-746 49,-773.6 249,-773.6 249,-746 49,-746"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-754.6" font-family="Consolas" font-size="13.00" fill="#182d45">industry_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-718.8 1,-746 249,-746 249,-718.8 1,-718.8"/>
+<text xml:space="preserve" text-anchor="start" x="8" y="-728" font-family="Arial" font-size="11.00" fill="#64748b">+ 5 other columns</text>
+</a>
+</g>
+</g>
+<!-- stock -->
+<g id="table&#45;stock" class="node">
+<title>stock</title>
+<g id="a_table&#45;stock"><a xlink:title="종목 기본 정보 및 DART·SEC 기업 식별자/동기화 시각&#10;stock_id bigint NOT NULL AUTO_INCREMENT | 종목 ID&#10;exchange_id bigint NOT NULL | 거래소 ID&#10;stock_code varchar(32) NOT NULL | 종목 코드/티커&#10;isin varchar(20) NULL | 국제증권식별번호&#10;company_name varchar(255) NOT NULL | 회사명/종목명&#10;sector_id bigint NULL | 섹터 ID&#10;industry_id bigint NULL | 산업 ID&#10;asset_type varchar(20) NULL | 자산 유형&#10;currency varchar(3) NULL DEFAULT KRW | 통화&#10;share_class varchar(20) NOT NULL DEFAULT OTHER | 주식 종류&#10;dart_corp_code varchar(8) NULL | DART 기업 고유번호&#10;dart_corp_name varchar(255) NULL | DART 기업명&#10;dart_modified_date date NULL | DART 기업정보 수정일&#10;dart_synced_at datetime(6) NULL | DART 기업정보 동기화 시각&#10;sec_cik varchar(10) NULL | SEC 기업 식별번호 CIK&#10;sec_company_name varchar(255) NULL | SEC 기업명&#10;sec_synced_at datetime(6) NULL | SEC 기업정보 동기화 시각&#10;sec_issued_shares_synced_at datetime(6) NULL | SEC 발행주식 동기화 시각&#10;listed_at date NULL | 상장일&#10;delisted_at date NULL | 상장폐지일&#10;UNIQUE uk_exchange_stock_code (exchange_id, stock_code)&#10;INDEX idx_stock_exchange_id (exchange_id)&#10;INDEX idx_stock_sector_id (sector_id)&#10;INDEX idx_stock_industry_id (industry_id)&#10;INDEX idx_stock_dart_corp_code (dart_corp_code)&#10;INDEX idx_stock_dart_modified_date (dart_modified_date)&#10;INDEX idx_stock_share_class (share_class)&#10;INDEX idx_stock_sec_cik (sec_cik)&#10;INDEX idx_stock_sec_synced_at (sec_synced_at)&#10;INDEX idx_stock_sec_issued_shares_synced_at (sec_issued_shares_synced_at)">
+<polygon fill="none" stroke="#c8d2e0" points="302,-717 302,-875 552,-875 552,-717 302,-717"/>
+<polygon fill="#185a9d" stroke="none" points="303,-829.6 303,-874 551,-874 551,-829.6 303,-829.6"/>
+<text xml:space="preserve" text-anchor="start" x="315" y="-847.7" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">stock</text>
+<polygon fill="#edf2f8" stroke="none" points="303,-800.4 303,-829.6 551,-829.6 551,-800.4 303,-800.4"/>
+<text xml:space="preserve" text-anchor="start" x="311" y="-810.6" font-family="Arial" font-size="11.00" fill="#43536a">Reference data</text>
+<polygon fill="#ffffff" stroke="none" points="303,-772.8 303,-800.4 351,-800.4 351,-772.8 303,-772.8"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-784.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="351,-772.8 351,-800.4 551,-800.4 551,-772.8 351,-772.8"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-781.4" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-745.2 303,-772.8 351,-772.8 351,-745.2 303,-745.2"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-757" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="351,-745.2 351,-772.8 551,-772.8 551,-745.2 351,-745.2"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-753.8" font-family="Consolas" font-size="13.00" fill="#182d45">industry_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-718 303,-745.2 551,-745.2 551,-718 303,-718"/>
+<text xml:space="preserve" text-anchor="start" x="310" y="-727.2" font-family="Arial" font-size="11.00" fill="#64748b">+ 18 other columns</text>
+</a>
+</g>
+</g>
+<!-- price_ohlcv -->
+<g id="table&#45;price_ohlcv" class="node">
+<title>price_ohlcv</title>
+<g id="a_table&#45;price_ohlcv"><a xlink:title="종목별 시계열 OHLCV. freq는 SQL ENUM이 아닌 TINYINT&#10;stock_id bigint NOT NULL | 종목 ID&#10;ts datetime(6) NOT NULL | 데이터 기준 시각&#10;freq tinyint NOT NULL | 주기 코드; 실제 DB 타입은 TINYINT&#10;open decimal(18,6) NULL | 시가&#10;high decimal(18,6) NULL | 고가&#10;low decimal(18,6) NULL | 저가&#10;close decimal(18,6) NULL | 종가&#10;volume decimal(20,0) NULL | 거래량&#10;PRIMARY &#160;(stock_id, ts, freq)">
+<polygon fill="none" stroke="#c8d2e0" points="604,-609.2 604,-794.8 854,-794.8 854,-609.2 604,-609.2"/>
+<polygon fill="#087f8c" stroke="none" points="605,-749.4 605,-793.8 853,-793.8 853,-749.4 605,-749.4"/>
+<text xml:space="preserve" text-anchor="start" x="617" y="-767.5" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">price_ohlcv</text>
+<polygon fill="#edf2f8" stroke="none" points="605,-720.2 605,-749.4 853,-749.4 853,-720.2 605,-720.2"/>
+<text xml:space="preserve" text-anchor="start" x="613" y="-730.4" font-family="Arial" font-size="11.00" fill="#43536a">Market data</text>
+<polygon fill="#ffffff" stroke="none" points="605,-692.6 605,-720.2 653,-720.2 653,-692.6 605,-692.6"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-704.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#ffffff" stroke="none" points="653,-692.6 653,-720.2 853,-720.2 853,-692.6 653,-692.6"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-701.2" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="605,-665 605,-692.6 653,-692.6 653,-665 605,-665"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-676.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#f5f8fc" stroke="none" points="653,-665 653,-692.6 853,-692.6 853,-665 653,-665"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-673.6" font-family="Consolas" font-size="13.00" fill="#182d45">ts</text>
+<polygon fill="#ffffff" stroke="none" points="605,-637.4 605,-665 653,-665 653,-637.4 605,-637.4"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-649.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="653,-637.4 653,-665 853,-665 853,-637.4 653,-637.4"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-646" font-family="Consolas" font-size="13.00" fill="#182d45">freq</text>
+<polygon fill="#f5f8fc" stroke="none" points="605,-610.2 605,-637.4 853,-637.4 853,-610.2 605,-610.2"/>
+<text xml:space="preserve" text-anchor="start" x="612" y="-619.4" font-family="Arial" font-size="11.00" fill="#64748b">+ 5 other columns</text>
+</a>
+</g>
+</g>
+<!-- financial -->
+<g id="table&#45;financial" class="node">
+<title>financial</title>
+<g id="a_table&#45;financial"><a xlink:title="재무 데이터. 종목·회계연도·기간 유형·기간 번호 UNIQUE; version은 PK에 포함되지 않음&#10;financial_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;stock_id bigint NOT NULL | 종목 ID&#10;report_date date NOT NULL | 보고 기준일&#10;version int NOT NULL | 재무 데이터 버전&#10;fiscal_year int NOT NULL | 회계연도&#10;period_no int NOT NULL | 기간 번호; 재무 데이터 UNIQUE 구성 컬럼&#10;fiscal_quarter int NULL | 회계분기&#10;period_type varchar(10) NOT NULL | 재무 기간 유형; VARCHAR 저장&#10;filing_date date NULL | 공시/제출일&#10;currency varchar(10) NULL | 통화&#10;source varchar(50) NULL | 데이터 출처&#10;revenue decimal(20,2) NULL | 매출액&#10;gross_profit decimal(20,2) NULL | 매출총이익&#10;operating_income decimal(20,2) NULL | 영업이익&#10;net_income decimal(20,2) NULL | 당기순이익&#10;assets decimal(20,2) NULL | 자산총계&#10;current_assets decimal(20,2) NULL | 유동자산&#10;liabilities decimal(20,2) NULL | 부채총계&#10;current_liabilities decimal(20,2) NULL | 유동부채&#10;equity decimal(20,2) NULL | 자본총계&#10;capital_stock decimal(20,2) NULL | 자본금&#10;retained_earnings decimal(20,2) NULL | 이익잉여금&#10;cash_and_equivalents decimal(20,2) NULL | 현금 및 현금성 자산&#10;accounts_receivable decimal(20,2) NULL | 매출채권&#10;inventories decimal(20,2) NULL | 재고자산&#10;short_term_borrowings decimal(20,2) NULL | 단기차입금&#10;current_portion_of_long_term_borrowings decimal(20,2) NULL | 유동성 장기차입금&#10;long_term_borrowings decimal(20,2) NULL | 장기차입금&#10;operating_cash_flow decimal(20,2) NULL | 영업활동 현금흐름&#10;investing_cash_flow decimal(20,2) NULL | 투자활동 현금흐름&#10;financing_cash_flow decimal(20,2) NULL | 재무활동 현금흐름&#10;interest_expense decimal(20,2) NULL | 이자비용&#10;capex_ppe decimal(20,2) NULL | 유형자산 취득 지출&#10;capex_intangible decimal(20,2) NULL | 무형자산 취득 지출&#10;depreciation_expense decimal(20,2) NULL | 감가상각비&#10;amortization_expense decimal(20,2) NULL | 무형자산상각비&#10;income_tax_expense decimal(20,2) NULL | 법인세비용&#10;market_cap decimal(20,2) NULL | 시가총액&#10;operating_margin decimal(10,4) NULL | 영업이익률&#10;net_margin decimal(10,4) NULL | 순이익률&#10;roe decimal(10,4) NULL | 자기자본이익률&#10;per decimal(10,4) NULL | 주가수익비율&#10;pbr decimal(10,4) NULL | 주가순자산비율&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_financial_stock_period (stock_id, fiscal_year, period_type, period_no)&#10;INDEX idx_financials_stock_fiscal_period (stock_id, period_type, fiscal_year, period_no)">
+<polygon fill="none" stroke="#c8d2e0" points="604,-824 604,-982 854,-982 854,-824 604,-824"/>
+<polygon fill="#92600b" stroke="none" points="605,-936.6 605,-981 853,-981 853,-936.6 605,-936.6"/>
+<text xml:space="preserve" text-anchor="start" x="617" y="-954.7" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">financial</text>
+<polygon fill="#edf2f8" stroke="none" points="605,-907.4 605,-936.6 853,-936.6 853,-907.4 605,-907.4"/>
+<text xml:space="preserve" text-anchor="start" x="613" y="-917.6" font-family="Arial" font-size="11.00" fill="#43536a">Financials &amp; investor flows</text>
+<polygon fill="#ffffff" stroke="none" points="605,-879.8 605,-907.4 653,-907.4 653,-879.8 605,-879.8"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-891.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="653,-879.8 653,-907.4 853,-907.4 853,-879.8 653,-879.8"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-888.4" font-family="Consolas" font-size="13.00" fill="#182d45">financial_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="605,-852.2 605,-879.8 653,-879.8 653,-852.2 605,-852.2"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-864" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="653,-852.2 653,-879.8 853,-879.8 853,-852.2 653,-852.2"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-860.8" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="605,-825 605,-852.2 853,-852.2 853,-825 605,-825"/>
+<text xml:space="preserve" text-anchor="start" x="612" y="-834.2" font-family="Arial" font-size="11.00" fill="#64748b">+ 43 other columns</text>
+</a>
+</g>
+</g>
+<!-- news -->
+<g id="table&#45;news" class="node">
+<title>news</title>
+<g id="a_table&#45;news"><a xlink:title="뉴스 메타데이터. URL 앞 255자에 유니크 접두 인덱스 적용&#10;news_id bigint NOT NULL AUTO_INCREMENT | 뉴스 ID&#10;title varchar(500) NOT NULL | 제목&#10;url varchar(1000) NULL | 원문 URL&#10;published_at datetime(6) NOT NULL | 기사 발행 시각&#10;source varchar(100) NULL | 데이터 출처&#10;lang varchar(10) NULL | 언어 코드&#10;summary text NULL | 기사 요약&#10;content_uri varchar(1000) NULL | 본문 저장 위치&#10;UNIQUE uk_news_url (url) | MySQL UNIQUE KEY uk_news_url (url(255)); URL 전체가 아닌 앞 255자에 적용되는 유니크 접두 인덱스">
+<polygon fill="none" stroke="#c8d2e0" points="302,-1010.8 302,-1141.2 552,-1141.2 552,-1010.8 302,-1010.8"/>
+<polygon fill="#aa446b" stroke="none" points="303,-1095.8 303,-1140.2 551,-1140.2 551,-1095.8 303,-1095.8"/>
+<text xml:space="preserve" text-anchor="start" x="315" y="-1113.9" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">news</text>
+<polygon fill="#edf2f8" stroke="none" points="303,-1066.6 303,-1095.8 551,-1095.8 551,-1066.6 303,-1066.6"/>
+<text xml:space="preserve" text-anchor="start" x="311" y="-1076.8" font-family="Arial" font-size="11.00" fill="#43536a">News &amp; sentiment</text>
+<polygon fill="#ffffff" stroke="none" points="303,-1039 303,-1066.6 351,-1066.6 351,-1039 303,-1039"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-1050.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="351,-1039 351,-1066.6 551,-1066.6 551,-1039 351,-1039"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-1047.6" font-family="Consolas" font-size="13.00" fill="#182d45">news_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-1011.8 303,-1039 551,-1039 551,-1011.8 303,-1011.8"/>
+<text xml:space="preserve" text-anchor="start" x="310" y="-1021" font-family="Arial" font-size="11.00" fill="#64748b">+ 7 other columns</text>
+</a>
+</g>
+</g>
+<!-- news_security_map -->
+<g id="table&#45;news_security_map" class="node">
+<title>news_security_map</title>
+<g id="a_table&#45;news_security_map"><a xlink:title="뉴스와 종목의 다대다 연결. 복합 PK와 같은 컬럼의 UNIQUE가 함께 선언됨&#10;news_id bigint NOT NULL | 뉴스 ID&#10;stock_id bigint NOT NULL | 종목 ID&#10;PRIMARY &#160;(news_id, stock_id)&#10;UNIQUE uk_news_security_map (news_id, stock_id)">
+<polygon fill="none" stroke="#c8d2e0" points="604,-1010.6 604,-1141.4 854,-1141.4 854,-1010.6 604,-1010.6"/>
+<polygon fill="#aa446b" stroke="none" points="605,-1096 605,-1140.4 853,-1140.4 853,-1096 605,-1096"/>
+<text xml:space="preserve" text-anchor="start" x="617" y="-1114.1" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">news_security_map</text>
+<polygon fill="#edf2f8" stroke="none" points="605,-1066.8 605,-1096 853,-1096 853,-1066.8 605,-1066.8"/>
+<text xml:space="preserve" text-anchor="start" x="613" y="-1077" font-family="Arial" font-size="11.00" fill="#43536a">News &amp; sentiment</text>
+<polygon fill="#ffffff" stroke="none" points="605,-1039.2 605,-1066.8 653,-1066.8 653,-1039.2 605,-1039.2"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-1051" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#ffffff" stroke="none" points="653,-1039.2 653,-1066.8 853,-1066.8 853,-1039.2 653,-1039.2"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-1047.8" font-family="Consolas" font-size="13.00" fill="#182d45">news_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="605,-1011.6 605,-1039.2 653,-1039.2 653,-1011.6 605,-1011.6"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-1023.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="653,-1011.6 653,-1039.2 853,-1039.2 853,-1011.6 653,-1011.6"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-1020.2" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+</a>
+</g>
+</g>
+<!-- users -->
+<g id="table&#45;users" class="node">
+<title>users</title>
+<g id="a_table&#45;users"><a xlink:title="사용자 계정·투자 설정·크레딧 잔액. 기본 크레딧은 V34 기준 5&#10;user_id bigint NOT NULL AUTO_INCREMENT | 사용자 ID&#10;email varchar(255) NOT NULL | 이메일&#10;password_hash varchar(255) NULL | 비밀번호 해시; 소셜 계정 등을 위해 NULL 허용&#10;name varchar(100) NULL | 사용자 이름/닉네임&#10;phone varchar(30) NULL | 전화번호&#10;experience varchar(20) NULL | 투자 경험&#10;default_risk_gamma decimal(5,4) NULL | 기본 위험회피계수&#10;birthdate varchar(7) NULL | 생년월일 관련 문자열; VARCHAR(7)&#10;gender varchar(10) NULL | 성별&#10;country varchar(50) NULL | 사용자 국가 문자열; VARCHAR(50)&#10;role users_role_enum NOT NULL | 사용자 역할&#10;status varchar(20) NOT NULL | 상태&#10;email_verified bit(1) NOT NULL | 이메일 인증 여부&#10;email_verified_at datetime(6) NULL | 이메일 인증 완료 시각&#10;last_login_at datetime(6) NULL | 마지막 로그인 시각&#10;last_login_ip varchar(45) NULL | 마지막 로그인 IP&#10;locked_until datetime(6) NULL | 계정 잠금 해제 예정 시각&#10;glossary_hover bit(1) NOT NULL | 용어 설명 표시 설정&#10;investment_level varchar(20) NOT NULL DEFAULT BEGINNER | 투자 수준; VARCHAR, DB 기본값 BEGINNER&#10;credit_balance bigint NOT NULL DEFAULT 5 | 사용 가능한 크레딧 잔액; BIGINT, DB 기본값 5&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_users_email (email)&#10;UNIQUE uk_users_phone (phone)">
+<polygon fill="none" stroke="#c8d2e0" points="0,-187.8 0,-318.2 250,-318.2 250,-187.8 0,-187.8"/>
+<polygon fill="#694bb1" stroke="none" points="1,-272.8 1,-317.2 249,-317.2 249,-272.8 1,-272.8"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-290.9" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">users</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-243.6 1,-272.8 249,-272.8 249,-243.6 1,-243.6"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-253.8" font-family="Arial" font-size="11.00" fill="#43536a">Users &amp; authentication</text>
+<polygon fill="#ffffff" stroke="none" points="1,-216 1,-243.6 49,-243.6 49,-216 1,-216"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-227.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-216 49,-243.6 249,-243.6 249,-216 49,-216"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-224.6" font-family="Consolas" font-size="13.00" fill="#182d45">user_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-188.8 1,-216 249,-216 249,-188.8 1,-188.8"/>
+<text xml:space="preserve" text-anchor="start" x="8" y="-198" font-family="Arial" font-size="11.00" fill="#64748b">+ 21 other columns</text>
+</a>
+</g>
+</g>
+<!-- portfolio -->
+<g id="table&#45;portfolio" class="node">
+<title>portfolio</title>
+<g id="a_table&#45;portfolio"><a xlink:title="사용자별 포트폴리오와 현금. user_id UNIQUE로 사용자당 최대 1개&#10;portfolio_id bigint NOT NULL AUTO_INCREMENT | 포트폴리오 ID&#10;user_id bigint NOT NULL | 사용자 ID&#10;cash_amount decimal(24,6) NOT NULL DEFAULT 0 | 포트폴리오 현금&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_portfolio_user (user_id)">
+<polygon fill="none" stroke="#c8d2e0" points="302,-187 302,-345 552,-345 552,-187 302,-187"/>
+<polygon fill="#bf4a28" stroke="none" points="303,-299.6 303,-344 551,-344 551,-299.6 303,-299.6"/>
+<text xml:space="preserve" text-anchor="start" x="315" y="-317.7" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">portfolio</text>
+<polygon fill="#edf2f8" stroke="none" points="303,-270.4 303,-299.6 551,-299.6 551,-270.4 303,-270.4"/>
+<text xml:space="preserve" text-anchor="start" x="311" y="-280.6" font-family="Arial" font-size="11.00" fill="#43536a">Portfolios, reports &amp; credits</text>
+<polygon fill="#ffffff" stroke="none" points="303,-242.8 303,-270.4 351,-270.4 351,-242.8 303,-242.8"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-254.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="351,-242.8 351,-270.4 551,-270.4 551,-242.8 351,-242.8"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-251.4" font-family="Consolas" font-size="13.00" fill="#182d45">portfolio_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-215.2 303,-242.8 351,-242.8 351,-215.2 303,-215.2"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-227" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK UQ</text>
+<polygon fill="#f5f8fc" stroke="none" points="351,-215.2 351,-242.8 551,-242.8 551,-215.2 351,-215.2"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-223.8" font-family="Consolas" font-size="13.00" fill="#182d45">user_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-188 303,-215.2 551,-215.2 551,-188 303,-188"/>
+<text xml:space="preserve" text-anchor="start" x="310" y="-197.2" font-family="Arial" font-size="11.00" fill="#64748b">+ 3 other columns</text>
+</a>
+</g>
+</g>
+<!-- portfolio_holding -->
+<g id="table&#45;portfolio_holding" class="node">
+<title>portfolio_holding</title>
+<g id="a_table&#45;portfolio_holding"><a xlink:title="포트폴리오 보유 항목. 종목 코드·종목명을 직접 저장하며 stock FK 및 동일 종목 UNIQUE는 없음&#10;portfolio_holding_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;portfolio_id bigint NOT NULL | 포트폴리오 ID&#10;stock_code varchar(32) NOT NULL | 보유 종목 코드 문자열; stock FK 없음&#10;stock_name varchar(255) NOT NULL | 저장된 종목명&#10;quantity decimal(24,6) NOT NULL | 보유 수량&#10;average_price decimal(24,6) NOT NULL | 평균 매입 가격&#10;position int NOT NULL | 표시 순서&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;INDEX idx_portfolio_holding_portfolio (portfolio_id)">
+<polygon fill="none" stroke="#c8d2e0" points="604,-207 604,-365 854,-365 854,-207 604,-207"/>
+<polygon fill="#bf4a28" stroke="none" points="605,-319.6 605,-364 853,-364 853,-319.6 605,-319.6"/>
+<text xml:space="preserve" text-anchor="start" x="617" y="-337.7" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">portfolio_holding</text>
+<polygon fill="#edf2f8" stroke="none" points="605,-290.4 605,-319.6 853,-319.6 853,-290.4 605,-290.4"/>
+<text xml:space="preserve" text-anchor="start" x="613" y="-300.6" font-family="Arial" font-size="11.00" fill="#43536a">Portfolios, reports &amp; credits</text>
+<polygon fill="#ffffff" stroke="none" points="605,-262.8 605,-290.4 653,-290.4 653,-262.8 605,-262.8"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-274.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="653,-262.8 653,-290.4 853,-290.4 853,-262.8 653,-262.8"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-271.4" font-family="Consolas" font-size="13.00" fill="#182d45">portfolio_holding_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="605,-235.2 605,-262.8 653,-262.8 653,-235.2 605,-235.2"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-247" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="653,-235.2 653,-262.8 853,-262.8 853,-235.2 653,-235.2"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-243.8" font-family="Consolas" font-size="13.00" fill="#182d45">portfolio_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="605,-208 605,-235.2 853,-235.2 853,-208 605,-208"/>
+<text xml:space="preserve" text-anchor="start" x="612" y="-217.2" font-family="Arial" font-size="11.00" fill="#64748b">+ 7 other columns</text>
+</a>
+</g>
+</g>
+<!-- watchlist -->
+<g id="table&#45;watchlist" class="node">
+<title>watchlist</title>
+<g id="a_table&#45;watchlist"><a xlink:title="사용자별 관심종목 목록과 정렬 설정&#10;watchlist_id bigint NOT NULL AUTO_INCREMENT | 관심목록 ID&#10;user_id bigint NOT NULL | 사용자 ID&#10;name varchar(50) NOT NULL | 관심목록 이름&#10;sort_pref varchar(50) NULL | 정렬 설정&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_user_watchlist_name (user_id, name)">
+<polygon fill="none" stroke="#c8d2e0" points="302,-388 302,-546 552,-546 552,-388 302,-388"/>
+<polygon fill="#bf4a28" stroke="none" points="303,-500.6 303,-545 551,-545 551,-500.6 303,-500.6"/>
+<text xml:space="preserve" text-anchor="start" x="315" y="-518.7" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">watchlist</text>
+<polygon fill="#edf2f8" stroke="none" points="303,-471.4 303,-500.6 551,-500.6 551,-471.4 303,-471.4"/>
+<text xml:space="preserve" text-anchor="start" x="311" y="-481.6" font-family="Arial" font-size="11.00" fill="#43536a">Portfolios, reports &amp; credits</text>
+<polygon fill="#ffffff" stroke="none" points="303,-443.8 303,-471.4 351,-471.4 351,-443.8 303,-443.8"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-455.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="351,-443.8 351,-471.4 551,-471.4 551,-443.8 351,-443.8"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-452.4" font-family="Consolas" font-size="13.00" fill="#182d45">watchlist_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-416.2 303,-443.8 351,-443.8 351,-416.2 303,-416.2"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-428" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="351,-416.2 351,-443.8 551,-443.8 551,-416.2 351,-416.2"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-424.8" font-family="Consolas" font-size="13.00" fill="#182d45">user_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-389 303,-416.2 551,-416.2 551,-389 303,-389"/>
+<text xml:space="preserve" text-anchor="start" x="310" y="-398.2" font-family="Arial" font-size="11.00" fill="#64748b">+ 4 other columns</text>
+</a>
+</g>
+</g>
+<!-- watchlist_item -->
+<g id="table&#45;watchlist_item" class="node">
+<title>watchlist_item</title>
+<g id="a_table&#45;watchlist_item"><a xlink:title="관심목록별 종목 및 표시 순서. 동일 목록·종목 UNIQUE&#10;watchlist_item_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;watchlist_id bigint NOT NULL | 관심목록 ID&#10;stock_id bigint NOT NULL | 종목 ID&#10;position int NULL | 표시 순서&#10;note varchar(255) NULL | 메모&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;UNIQUE uk_watchlist_stock (watchlist_id, stock_id)">
+<polygon fill="none" stroke="#c8d2e0" points="604,-394.2 604,-579.8 854,-579.8 854,-394.2 604,-394.2"/>
+<polygon fill="#bf4a28" stroke="none" points="605,-534.4 605,-578.8 853,-578.8 853,-534.4 605,-534.4"/>
+<text xml:space="preserve" text-anchor="start" x="617" y="-552.5" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">watchlist_item</text>
+<polygon fill="#edf2f8" stroke="none" points="605,-505.2 605,-534.4 853,-534.4 853,-505.2 605,-505.2"/>
+<text xml:space="preserve" text-anchor="start" x="613" y="-515.4" font-family="Arial" font-size="11.00" fill="#43536a">Portfolios, reports &amp; credits</text>
+<polygon fill="#ffffff" stroke="none" points="605,-477.6 605,-505.2 653,-505.2 653,-477.6 605,-477.6"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-489.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="653,-477.6 653,-505.2 853,-505.2 853,-477.6 653,-477.6"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-486.2" font-family="Consolas" font-size="13.00" fill="#182d45">watchlist_item_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="605,-450 605,-477.6 653,-477.6 653,-450 605,-450"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-461.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="653,-450 653,-477.6 853,-477.6 853,-450 653,-450"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-458.6" font-family="Consolas" font-size="13.00" fill="#182d45">watchlist_id</text>
+<polygon fill="#ffffff" stroke="none" points="605,-422.4 605,-450 653,-450 653,-422.4 605,-422.4"/>
+<text xml:space="preserve" text-anchor="start" x="611" y="-434.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#ffffff" stroke="none" points="653,-422.4 653,-450 853,-450 853,-422.4 653,-422.4"/>
+<text xml:space="preserve" text-anchor="start" x="659" y="-431" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="605,-395.2 605,-422.4 853,-422.4 853,-395.2 605,-395.2"/>
+<text xml:space="preserve" text-anchor="start" x="612" y="-404.4" font-family="Arial" font-size="11.00" fill="#64748b">+ 3 other columns</text>
+</a>
+</g>
+</g>
+<!-- analysis_report -->
+<g id="table&#45;analysis_report" class="node">
+<title>analysis_report</title>
+<g id="a_table&#45;analysis_report"><a xlink:title="사용자 분석 리포트와 요청·결과 JSON 스냅샷. stock_code는 FK가 아닌 문자열&#10;report_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;user_id bigint NOT NULL | 사용자 ID&#10;feature_type varchar(20) NOT NULL | 분석 기능 구분&#10;subject_type varchar(20) NOT NULL | 분석 대상 구분&#10;title varchar(255) NOT NULL | 제목&#10;user_name varchar(100) NOT NULL | 리포트 생성 당시 사용자 이름&#10;stock_code varchar(32) NULL | 리포트 대상 종목 코드 문자열; stock FK 없음&#10;company_name varchar(255) NULL | 회사명/종목명&#10;portfolio_summary varchar(500) NULL | 포트폴리오 요약&#10;analysis_model varchar(100) NULL | 분석 모델명&#10;invest_level varchar(30) NULL | 분석 당시 투자 수준&#10;risk_profile varchar(50) NULL | 분석 당시 위험 성향&#10;analysis_window varchar(50) NULL | 분석 기간 설정&#10;price_basis varchar(50) NULL | 가격 기준&#10;generated_at datetime(6) NOT NULL | 분석 결과 생성 시각&#10;data_as_of varchar(100) NULL | 분석 입력 데이터 기준 시점 문자열&#10;request_payload_json json NOT NULL | 분석 요청 JSON 스냅샷&#10;result_snapshot_json json NOT NULL | 분석 결과 JSON 스냅샷&#10;warnings_json json NULL | 경고 JSON 스냅샷&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;INDEX idx_analysis_report_user_generated (user_id, generated_at)&#10;INDEX idx_analysis_report_feature (feature_type, generated_at)&#10;INDEX idx_analysis_report_stock (stock_code, generated_at)">
+<polygon fill="none" stroke="#c8d2e0" points="302,0 302,-158 552,-158 552,0 302,0"/>
+<polygon fill="#bf4a28" stroke="none" points="303,-112.6 303,-157 551,-157 551,-112.6 303,-112.6"/>
+<text xml:space="preserve" text-anchor="start" x="315" y="-130.7" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">analysis_report</text>
+<polygon fill="#edf2f8" stroke="none" points="303,-83.4 303,-112.6 551,-112.6 551,-83.4 303,-83.4"/>
+<text xml:space="preserve" text-anchor="start" x="311" y="-93.6" font-family="Arial" font-size="11.00" fill="#43536a">Portfolios, reports &amp; credits</text>
+<polygon fill="#ffffff" stroke="none" points="303,-55.8 303,-83.4 351,-83.4 351,-55.8 303,-55.8"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-67.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="351,-55.8 351,-83.4 551,-83.4 551,-55.8 351,-55.8"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-64.4" font-family="Consolas" font-size="13.00" fill="#182d45">report_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-28.2 303,-55.8 351,-55.8 351,-28.2 303,-28.2"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-40" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="351,-28.2 351,-55.8 551,-55.8 551,-28.2 351,-28.2"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-36.8" font-family="Consolas" font-size="13.00" fill="#182d45">user_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-1 303,-28.2 551,-28.2 551,-1 303,-1"/>
+<text xml:space="preserve" text-anchor="start" x="310" y="-10.2" font-family="Arial" font-size="11.00" fill="#64748b">+ 18 other columns</text>
+</a>
+</g>
+</g>
+<!-- dictionary -->
+<g id="table&#45;dictionary" class="node">
+<title>dictionary</title>
+<g id="a_table&#45;dictionary"><a xlink:title="term 문자열이 PK인 금융 용어 사전. V49 기준 description_en은 TINYTEXT&#10;term varchar(255) NOT NULL | 사전 표제어; 문자열 PK&#10;initial varchar(2) NOT NULL | 초성/첫 문자 분류&#10;description tinytext NOT NULL | 용어 설명&#10;description_en tinytext NULL | 영문 설명; V49 최종 타입 TINYTEXT&#10;source varchar(255) NULL | 데이터 출처&#10;source_org varchar(100) NULL | 출처 기관&#10;source_url varchar(500) NULL | 출처 URL&#10;source_type varchar(50) NULL | 출처 유형&#10;status varchar(30) NOT NULL DEFAULT PUBLISHED | 상태&#10;reviewed_at datetime(6) NULL | 검토 시각&#10;tag varchar(255) NULL | 태그&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;INDEX idx_dictionary_initial_term (initial, term)">
+<polygon fill="none" stroke="#c8d2e0" points="0,-1170.8 0,-1301.2 250,-1301.2 250,-1170.8 0,-1170.8"/>
+<polygon fill="#247a78" stroke="none" points="1,-1255.8 1,-1300.2 249,-1300.2 249,-1255.8 1,-1255.8"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-1273.9" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">dictionary</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-1226.6 1,-1255.8 249,-1255.8 249,-1226.6 1,-1226.6"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-1236.8" font-family="Arial" font-size="11.00" fill="#43536a">Financial dictionary</text>
+<polygon fill="#ffffff" stroke="none" points="1,-1199 1,-1226.6 49,-1226.6 49,-1199 1,-1199"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-1210.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-1199 49,-1226.6 249,-1226.6 249,-1199 49,-1199"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-1207.6" font-family="Consolas" font-size="13.00" fill="#182d45">term</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-1171.8 1,-1199 249,-1199 249,-1171.8 1,-1171.8"/>
+<text xml:space="preserve" text-anchor="start" x="8" y="-1181" font-family="Arial" font-size="11.00" fill="#64748b">+ 12 other columns</text>
+</a>
+</g>
+</g>
+<!-- dictionary_alias -->
+<g id="table&#45;dictionary_alias" class="node">
+<title>dictionary_alias</title>
+<g id="a_table&#45;dictionary_alias"><a xlink:title="사전 표제어에 연결되는 별칭. 표제어 삭제 시 CASCADE&#10;alias_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;canonical_term varchar(255) NOT NULL | 연결된 사전 표제어&#10;alias_term varchar(255) NOT NULL | 용어 별칭&#10;normalized_alias_term varchar(255) NOT NULL | 정규화된 용어 별칭&#10;source_type varchar(50) NULL | 출처 유형&#10;notes varchar(255) NULL | 비고&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_dictionary_alias_normalized (normalized_alias_term)&#10;INDEX idx_dictionary_alias_canonical_term (canonical_term)&#10;INDEX idx_dictionary_alias_alias_term (alias_term)&#10;INDEX idx_dictionary_alias_normalized (normalized_alias_term)">
+<polygon fill="none" stroke="#c8d2e0" points="302,-1170 302,-1328 552,-1328 552,-1170 302,-1170"/>
+<polygon fill="#247a78" stroke="none" points="303,-1282.6 303,-1327 551,-1327 551,-1282.6 303,-1282.6"/>
+<text xml:space="preserve" text-anchor="start" x="315" y="-1300.7" font-family="Arial" font-weight="bold" font-size="17.00" fill="#ffffff">dictionary_alias</text>
+<polygon fill="#edf2f8" stroke="none" points="303,-1253.4 303,-1282.6 551,-1282.6 551,-1253.4 303,-1253.4"/>
+<text xml:space="preserve" text-anchor="start" x="311" y="-1263.6" font-family="Arial" font-size="11.00" fill="#43536a">Financial dictionary</text>
+<polygon fill="#ffffff" stroke="none" points="303,-1225.8 303,-1253.4 351,-1253.4 351,-1225.8 303,-1225.8"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-1237.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="351,-1225.8 351,-1253.4 551,-1253.4 551,-1225.8 351,-1225.8"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-1234.4" font-family="Consolas" font-size="13.00" fill="#182d45">alias_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-1198.2 303,-1225.8 351,-1225.8 351,-1198.2 303,-1198.2"/>
+<text xml:space="preserve" text-anchor="start" x="309" y="-1210" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="351,-1198.2 351,-1225.8 551,-1225.8 551,-1198.2 351,-1198.2"/>
+<text xml:space="preserve" text-anchor="start" x="357" y="-1206.8" font-family="Consolas" font-size="13.00" fill="#182d45">canonical_term</text>
+<polygon fill="#f5f8fc" stroke="none" points="303,-1171 303,-1198.2 551,-1198.2 551,-1171 303,-1171"/>
+<text xml:space="preserve" text-anchor="start" x="310" y="-1180.2" font-family="Arial" font-size="11.00" fill="#64748b">+ 6 other columns</text>
+</a>
+</g>
+</g>
+</g>
+</g>
+<line x1="30" y1="1526" x2="994" y2="1526" stroke="#d7e1ed"/>
+<text x="31" y="1548" font-family="Arial, sans-serif" font-size="12" fill="#526478">Primary keys and connecting foreign keys only. Full details: 47 tables in 11 domain diagrams.</text>
+</svg>

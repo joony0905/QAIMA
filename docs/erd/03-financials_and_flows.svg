@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1136" height="3981" viewBox="0 0 1136 3981" role="img" aria-labelledby="erd-title erd-desc">
+<title id="erd-title">QAIMA / Financials &amp; investor flows</title><desc id="erd-desc">QAIMA ERD derived from Flyway V1 through V51. All columns of included domain tables are shown; external referenced tables show their primary keys only. Foreign keys: 4. Source: docs/erd/qaima_flyway_v51.dbml.</desc>
+<rect width="1136" height="3981" fill="#ffffff"/>
+<rect width="1136" height="122" fill="#10243a"/>
+<rect x="0" y="0" width="8" height="122" fill="#43c6ac"/>
+<text x="30" y="43" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">QAIMA / Financials &amp; investor flows</text>
+<text x="31" y="73" font-family="Arial, sans-serif" font-size="14" fill="#c8d7e9">5 domain tables · all columns · external references use PK-only cards</text>
+<text x="31" y="99" font-family="Arial, sans-serif" font-size="12" fill="#8fb5cf">MYSQL / FLYWAY V1–V51 / QAIMA</text>
+<g transform="translate(32.00,146)">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 3760.6)">
+<title>QAIMA</title>
+<polygon fill="#ffffff" stroke="none" points="-18,18 -18,-3760.6 1053.75,-3760.6 1053.75,18 -18,18"/>
+<!-- stock&#45;&gt;financial -->
+<g id="fk&#45;fk_financial_stock" class="edge">
+<title>stock:e&#45;&gt;financial:w</title>
+<g id="a_fk&#45;fk_financial_stock"><a xlink:title="fk_financial_stock: financial.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#92600b" stroke-width="1.5" d="M487.25,-1894.2C491.21,-2007.04 541.76,-3447.62 547.48,-3610.45"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="483.43,-1888.08 490.62,-1887.82 490.67,-1889.26 483.48,-1889.51 483.43,-1888.08"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="487,-1887.23 487.13,-1890.83"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="483.56,-1891.7 490.75,-1891.45 490.8,-1892.89 483.61,-1893.14 483.56,-1891.7"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="487.13,-1890.86 487.25,-1894.46"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="547.73,-3617.7 544.74,-3625.01 547.87,-3621.8 547.96,-3624.4 547.96,-3624.4 547.96,-3624.4 547.87,-3621.8 551.22,-3624.78 547.73,-3617.7"/>
+<ellipse fill="none" stroke="#92600b" stroke-width="1.5" cx="547.54" cy="-3612.25" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- stock&#45;&gt;issued_shares -->
+<g id="fk&#45;fk_issued_shares_stock" class="edge">
+<title>stock:e&#45;&gt;issued_shares:w</title>
+<g id="a_fk&#45;fk_issued_shares_stock"><a xlink:title="fk_issued_shares_stock: issued_shares.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#92600b" stroke-width="1.5" d="M488.17,-1894.05C495.53,-1937.09 535.4,-2170.3 545.86,-2231.49"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="483.58,-1888.55 490.67,-1887.33 490.92,-1888.75 483.82,-1889.97 483.58,-1888.55"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="487.01,-1887.23 487.61,-1890.78"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="484.19,-1892.12 491.29,-1890.91 491.53,-1892.33 484.43,-1893.54 484.19,-1892.12"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="487.62,-1890.81 488.22,-1894.36"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="547.08,-2238.61 545.1,-2246.25 547.77,-2242.65 548.21,-2245.21 548.21,-2245.21 548.21,-2245.21 547.77,-2242.65 551.48,-2245.16 547.08,-2238.61"/>
+<ellipse fill="none" stroke="#92600b" stroke-width="1.5" cx="546.16" cy="-2233.23" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- stock&#45;&gt;short_selling -->
+<g id="fk&#45;fk_short_selling_stock" class="edge">
+<title>stock:e&#45;&gt;short_selling:w</title>
+<g id="a_fk&#45;fk_short_selling_stock"><a xlink:title="fk_short_selling_stock: short_selling.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#92600b" stroke-width="1.5" d="M488.17,-1880.38C495.53,-1837.5 535.4,-1605.2 545.86,-1544.25"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="490.67,-1887.07 483.58,-1885.85 483.82,-1884.43 490.92,-1885.65 490.67,-1887.07"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="487.01,-1887.17 487.61,-1883.62"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="491.29,-1883.49 484.19,-1882.27 484.44,-1880.85 491.53,-1882.07 491.29,-1883.49"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="487.62,-1883.59 488.23,-1880.04"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="547.07,-1537.19 551.48,-1530.64 547.77,-1533.15 548.21,-1530.59 548.21,-1530.59 548.21,-1530.59 547.77,-1533.15 545.1,-1529.55 547.07,-1537.19"/>
+<ellipse fill="none" stroke="#92600b" stroke-width="1.5" cx="546.15" cy="-1542.57" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- stock&#45;&gt;stock_investor_flow -->
+<g id="fk&#45;fk_stock_investor_flow_stock" class="edge">
+<title>stock:e&#45;&gt;stock_investor_flow:w</title>
+<g id="a_fk&#45;fk_stock_investor_flow_stock"><a xlink:title="fk_stock_investor_flow_stock: stock_investor_flow.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#92600b" stroke-width="1.5" d="M487.42,-1880.15C492.44,-1796.87 540.31,-1001.97 547.48,-882.9"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="490.64,-1886.67 483.45,-1886.23 483.54,-1884.8 490.73,-1885.23 490.64,-1886.67"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="487,-1887.17 487.22,-1883.58"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="490.86,-1883.04 483.67,-1882.61 483.76,-1881.17 490.94,-1881.61 490.86,-1883.04"/>
+<polyline fill="none" stroke="#92600b" stroke-width="1.5" points="487.22,-1883.55 487.44,-1879.95"/>
+<polygon fill="#92600b" stroke="#92600b" stroke-width="1.5" points="547.91,-875.69 551.58,-868.7 548.16,-871.59 548.32,-869 548.32,-869 548.32,-869 548.16,-871.59 545.11,-868.31 547.91,-875.69"/>
+<ellipse fill="none" stroke="#92600b" stroke-width="1.5" cx="547.58" cy="-881.14" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- financial -->
+<g id="table&#45;financial" class="node">
+<title>financial</title>
+<g id="a_table&#45;financial"><a xlink:title="재무 데이터. 종목·회계연도·기간 유형·기간 번호 UNIQUE; version은 PK에 포함되지 않음&#10;financial_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;stock_id bigint NOT NULL | 종목 ID&#10;report_date date NOT NULL | 보고 기준일&#10;version int NOT NULL | 재무 데이터 버전&#10;fiscal_year int NOT NULL | 회계연도&#10;period_no int NOT NULL | 기간 번호; 재무 데이터 UNIQUE 구성 컬럼&#10;fiscal_quarter int NULL | 회계분기&#10;period_type varchar(10) NOT NULL | 재무 기간 유형; VARCHAR 저장&#10;filing_date date NULL | 공시/제출일&#10;currency varchar(10) NULL | 통화&#10;source varchar(50) NULL | 데이터 출처&#10;revenue decimal(20,2) NULL | 매출액&#10;gross_profit decimal(20,2) NULL | 매출총이익&#10;operating_income decimal(20,2) NULL | 영업이익&#10;net_income decimal(20,2) NULL | 당기순이익&#10;assets decimal(20,2) NULL | 자산총계&#10;current_assets decimal(20,2) NULL | 유동자산&#10;liabilities decimal(20,2) NULL | 부채총계&#10;current_liabilities decimal(20,2) NULL | 유동부채&#10;equity decimal(20,2) NULL | 자본총계&#10;capital_stock decimal(20,2) NULL | 자본금&#10;retained_earnings decimal(20,2) NULL | 이익잉여금&#10;cash_and_equivalents decimal(20,2) NULL | 현금 및 현금성 자산&#10;accounts_receivable decimal(20,2) NULL | 매출채권&#10;inventories decimal(20,2) NULL | 재고자산&#10;short_term_borrowings decimal(20,2) NULL | 단기차입금&#10;current_portion_of_long_term_borrowings decimal(20,2) NULL | 유동성 장기차입금&#10;long_term_borrowings decimal(20,2) NULL | 장기차입금&#10;operating_cash_flow decimal(20,2) NULL | 영업활동 현금흐름&#10;investing_cash_flow decimal(20,2) NULL | 투자활동 현금흐름&#10;financing_cash_flow decimal(20,2) NULL | 재무활동 현금흐름&#10;interest_expense decimal(20,2) NULL | 이자비용&#10;capex_ppe decimal(20,2) NULL | 유형자산 취득 지출&#10;capex_intangible decimal(20,2) NULL | 무형자산 취득 지출&#10;depreciation_expense decimal(20,2) NULL | 감가상각비&#10;amortization_expense decimal(20,2) NULL | 무형자산상각비&#10;income_tax_expense decimal(20,2) NULL | 법인세비용&#10;market_cap decimal(20,2) NULL | 시가총액&#10;operating_margin decimal(10,4) NULL | 영업이익률&#10;net_margin decimal(10,4) NULL | 순이익률&#10;roe decimal(10,4) NULL | 자기자본이익률&#10;per decimal(10,4) NULL | 주가수익비율&#10;pbr decimal(10,4) NULL | 주가순자산비율&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_financial_stock_period (stock_id, fiscal_year, period_type, period_no)&#10;INDEX idx_financials_stock_fiscal_period (stock_id, period_type, fiscal_year, period_no)">
+<polygon fill="none" stroke="#c8d2e0" points="548,-2398.6 548,-3742.6 1035.75,-3742.6 1035.75,-2398.6 548,-2398.6"/>
+<polygon fill="#92600b" stroke="none" points="549,-3696 549,-3741.6 1034.75,-3741.6 1034.75,-3696 549,-3696"/>
+<text xml:space="preserve" text-anchor="start" x="561" y="-3714.4" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">financial</text>
+<polygon fill="#edf2f8" stroke="none" points="549,-3666.8 549,-3696 1034.75,-3696 1034.75,-3666.8 549,-3666.8"/>
+<text xml:space="preserve" text-anchor="start" x="557" y="-3677" font-family="Arial" font-size="11.00" fill="#43536a">45 COLUMNS / 2 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3639.2 549,-3666.8 597,-3666.8 597,-3639.2 549,-3639.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3651" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-3639.2 597,-3666.8 887.75,-3666.8 887.75,-3639.2 597,-3639.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3647.8" font-family="Consolas" font-size="13.00" fill="#182d45">financial_id</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3639.2 887.75,-3666.8 1034.75,-3666.8 1034.75,-3639.2 887.75,-3639.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3648.2" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3611.6 549,-3639.2 597,-3639.2 597,-3611.6 549,-3611.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3623.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3611.6 597,-3639.2 887.75,-3639.2 887.75,-3611.6 597,-3611.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3620.2" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3611.6 887.75,-3639.2 1034.75,-3639.2 1034.75,-3611.6 887.75,-3611.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3620.6" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3584 549,-3611.6 597,-3611.6 597,-3584 549,-3584"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3595.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3584 597,-3611.6 887.75,-3611.6 887.75,-3584 597,-3584"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3592.6" font-family="Consolas" font-size="13.00" fill="#182d45">report_date</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3584 887.75,-3611.6 1034.75,-3611.6 1034.75,-3584 887.75,-3584"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3593" font-family="Consolas" font-size="12.00" fill="#53637b">date</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3556.4 549,-3584 597,-3584 597,-3556.4 549,-3556.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3568.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3556.4 597,-3584 887.75,-3584 887.75,-3556.4 597,-3556.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3565" font-family="Consolas" font-size="13.00" fill="#182d45">version</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3556.4 887.75,-3584 1034.75,-3584 1034.75,-3556.4 887.75,-3556.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3565.4" font-family="Consolas" font-size="12.00" fill="#53637b">int</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3528.8 549,-3556.4 597,-3556.4 597,-3528.8 549,-3528.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3540.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3528.8 597,-3556.4 887.75,-3556.4 887.75,-3528.8 597,-3528.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3537.4" font-family="Consolas" font-size="13.00" fill="#182d45">fiscal_year</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3528.8 887.75,-3556.4 1034.75,-3556.4 1034.75,-3528.8 887.75,-3528.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3537.8" font-family="Consolas" font-size="12.00" fill="#53637b">int</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3501.2 549,-3528.8 597,-3528.8 597,-3501.2 549,-3501.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3513" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3501.2 597,-3528.8 887.75,-3528.8 887.75,-3501.2 597,-3501.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3509.8" font-family="Consolas" font-size="13.00" fill="#182d45">period_no</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3501.2 887.75,-3528.8 1034.75,-3528.8 1034.75,-3501.2 887.75,-3501.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3510.2" font-family="Consolas" font-size="12.00" fill="#53637b">int</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3473.6 549,-3501.2 597,-3501.2 597,-3473.6 549,-3473.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3485.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3473.6 597,-3501.2 887.75,-3501.2 887.75,-3473.6 597,-3473.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3482.2" font-family="Consolas" font-size="13.00" fill="#182d45">fiscal_quarter</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3473.6 887.75,-3501.2 1034.75,-3501.2 1034.75,-3473.6 887.75,-3473.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3482.6" font-family="Consolas" font-size="12.00" fill="#53637b">int ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3446 549,-3473.6 597,-3473.6 597,-3446 549,-3446"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3457.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3446 597,-3473.6 887.75,-3473.6 887.75,-3446 597,-3446"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3454.6" font-family="Consolas" font-size="13.00" fill="#182d45">period_type</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3446 887.75,-3473.6 1034.75,-3473.6 1034.75,-3446 887.75,-3446"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3455" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(10)</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3418.4 549,-3446 597,-3446 597,-3418.4 549,-3418.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3430.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3418.4 597,-3446 887.75,-3446 887.75,-3418.4 597,-3418.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3427" font-family="Consolas" font-size="13.00" fill="#182d45">filing_date</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3418.4 887.75,-3446 1034.75,-3446 1034.75,-3418.4 887.75,-3418.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3427.4" font-family="Consolas" font-size="12.00" fill="#53637b">date ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3390.8 549,-3418.4 597,-3418.4 597,-3390.8 549,-3390.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3402.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3390.8 597,-3418.4 887.75,-3418.4 887.75,-3390.8 597,-3390.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3399.4" font-family="Consolas" font-size="13.00" fill="#182d45">currency</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3390.8 887.75,-3418.4 1034.75,-3418.4 1034.75,-3390.8 887.75,-3390.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3399.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(10) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3363.2 549,-3390.8 597,-3390.8 597,-3363.2 549,-3363.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3375" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3363.2 597,-3390.8 887.75,-3390.8 887.75,-3363.2 597,-3363.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3371.8" font-family="Consolas" font-size="13.00" fill="#182d45">source</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3363.2 887.75,-3390.8 1034.75,-3390.8 1034.75,-3363.2 887.75,-3363.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3372.2" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(50) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3335.6 549,-3363.2 597,-3363.2 597,-3335.6 549,-3335.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3347.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3335.6 597,-3363.2 887.75,-3363.2 887.75,-3335.6 597,-3335.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3344.2" font-family="Consolas" font-size="13.00" fill="#182d45">revenue</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3335.6 887.75,-3363.2 1034.75,-3363.2 1034.75,-3335.6 887.75,-3335.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3344.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3308 549,-3335.6 597,-3335.6 597,-3308 549,-3308"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3319.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3308 597,-3335.6 887.75,-3335.6 887.75,-3308 597,-3308"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3316.6" font-family="Consolas" font-size="13.00" fill="#182d45">gross_profit</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3308 887.75,-3335.6 1034.75,-3335.6 1034.75,-3308 887.75,-3308"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3317" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3280.4 549,-3308 597,-3308 597,-3280.4 549,-3280.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3292.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3280.4 597,-3308 887.75,-3308 887.75,-3280.4 597,-3280.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3289" font-family="Consolas" font-size="13.00" fill="#182d45">operating_income</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3280.4 887.75,-3308 1034.75,-3308 1034.75,-3280.4 887.75,-3280.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3289.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3252.8 549,-3280.4 597,-3280.4 597,-3252.8 549,-3252.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3264.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3252.8 597,-3280.4 887.75,-3280.4 887.75,-3252.8 597,-3252.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3261.4" font-family="Consolas" font-size="13.00" fill="#182d45">net_income</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3252.8 887.75,-3280.4 1034.75,-3280.4 1034.75,-3252.8 887.75,-3252.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3261.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3225.2 549,-3252.8 597,-3252.8 597,-3225.2 549,-3225.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3237" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3225.2 597,-3252.8 887.75,-3252.8 887.75,-3225.2 597,-3225.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3233.8" font-family="Consolas" font-size="13.00" fill="#182d45">assets</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3225.2 887.75,-3252.8 1034.75,-3252.8 1034.75,-3225.2 887.75,-3225.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3234.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3197.6 549,-3225.2 597,-3225.2 597,-3197.6 549,-3197.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3209.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3197.6 597,-3225.2 887.75,-3225.2 887.75,-3197.6 597,-3197.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3206.2" font-family="Consolas" font-size="13.00" fill="#182d45">current_assets</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3197.6 887.75,-3225.2 1034.75,-3225.2 1034.75,-3197.6 887.75,-3197.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3206.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3170 549,-3197.6 597,-3197.6 597,-3170 549,-3170"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3181.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3170 597,-3197.6 887.75,-3197.6 887.75,-3170 597,-3170"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3178.6" font-family="Consolas" font-size="13.00" fill="#182d45">liabilities</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3170 887.75,-3197.6 1034.75,-3197.6 1034.75,-3170 887.75,-3170"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3179" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3142.4 549,-3170 597,-3170 597,-3142.4 549,-3142.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3154.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3142.4 597,-3170 887.75,-3170 887.75,-3142.4 597,-3142.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3151" font-family="Consolas" font-size="13.00" fill="#182d45">current_liabilities</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3142.4 887.75,-3170 1034.75,-3170 1034.75,-3142.4 887.75,-3142.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3151.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3114.8 549,-3142.4 597,-3142.4 597,-3114.8 549,-3114.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3126.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3114.8 597,-3142.4 887.75,-3142.4 887.75,-3114.8 597,-3114.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3123.4" font-family="Consolas" font-size="13.00" fill="#182d45">equity</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3114.8 887.75,-3142.4 1034.75,-3142.4 1034.75,-3114.8 887.75,-3114.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3123.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3087.2 549,-3114.8 597,-3114.8 597,-3087.2 549,-3087.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3099" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3087.2 597,-3114.8 887.75,-3114.8 887.75,-3087.2 597,-3087.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3095.8" font-family="Consolas" font-size="13.00" fill="#182d45">capital_stock</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3087.2 887.75,-3114.8 1034.75,-3114.8 1034.75,-3087.2 887.75,-3087.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3096.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3059.6 549,-3087.2 597,-3087.2 597,-3059.6 549,-3059.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3071.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3059.6 597,-3087.2 887.75,-3087.2 887.75,-3059.6 597,-3059.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3068.2" font-family="Consolas" font-size="13.00" fill="#182d45">retained_earnings</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3059.6 887.75,-3087.2 1034.75,-3087.2 1034.75,-3059.6 887.75,-3059.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3068.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-3032 549,-3059.6 597,-3059.6 597,-3032 549,-3032"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3043.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-3032 597,-3059.6 887.75,-3059.6 887.75,-3032 597,-3032"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3040.6" font-family="Consolas" font-size="13.00" fill="#182d45">cash_and_equivalents</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-3032 887.75,-3059.6 1034.75,-3059.6 1034.75,-3032 887.75,-3032"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3041" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-3004.4 549,-3032 597,-3032 597,-3004.4 549,-3004.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-3016.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-3004.4 597,-3032 887.75,-3032 887.75,-3004.4 597,-3004.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-3013" font-family="Consolas" font-size="13.00" fill="#182d45">accounts_receivable</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-3004.4 887.75,-3032 1034.75,-3032 1034.75,-3004.4 887.75,-3004.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-3013.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2976.8 549,-3004.4 597,-3004.4 597,-2976.8 549,-2976.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2988.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2976.8 597,-3004.4 887.75,-3004.4 887.75,-2976.8 597,-2976.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2985.4" font-family="Consolas" font-size="13.00" fill="#182d45">inventories</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2976.8 887.75,-3004.4 1034.75,-3004.4 1034.75,-2976.8 887.75,-2976.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2985.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2949.2 549,-2976.8 597,-2976.8 597,-2949.2 549,-2949.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2961" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2949.2 597,-2976.8 887.75,-2976.8 887.75,-2949.2 597,-2949.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2957.8" font-family="Consolas" font-size="13.00" fill="#182d45">short_term_borrowings</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2949.2 887.75,-2976.8 1034.75,-2976.8 1034.75,-2949.2 887.75,-2949.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2958.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2921.6 549,-2949.2 597,-2949.2 597,-2921.6 549,-2921.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2933.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2921.6 597,-2949.2 887.75,-2949.2 887.75,-2921.6 597,-2921.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2930.2" font-family="Consolas" font-size="13.00" fill="#182d45">current_portion_of_long_term_borrowings</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2921.6 887.75,-2949.2 1034.75,-2949.2 1034.75,-2921.6 887.75,-2921.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2930.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2894 549,-2921.6 597,-2921.6 597,-2894 549,-2894"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2905.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2894 597,-2921.6 887.75,-2921.6 887.75,-2894 597,-2894"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2902.6" font-family="Consolas" font-size="13.00" fill="#182d45">long_term_borrowings</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2894 887.75,-2921.6 1034.75,-2921.6 1034.75,-2894 887.75,-2894"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2903" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2866.4 549,-2894 597,-2894 597,-2866.4 549,-2866.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2878.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2866.4 597,-2894 887.75,-2894 887.75,-2866.4 597,-2866.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2875" font-family="Consolas" font-size="13.00" fill="#182d45">operating_cash_flow</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2866.4 887.75,-2894 1034.75,-2894 1034.75,-2866.4 887.75,-2866.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2875.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2838.8 549,-2866.4 597,-2866.4 597,-2838.8 549,-2838.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2850.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2838.8 597,-2866.4 887.75,-2866.4 887.75,-2838.8 597,-2838.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2847.4" font-family="Consolas" font-size="13.00" fill="#182d45">investing_cash_flow</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2838.8 887.75,-2866.4 1034.75,-2866.4 1034.75,-2838.8 887.75,-2838.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2847.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2811.2 549,-2838.8 597,-2838.8 597,-2811.2 549,-2811.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2823" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2811.2 597,-2838.8 887.75,-2838.8 887.75,-2811.2 597,-2811.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2819.8" font-family="Consolas" font-size="13.00" fill="#182d45">financing_cash_flow</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2811.2 887.75,-2838.8 1034.75,-2838.8 1034.75,-2811.2 887.75,-2811.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2820.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2783.6 549,-2811.2 597,-2811.2 597,-2783.6 549,-2783.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2795.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2783.6 597,-2811.2 887.75,-2811.2 887.75,-2783.6 597,-2783.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2792.2" font-family="Consolas" font-size="13.00" fill="#182d45">interest_expense</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2783.6 887.75,-2811.2 1034.75,-2811.2 1034.75,-2783.6 887.75,-2783.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2792.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2756 549,-2783.6 597,-2783.6 597,-2756 549,-2756"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2767.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2756 597,-2783.6 887.75,-2783.6 887.75,-2756 597,-2756"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2764.6" font-family="Consolas" font-size="13.00" fill="#182d45">capex_ppe</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2756 887.75,-2783.6 1034.75,-2783.6 1034.75,-2756 887.75,-2756"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2765" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2728.4 549,-2756 597,-2756 597,-2728.4 549,-2728.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2740.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2728.4 597,-2756 887.75,-2756 887.75,-2728.4 597,-2728.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2737" font-family="Consolas" font-size="13.00" fill="#182d45">capex_intangible</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2728.4 887.75,-2756 1034.75,-2756 1034.75,-2728.4 887.75,-2728.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2737.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2700.8 549,-2728.4 597,-2728.4 597,-2700.8 549,-2700.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2712.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2700.8 597,-2728.4 887.75,-2728.4 887.75,-2700.8 597,-2700.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2709.4" font-family="Consolas" font-size="13.00" fill="#182d45">depreciation_expense</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2700.8 887.75,-2728.4 1034.75,-2728.4 1034.75,-2700.8 887.75,-2700.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2709.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2673.2 549,-2700.8 597,-2700.8 597,-2673.2 549,-2673.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2685" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2673.2 597,-2700.8 887.75,-2700.8 887.75,-2673.2 597,-2673.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2681.8" font-family="Consolas" font-size="13.00" fill="#182d45">amortization_expense</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2673.2 887.75,-2700.8 1034.75,-2700.8 1034.75,-2673.2 887.75,-2673.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2682.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2645.6 549,-2673.2 597,-2673.2 597,-2645.6 549,-2645.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2657.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2645.6 597,-2673.2 887.75,-2673.2 887.75,-2645.6 597,-2645.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2654.2" font-family="Consolas" font-size="13.00" fill="#182d45">income_tax_expense</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2645.6 887.75,-2673.2 1034.75,-2673.2 1034.75,-2645.6 887.75,-2645.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2654.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2618 549,-2645.6 597,-2645.6 597,-2618 549,-2618"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2629.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2618 597,-2645.6 887.75,-2645.6 887.75,-2618 597,-2618"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2626.6" font-family="Consolas" font-size="13.00" fill="#182d45">market_cap</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2618 887.75,-2645.6 1034.75,-2645.6 1034.75,-2618 887.75,-2618"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2627" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,2) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2590.4 549,-2618 597,-2618 597,-2590.4 549,-2590.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2602.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2590.4 597,-2618 887.75,-2618 887.75,-2590.4 597,-2590.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2599" font-family="Consolas" font-size="13.00" fill="#182d45">operating_margin</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2590.4 887.75,-2618 1034.75,-2618 1034.75,-2590.4 887.75,-2590.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2599.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,4) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2562.8 549,-2590.4 597,-2590.4 597,-2562.8 549,-2562.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2574.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2562.8 597,-2590.4 887.75,-2590.4 887.75,-2562.8 597,-2562.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2571.4" font-family="Consolas" font-size="13.00" fill="#182d45">net_margin</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2562.8 887.75,-2590.4 1034.75,-2590.4 1034.75,-2562.8 887.75,-2562.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2571.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,4) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2535.2 549,-2562.8 597,-2562.8 597,-2535.2 549,-2535.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2547" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2535.2 597,-2562.8 887.75,-2562.8 887.75,-2535.2 597,-2535.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2543.8" font-family="Consolas" font-size="13.00" fill="#182d45">roe</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2535.2 887.75,-2562.8 1034.75,-2562.8 1034.75,-2535.2 887.75,-2535.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2544.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,4) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2507.6 549,-2535.2 597,-2535.2 597,-2507.6 549,-2507.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2519.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2507.6 597,-2535.2 887.75,-2535.2 887.75,-2507.6 597,-2507.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2516.2" font-family="Consolas" font-size="13.00" fill="#182d45">per</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2507.6 887.75,-2535.2 1034.75,-2535.2 1034.75,-2507.6 887.75,-2507.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2516.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,4) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2480 549,-2507.6 597,-2507.6 597,-2480 549,-2480"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2491.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2480 597,-2507.6 887.75,-2507.6 887.75,-2480 597,-2480"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2488.6" font-family="Consolas" font-size="13.00" fill="#182d45">pbr</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2480 887.75,-2507.6 1034.75,-2507.6 1034.75,-2480 887.75,-2480"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2489" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,4) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-2452.4 549,-2480 597,-2480 597,-2452.4 549,-2452.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2464.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-2452.4 597,-2480 887.75,-2480 887.75,-2452.4 597,-2452.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2461" font-family="Consolas" font-size="13.00" fill="#182d45">created_at</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.75,-2452.4 887.75,-2480 1034.75,-2480 1034.75,-2452.4 887.75,-2452.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2461.4" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#ffffff" stroke="none" points="549,-2424.8 549,-2452.4 597,-2452.4 597,-2424.8 549,-2424.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2436.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-2424.8 597,-2452.4 887.75,-2452.4 887.75,-2424.8 597,-2424.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-2433.4" font-family="Consolas" font-size="13.00" fill="#182d45">updated_at</text>
+<polygon fill="#ffffff" stroke="none" points="887.75,-2424.8 887.75,-2452.4 1034.75,-2452.4 1034.75,-2424.8 887.75,-2424.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.75" y="-2433.8" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#fff8e9" stroke="none" points="549,-2399.6 549,-2424.8 1034.75,-2424.8 1034.75,-2399.6 549,-2399.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-2407.8" font-family="Consolas" font-size="11.00" fill="#805914">UQ (stock_id, fiscal_year, period_type, period_no)</text>
+</a>
+</g>
+</g>
+<!-- issued_shares -->
+<g id="table&#45;issued_shares" class="node">
+<title>issued_shares</title>
+<g id="a_table&#45;issued_shares"><a xlink:title="DART·SEC 발행주식 및 자기주식·유통주식 데이터&#10;issued_shares_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;stock_id bigint NOT NULL | 종목 ID&#10;rcept_no varchar(32) NOT NULL | 공시 접수번호; SEC 지원으로 VARCHAR(32)&#10;corp_cls varchar(10) NULL | 기업 구분&#10;corp_code varchar(10) NOT NULL | 공시 기업 코드&#10;corp_name varchar(255) NULL | 기업명&#10;share_type varchar(50) NOT NULL | 주식 종류&#10;authorized_shares bigint NULL | 발행할 주식 총수&#10;issued_shares_to_date bigint NULL | 누적 발행주식 수&#10;decreased_shares_to_date bigint NULL | 누적 감소주식 수&#10;decreased_by_reduction bigint NULL | 감자로 감소한 주식 수&#10;decreased_by_profit_incineration bigint NULL | 이익소각으로 감소한 주식 수&#10;decreased_by_redemption bigint NULL | 상환으로 감소한 주식 수&#10;decreased_by_other bigint NULL | 기타 사유로 감소한 주식 수&#10;issued_shares_total bigint NULL | 발행주식 총수&#10;treasury_shares bigint NULL | 자기주식 수&#10;floating_shares bigint NULL | 유통주식 수&#10;base_date date NOT NULL | 기준일&#10;source varchar(50) NOT NULL DEFAULT OPENDART | 데이터 출처&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_issued_shares_stock_date_type (stock_id, base_date, share_type)&#10;INDEX idx_issued_shares_stock_date (stock_id, base_date)&#10;INDEX idx_issued_shares_corp_code_date (corp_code, base_date)">
+<polygon fill="none" stroke="#c8d2e0" points="548.38,-1681.8 548.38,-2363.4 1035.38,-2363.4 1035.38,-1681.8 548.38,-1681.8"/>
+<polygon fill="#92600b" stroke="none" points="549.38,-2316.8 549.38,-2362.4 1034.38,-2362.4 1034.38,-2316.8 549.38,-2316.8"/>
+<text xml:space="preserve" text-anchor="start" x="561.38" y="-2335.2" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">issued_shares</text>
+<polygon fill="#edf2f8" stroke="none" points="549.38,-2287.6 549.38,-2316.8 1034.38,-2316.8 1034.38,-2287.6 549.38,-2287.6"/>
+<text xml:space="preserve" text-anchor="start" x="557.38" y="-2297.8" font-family="Arial" font-size="11.00" fill="#43536a">21 COLUMNS / 3 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-2260 549.38,-2287.6 597.38,-2287.6 597.38,-2260 549.38,-2260"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2271.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-2260 597.38,-2287.6 887.38,-2287.6 887.38,-2260 597.38,-2260"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2268.6" font-family="Consolas" font-size="13.00" fill="#182d45">issued_shares_id</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-2260 887.38,-2287.6 1034.38,-2287.6 1034.38,-2260 887.38,-2260"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2269" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-2232.4 549.38,-2260 597.38,-2260 597.38,-2232.4 549.38,-2232.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2244.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-2232.4 597.38,-2260 887.38,-2260 887.38,-2232.4 597.38,-2232.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2241" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-2232.4 887.38,-2260 1034.38,-2260 1034.38,-2232.4 887.38,-2232.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2241.4" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-2204.8 549.38,-2232.4 597.38,-2232.4 597.38,-2204.8 549.38,-2204.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2216.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-2204.8 597.38,-2232.4 887.38,-2232.4 887.38,-2204.8 597.38,-2204.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2213.4" font-family="Consolas" font-size="13.00" fill="#182d45">rcept_no</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-2204.8 887.38,-2232.4 1034.38,-2232.4 1034.38,-2204.8 887.38,-2204.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2213.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(32)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-2177.2 549.38,-2204.8 597.38,-2204.8 597.38,-2177.2 549.38,-2177.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2189" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-2177.2 597.38,-2204.8 887.38,-2204.8 887.38,-2177.2 597.38,-2177.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2185.8" font-family="Consolas" font-size="13.00" fill="#182d45">corp_cls</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-2177.2 887.38,-2204.8 1034.38,-2204.8 1034.38,-2177.2 887.38,-2177.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2186.2" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(10) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-2149.6 549.38,-2177.2 597.38,-2177.2 597.38,-2149.6 549.38,-2149.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2161.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-2149.6 597.38,-2177.2 887.38,-2177.2 887.38,-2149.6 597.38,-2149.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2158.2" font-family="Consolas" font-size="13.00" fill="#182d45">corp_code</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-2149.6 887.38,-2177.2 1034.38,-2177.2 1034.38,-2149.6 887.38,-2149.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2158.6" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(10)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-2122 549.38,-2149.6 597.38,-2149.6 597.38,-2122 549.38,-2122"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2133.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-2122 597.38,-2149.6 887.38,-2149.6 887.38,-2122 597.38,-2122"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2130.6" font-family="Consolas" font-size="13.00" fill="#182d45">corp_name</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-2122 887.38,-2149.6 1034.38,-2149.6 1034.38,-2122 887.38,-2122"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2131" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(255) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-2094.4 549.38,-2122 597.38,-2122 597.38,-2094.4 549.38,-2094.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2106.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-2094.4 597.38,-2122 887.38,-2122 887.38,-2094.4 597.38,-2094.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2103" font-family="Consolas" font-size="13.00" fill="#182d45">share_type</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-2094.4 887.38,-2122 1034.38,-2122 1034.38,-2094.4 887.38,-2094.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2103.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(50)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-2066.8 549.38,-2094.4 597.38,-2094.4 597.38,-2066.8 549.38,-2066.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2078.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-2066.8 597.38,-2094.4 887.38,-2094.4 887.38,-2066.8 597.38,-2066.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2075.4" font-family="Consolas" font-size="13.00" fill="#182d45">authorized_shares</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-2066.8 887.38,-2094.4 1034.38,-2094.4 1034.38,-2066.8 887.38,-2066.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2075.8" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-2039.2 549.38,-2066.8 597.38,-2066.8 597.38,-2039.2 549.38,-2039.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2051" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-2039.2 597.38,-2066.8 887.38,-2066.8 887.38,-2039.2 597.38,-2039.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2047.8" font-family="Consolas" font-size="13.00" fill="#182d45">issued_shares_to_date</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-2039.2 887.38,-2066.8 1034.38,-2066.8 1034.38,-2039.2 887.38,-2039.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2048.2" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-2011.6 549.38,-2039.2 597.38,-2039.2 597.38,-2011.6 549.38,-2011.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-2023.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-2011.6 597.38,-2039.2 887.38,-2039.2 887.38,-2011.6 597.38,-2011.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-2020.2" font-family="Consolas" font-size="13.00" fill="#182d45">decreased_shares_to_date</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-2011.6 887.38,-2039.2 1034.38,-2039.2 1034.38,-2011.6 887.38,-2011.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-2020.6" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1984 549.38,-2011.6 597.38,-2011.6 597.38,-1984 549.38,-1984"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1995.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1984 597.38,-2011.6 887.38,-2011.6 887.38,-1984 597.38,-1984"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1992.6" font-family="Consolas" font-size="13.00" fill="#182d45">decreased_by_reduction</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1984 887.38,-2011.6 1034.38,-2011.6 1034.38,-1984 887.38,-1984"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1993" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1956.4 549.38,-1984 597.38,-1984 597.38,-1956.4 549.38,-1956.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1968.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1956.4 597.38,-1984 887.38,-1984 887.38,-1956.4 597.38,-1956.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1965" font-family="Consolas" font-size="13.00" fill="#182d45">decreased_by_profit_incineration</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1956.4 887.38,-1984 1034.38,-1984 1034.38,-1956.4 887.38,-1956.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1965.4" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1928.8 549.38,-1956.4 597.38,-1956.4 597.38,-1928.8 549.38,-1928.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1940.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1928.8 597.38,-1956.4 887.38,-1956.4 887.38,-1928.8 597.38,-1928.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1937.4" font-family="Consolas" font-size="13.00" fill="#182d45">decreased_by_redemption</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1928.8 887.38,-1956.4 1034.38,-1956.4 1034.38,-1928.8 887.38,-1928.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1937.8" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1901.2 549.38,-1928.8 597.38,-1928.8 597.38,-1901.2 549.38,-1901.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1913" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1901.2 597.38,-1928.8 887.38,-1928.8 887.38,-1901.2 597.38,-1901.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1909.8" font-family="Consolas" font-size="13.00" fill="#182d45">decreased_by_other</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1901.2 887.38,-1928.8 1034.38,-1928.8 1034.38,-1901.2 887.38,-1901.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1910.2" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1873.6 549.38,-1901.2 597.38,-1901.2 597.38,-1873.6 549.38,-1873.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1885.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1873.6 597.38,-1901.2 887.38,-1901.2 887.38,-1873.6 597.38,-1873.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1882.2" font-family="Consolas" font-size="13.00" fill="#182d45">issued_shares_total</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1873.6 887.38,-1901.2 1034.38,-1901.2 1034.38,-1873.6 887.38,-1873.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1882.6" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1846 549.38,-1873.6 597.38,-1873.6 597.38,-1846 549.38,-1846"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1857.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1846 597.38,-1873.6 887.38,-1873.6 887.38,-1846 597.38,-1846"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1854.6" font-family="Consolas" font-size="13.00" fill="#182d45">treasury_shares</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1846 887.38,-1873.6 1034.38,-1873.6 1034.38,-1846 887.38,-1846"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1855" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1818.4 549.38,-1846 597.38,-1846 597.38,-1818.4 549.38,-1818.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1830.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1818.4 597.38,-1846 887.38,-1846 887.38,-1818.4 597.38,-1818.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1827" font-family="Consolas" font-size="13.00" fill="#182d45">floating_shares</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1818.4 887.38,-1846 1034.38,-1846 1034.38,-1818.4 887.38,-1818.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1827.4" font-family="Consolas" font-size="12.00" fill="#53637b">bigint ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1790.8 549.38,-1818.4 597.38,-1818.4 597.38,-1790.8 549.38,-1790.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1802.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1790.8 597.38,-1818.4 887.38,-1818.4 887.38,-1790.8 597.38,-1790.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1799.4" font-family="Consolas" font-size="13.00" fill="#182d45">base_date</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1790.8 887.38,-1818.4 1034.38,-1818.4 1034.38,-1790.8 887.38,-1790.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1799.8" font-family="Consolas" font-size="12.00" fill="#53637b">date</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1763.2 549.38,-1790.8 597.38,-1790.8 597.38,-1763.2 549.38,-1763.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1775" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1763.2 597.38,-1790.8 887.38,-1790.8 887.38,-1763.2 597.38,-1763.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1771.8" font-family="Consolas" font-size="13.00" fill="#182d45">source</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1763.2 887.38,-1790.8 1034.38,-1790.8 1034.38,-1763.2 887.38,-1763.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1772.2" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(50)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1735.6 549.38,-1763.2 597.38,-1763.2 597.38,-1735.6 549.38,-1735.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1747.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1735.6 597.38,-1763.2 887.38,-1763.2 887.38,-1735.6 597.38,-1735.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1744.2" font-family="Consolas" font-size="13.00" fill="#182d45">created_at</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1735.6 887.38,-1763.2 1034.38,-1763.2 1034.38,-1735.6 887.38,-1735.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1744.6" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1708 549.38,-1735.6 597.38,-1735.6 597.38,-1708 549.38,-1708"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1719.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1708 597.38,-1735.6 887.38,-1735.6 887.38,-1708 597.38,-1708"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1716.6" font-family="Consolas" font-size="13.00" fill="#182d45">updated_at</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1708 887.38,-1735.6 1034.38,-1735.6 1034.38,-1708 887.38,-1708"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1717" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#fff8e9" stroke="none" points="549.38,-1682.8 549.38,-1708 1034.38,-1708 1034.38,-1682.8 549.38,-1682.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1691" font-family="Consolas" font-size="11.00" fill="#805914">UQ (stock_id, base_date, share_type)</text>
+</a>
+</g>
+</g>
+<!-- short_selling -->
+<g id="table&#45;short_selling" class="node">
+<title>short_selling</title>
+<g id="a_table&#45;short_selling"><a xlink:title="종목·보고일별 공매도 거래량/거래대금. V35에서 거래량 소수 정밀도 확장&#10;short_selling_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;stock_id bigint NOT NULL | 종목 ID&#10;report_date date NOT NULL | 보고 기준일&#10;market_code varchar(20) NOT NULL | 시장 코드&#10;security_type varchar(30) NOT NULL | 증권 유형&#10;short_volume_total decimal(24,6) NULL | 공매도 총거래량&#10;short_volume_uptick_applied decimal(24,6) NULL | 업틱룰 적용 공매도 거래량&#10;short_volume_uptick_exempt decimal(24,6) NULL | 업틱룰 예외 공매도 거래량&#10;total_volume decimal(24,6) NULL | 전체 거래량&#10;short_volume_ratio decimal(10,6) NULL | 공매도 거래량 비율&#10;short_amount_total decimal(20,0) NULL | 공매도 총거래대금&#10;short_amount_uptick_applied decimal(20,0) NULL | 업틱룰 적용 공매도 거래대금&#10;short_amount_uptick_exempt decimal(20,0) NULL | 업틱룰 예외 공매도 거래대금&#10;total_amount decimal(20,0) NULL | 전체 거래대금&#10;short_amount_ratio decimal(10,6) NULL | 공매도 거래대금 비율&#10;source varchar(50) NOT NULL DEFAULT KRX | 데이터 출처&#10;source_screen_id varchar(20) NOT NULL DEFAULT MDCSTAT301 | 원천 조회 화면 ID&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_short_selling_stock_date (stock_id, report_date)&#10;INDEX idx_short_selling_report_date (report_date)&#10;INDEX idx_short_selling_market_date (market_code, report_date)">
+<polygon fill="none" stroke="#c8d2e0" points="548.38,-1020.4 548.38,-1646.8 1035.38,-1646.8 1035.38,-1020.4 548.38,-1020.4"/>
+<polygon fill="#92600b" stroke="none" points="549.38,-1600.2 549.38,-1645.8 1034.38,-1645.8 1034.38,-1600.2 549.38,-1600.2"/>
+<text xml:space="preserve" text-anchor="start" x="561.38" y="-1618.6" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">short_selling</text>
+<polygon fill="#edf2f8" stroke="none" points="549.38,-1571 549.38,-1600.2 1034.38,-1600.2 1034.38,-1571 549.38,-1571"/>
+<text xml:space="preserve" text-anchor="start" x="557.38" y="-1581.2" font-family="Arial" font-size="11.00" fill="#43536a">19 COLUMNS / 3 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1543.4 549.38,-1571 597.38,-1571 597.38,-1543.4 549.38,-1543.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1555.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1543.4 597.38,-1571 887.38,-1571 887.38,-1543.4 597.38,-1543.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1552" font-family="Consolas" font-size="13.00" fill="#182d45">short_selling_id</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1543.4 887.38,-1571 1034.38,-1571 1034.38,-1543.4 887.38,-1543.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1552.4" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1515.8 549.38,-1543.4 597.38,-1543.4 597.38,-1515.8 549.38,-1515.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1527.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1515.8 597.38,-1543.4 887.38,-1543.4 887.38,-1515.8 597.38,-1515.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1524.4" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1515.8 887.38,-1543.4 1034.38,-1543.4 1034.38,-1515.8 887.38,-1515.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1524.8" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1488.2 549.38,-1515.8 597.38,-1515.8 597.38,-1488.2 549.38,-1488.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1500" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1488.2 597.38,-1515.8 887.38,-1515.8 887.38,-1488.2 597.38,-1488.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1496.8" font-family="Consolas" font-size="13.00" fill="#182d45">report_date</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1488.2 887.38,-1515.8 1034.38,-1515.8 1034.38,-1488.2 887.38,-1488.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1497.2" font-family="Consolas" font-size="12.00" fill="#53637b">date</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1460.6 549.38,-1488.2 597.38,-1488.2 597.38,-1460.6 549.38,-1460.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1472.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1460.6 597.38,-1488.2 887.38,-1488.2 887.38,-1460.6 597.38,-1460.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1469.2" font-family="Consolas" font-size="13.00" fill="#182d45">market_code</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1460.6 887.38,-1488.2 1034.38,-1488.2 1034.38,-1460.6 887.38,-1460.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1469.6" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(20)</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1433 549.38,-1460.6 597.38,-1460.6 597.38,-1433 549.38,-1433"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1444.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1433 597.38,-1460.6 887.38,-1460.6 887.38,-1433 597.38,-1433"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1441.6" font-family="Consolas" font-size="13.00" fill="#182d45">security_type</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1433 887.38,-1460.6 1034.38,-1460.6 1034.38,-1433 887.38,-1433"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1442" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(30)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1405.4 549.38,-1433 597.38,-1433 597.38,-1405.4 549.38,-1405.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1417.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1405.4 597.38,-1433 887.38,-1433 887.38,-1405.4 597.38,-1405.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1414" font-family="Consolas" font-size="13.00" fill="#182d45">short_volume_total</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1405.4 887.38,-1433 1034.38,-1433 1034.38,-1405.4 887.38,-1405.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1414.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,6) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1377.8 549.38,-1405.4 597.38,-1405.4 597.38,-1377.8 549.38,-1377.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1389.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1377.8 597.38,-1405.4 887.38,-1405.4 887.38,-1377.8 597.38,-1377.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1386.4" font-family="Consolas" font-size="13.00" fill="#182d45">short_volume_uptick_applied</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1377.8 887.38,-1405.4 1034.38,-1405.4 1034.38,-1377.8 887.38,-1377.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1386.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,6) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1350.2 549.38,-1377.8 597.38,-1377.8 597.38,-1350.2 549.38,-1350.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1362" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1350.2 597.38,-1377.8 887.38,-1377.8 887.38,-1350.2 597.38,-1350.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1358.8" font-family="Consolas" font-size="13.00" fill="#182d45">short_volume_uptick_exempt</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1350.2 887.38,-1377.8 1034.38,-1377.8 1034.38,-1350.2 887.38,-1350.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1359.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,6) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1322.6 549.38,-1350.2 597.38,-1350.2 597.38,-1322.6 549.38,-1322.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1334.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1322.6 597.38,-1350.2 887.38,-1350.2 887.38,-1322.6 597.38,-1322.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1331.2" font-family="Consolas" font-size="13.00" fill="#182d45">total_volume</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1322.6 887.38,-1350.2 1034.38,-1350.2 1034.38,-1322.6 887.38,-1322.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1331.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,6) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1295 549.38,-1322.6 597.38,-1322.6 597.38,-1295 549.38,-1295"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1306.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1295 597.38,-1322.6 887.38,-1322.6 887.38,-1295 597.38,-1295"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1303.6" font-family="Consolas" font-size="13.00" fill="#182d45">short_volume_ratio</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1295 887.38,-1322.6 1034.38,-1322.6 1034.38,-1295 887.38,-1295"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1304" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,6) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1267.4 549.38,-1295 597.38,-1295 597.38,-1267.4 549.38,-1267.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1279.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1267.4 597.38,-1295 887.38,-1295 887.38,-1267.4 597.38,-1267.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1276" font-family="Consolas" font-size="13.00" fill="#182d45">short_amount_total</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1267.4 887.38,-1295 1034.38,-1295 1034.38,-1267.4 887.38,-1267.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1276.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1239.8 549.38,-1267.4 597.38,-1267.4 597.38,-1239.8 549.38,-1239.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1251.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1239.8 597.38,-1267.4 887.38,-1267.4 887.38,-1239.8 597.38,-1239.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1248.4" font-family="Consolas" font-size="13.00" fill="#182d45">short_amount_uptick_applied</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1239.8 887.38,-1267.4 1034.38,-1267.4 1034.38,-1239.8 887.38,-1239.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1248.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1212.2 549.38,-1239.8 597.38,-1239.8 597.38,-1212.2 549.38,-1212.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1224" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1212.2 597.38,-1239.8 887.38,-1239.8 887.38,-1212.2 597.38,-1212.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1220.8" font-family="Consolas" font-size="13.00" fill="#182d45">short_amount_uptick_exempt</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1212.2 887.38,-1239.8 1034.38,-1239.8 1034.38,-1212.2 887.38,-1212.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1221.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1184.6 549.38,-1212.2 597.38,-1212.2 597.38,-1184.6 549.38,-1184.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1196.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1184.6 597.38,-1212.2 887.38,-1212.2 887.38,-1184.6 597.38,-1184.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1193.2" font-family="Consolas" font-size="13.00" fill="#182d45">total_amount</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1184.6 887.38,-1212.2 1034.38,-1212.2 1034.38,-1184.6 887.38,-1184.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1193.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1157 549.38,-1184.6 597.38,-1184.6 597.38,-1157 549.38,-1157"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1168.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1157 597.38,-1184.6 887.38,-1184.6 887.38,-1157 597.38,-1157"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1165.6" font-family="Consolas" font-size="13.00" fill="#182d45">short_amount_ratio</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1157 887.38,-1184.6 1034.38,-1184.6 1034.38,-1157 887.38,-1157"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1166" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,6) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1129.4 549.38,-1157 597.38,-1157 597.38,-1129.4 549.38,-1129.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1141.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1129.4 597.38,-1157 887.38,-1157 887.38,-1129.4 597.38,-1129.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1138" font-family="Consolas" font-size="13.00" fill="#182d45">source</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1129.4 887.38,-1157 1034.38,-1157 1034.38,-1129.4 887.38,-1129.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1138.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(50)</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1101.8 549.38,-1129.4 597.38,-1129.4 597.38,-1101.8 549.38,-1101.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1113.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1101.8 597.38,-1129.4 887.38,-1129.4 887.38,-1101.8 597.38,-1101.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1110.4" font-family="Consolas" font-size="13.00" fill="#182d45">source_screen_id</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1101.8 887.38,-1129.4 1034.38,-1129.4 1034.38,-1101.8 887.38,-1101.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1110.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(20)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-1074.2 549.38,-1101.8 597.38,-1101.8 597.38,-1074.2 549.38,-1074.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1086" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-1074.2 597.38,-1101.8 887.38,-1101.8 887.38,-1074.2 597.38,-1074.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1082.8" font-family="Consolas" font-size="13.00" fill="#182d45">created_at</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-1074.2 887.38,-1101.8 1034.38,-1101.8 1034.38,-1074.2 887.38,-1074.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1083.2" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-1046.6 549.38,-1074.2 597.38,-1074.2 597.38,-1046.6 549.38,-1046.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1058.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-1046.6 597.38,-1074.2 887.38,-1074.2 887.38,-1046.6 597.38,-1046.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-1055.2" font-family="Consolas" font-size="13.00" fill="#182d45">updated_at</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-1046.6 887.38,-1074.2 1034.38,-1074.2 1034.38,-1046.6 887.38,-1046.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-1055.6" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#fff8e9" stroke="none" points="549.38,-1021.4 549.38,-1046.6 1034.38,-1046.6 1034.38,-1021.4 549.38,-1021.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-1029.6" font-family="Consolas" font-size="11.00" fill="#805914">UQ (stock_id, report_date)</text>
+</a>
+</g>
+</g>
+<!-- stock_investor_flow -->
+<g id="table&#45;stock_investor_flow" class="node">
+<title>stock_investor_flow</title>
+<g id="a_table&#45;stock_investor_flow"><a xlink:title="종목·거래일·출처별 투자자 유형별 순매수 수량/금액&#10;stock_investor_flow_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;stock_id bigint NOT NULL | 종목 ID&#10;stock_code varchar(32) NOT NULL | 종목 코드/티커&#10;trade_date date NOT NULL | 거래일&#10;market_div_code varchar(8) NOT NULL DEFAULT J | 시장 구분 코드&#10;close_price decimal(20,4) NULL | 종가&#10;accumulated_volume decimal(24,0) NULL | 누적 거래량&#10;accumulated_trading_value_million decimal(24,0) NULL | 누적 거래대금; 백만 단위&#10;foreign_net_buy_qty decimal(24,0) NULL | 외국인 순매수 수량&#10;foreign_net_buy_value_million decimal(24,0) NULL | 외국인 순매수 금액; 백만 단위&#10;individual_net_buy_qty decimal(24,0) NULL | 개인 순매수 수량&#10;individual_net_buy_value_million decimal(24,0) NULL | 개인 순매수 금액; 백만 단위&#10;institution_net_buy_qty decimal(24,0) NULL | 기관 순매수 수량&#10;institution_net_buy_value_million decimal(24,0) NULL | 기관 순매수 금액; 백만 단위&#10;securities_net_buy_qty decimal(24,0) NULL | 증권 순매수 수량&#10;securities_net_buy_value_million decimal(24,0) NULL | 증권 순매수 금액; 백만 단위&#10;investment_trust_net_buy_qty decimal(24,0) NULL | 투신 순매수 수량&#10;investment_trust_net_buy_value_million decimal(24,0) NULL | 투신 순매수 금액; 백만 단위&#10;private_fund_net_buy_qty decimal(24,0) NULL | 사모펀드 순매수 수량&#10;private_fund_net_buy_value_million decimal(24,0) NULL | 사모펀드 순매수 금액; 백만 단위&#10;bank_net_buy_qty decimal(24,0) NULL | 은행 순매수 수량&#10;bank_net_buy_value_million decimal(24,0) NULL | 은행 순매수 금액; 백만 단위&#10;insurance_net_buy_qty decimal(24,0) NULL | 보험 순매수 수량&#10;insurance_net_buy_value_million decimal(24,0) NULL | 보험 순매수 금액; 백만 단위&#10;fund_net_buy_qty decimal(24,0) NULL | 기금 순매수 수량&#10;fund_net_buy_value_million decimal(24,0) NULL | 기금 순매수 금액; 백만 단위&#10;other_net_buy_qty decimal(24,0) NULL | 기타 순매수 수량&#10;other_net_buy_value_million decimal(24,0) NULL | 기타 순매수 금액; 백만 단위&#10;source varchar(50) NOT NULL DEFAULT KIS | 데이터 출처&#10;source_tr_id varchar(20) NOT NULL DEFAULT FHPTJ04160001 | 원천 거래/API ID&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_stock_investor_flow_stock_date_source (stock_id, trade_date, source)&#10;INDEX idx_stock_investor_flow_code_date (stock_code, trade_date)&#10;INDEX idx_stock_investor_flow_trade_date (trade_date)">
+<polygon fill="none" stroke="#c8d2e0" points="548.38,0 548.38,-985.2 1035.38,-985.2 1035.38,0 548.38,0"/>
+<polygon fill="#92600b" stroke="none" points="549.38,-938.6 549.38,-984.2 1034.38,-984.2 1034.38,-938.6 549.38,-938.6"/>
+<text xml:space="preserve" text-anchor="start" x="561.38" y="-957" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">stock_investor_flow</text>
+<polygon fill="#edf2f8" stroke="none" points="549.38,-909.4 549.38,-938.6 1034.38,-938.6 1034.38,-909.4 549.38,-909.4"/>
+<text xml:space="preserve" text-anchor="start" x="557.38" y="-919.6" font-family="Arial" font-size="11.00" fill="#43536a">32 COLUMNS / 3 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-881.8 549.38,-909.4 597.38,-909.4 597.38,-881.8 549.38,-881.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-893.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-881.8 597.38,-909.4 887.38,-909.4 887.38,-881.8 597.38,-881.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-890.4" font-family="Consolas" font-size="13.00" fill="#182d45">stock_investor_flow_id</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-881.8 887.38,-909.4 1034.38,-909.4 1034.38,-881.8 887.38,-881.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-890.8" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-854.2 549.38,-881.8 597.38,-881.8 597.38,-854.2 549.38,-854.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-866" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-854.2 597.38,-881.8 887.38,-881.8 887.38,-854.2 597.38,-854.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-862.8" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-854.2 887.38,-881.8 1034.38,-881.8 1034.38,-854.2 887.38,-854.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-863.2" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-826.6 549.38,-854.2 597.38,-854.2 597.38,-826.6 549.38,-826.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-838.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-826.6 597.38,-854.2 887.38,-854.2 887.38,-826.6 597.38,-826.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-835.2" font-family="Consolas" font-size="13.00" fill="#182d45">stock_code</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-826.6 887.38,-854.2 1034.38,-854.2 1034.38,-826.6 887.38,-826.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-835.6" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(32)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-799 549.38,-826.6 597.38,-826.6 597.38,-799 549.38,-799"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-810.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-799 597.38,-826.6 887.38,-826.6 887.38,-799 597.38,-799"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-807.6" font-family="Consolas" font-size="13.00" fill="#182d45">trade_date</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-799 887.38,-826.6 1034.38,-826.6 1034.38,-799 887.38,-799"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-808" font-family="Consolas" font-size="12.00" fill="#53637b">date</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-771.4 549.38,-799 597.38,-799 597.38,-771.4 549.38,-771.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-783.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-771.4 597.38,-799 887.38,-799 887.38,-771.4 597.38,-771.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-780" font-family="Consolas" font-size="13.00" fill="#182d45">market_div_code</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-771.4 887.38,-799 1034.38,-799 1034.38,-771.4 887.38,-771.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-780.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(8)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-743.8 549.38,-771.4 597.38,-771.4 597.38,-743.8 549.38,-743.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-755.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-743.8 597.38,-771.4 887.38,-771.4 887.38,-743.8 597.38,-743.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-752.4" font-family="Consolas" font-size="13.00" fill="#182d45">close_price</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-743.8 887.38,-771.4 1034.38,-771.4 1034.38,-743.8 887.38,-743.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-752.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,4) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-716.2 549.38,-743.8 597.38,-743.8 597.38,-716.2 549.38,-716.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-728" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-716.2 597.38,-743.8 887.38,-743.8 887.38,-716.2 597.38,-716.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-724.8" font-family="Consolas" font-size="13.00" fill="#182d45">accumulated_volume</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-716.2 887.38,-743.8 1034.38,-743.8 1034.38,-716.2 887.38,-716.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-725.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-688.6 549.38,-716.2 597.38,-716.2 597.38,-688.6 549.38,-688.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-700.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-688.6 597.38,-716.2 887.38,-716.2 887.38,-688.6 597.38,-688.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-697.2" font-family="Consolas" font-size="13.00" fill="#182d45">accumulated_trading_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-688.6 887.38,-716.2 1034.38,-716.2 1034.38,-688.6 887.38,-688.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-697.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-661 549.38,-688.6 597.38,-688.6 597.38,-661 549.38,-661"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-672.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-661 597.38,-688.6 887.38,-688.6 887.38,-661 597.38,-661"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-669.6" font-family="Consolas" font-size="13.00" fill="#182d45">foreign_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-661 887.38,-688.6 1034.38,-688.6 1034.38,-661 887.38,-661"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-670" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-633.4 549.38,-661 597.38,-661 597.38,-633.4 549.38,-633.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-645.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-633.4 597.38,-661 887.38,-661 887.38,-633.4 597.38,-633.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-642" font-family="Consolas" font-size="13.00" fill="#182d45">foreign_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-633.4 887.38,-661 1034.38,-661 1034.38,-633.4 887.38,-633.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-642.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-605.8 549.38,-633.4 597.38,-633.4 597.38,-605.8 549.38,-605.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-617.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-605.8 597.38,-633.4 887.38,-633.4 887.38,-605.8 597.38,-605.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-614.4" font-family="Consolas" font-size="13.00" fill="#182d45">individual_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-605.8 887.38,-633.4 1034.38,-633.4 1034.38,-605.8 887.38,-605.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-614.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-578.2 549.38,-605.8 597.38,-605.8 597.38,-578.2 549.38,-578.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-590" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-578.2 597.38,-605.8 887.38,-605.8 887.38,-578.2 597.38,-578.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-586.8" font-family="Consolas" font-size="13.00" fill="#182d45">individual_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-578.2 887.38,-605.8 1034.38,-605.8 1034.38,-578.2 887.38,-578.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-587.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-550.6 549.38,-578.2 597.38,-578.2 597.38,-550.6 549.38,-550.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-562.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-550.6 597.38,-578.2 887.38,-578.2 887.38,-550.6 597.38,-550.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-559.2" font-family="Consolas" font-size="13.00" fill="#182d45">institution_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-550.6 887.38,-578.2 1034.38,-578.2 1034.38,-550.6 887.38,-550.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-559.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-523 549.38,-550.6 597.38,-550.6 597.38,-523 549.38,-523"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-534.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-523 597.38,-550.6 887.38,-550.6 887.38,-523 597.38,-523"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-531.6" font-family="Consolas" font-size="13.00" fill="#182d45">institution_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-523 887.38,-550.6 1034.38,-550.6 1034.38,-523 887.38,-523"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-532" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-495.4 549.38,-523 597.38,-523 597.38,-495.4 549.38,-495.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-507.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-495.4 597.38,-523 887.38,-523 887.38,-495.4 597.38,-495.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-504" font-family="Consolas" font-size="13.00" fill="#182d45">securities_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-495.4 887.38,-523 1034.38,-523 1034.38,-495.4 887.38,-495.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-504.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-467.8 549.38,-495.4 597.38,-495.4 597.38,-467.8 549.38,-467.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-479.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-467.8 597.38,-495.4 887.38,-495.4 887.38,-467.8 597.38,-467.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-476.4" font-family="Consolas" font-size="13.00" fill="#182d45">securities_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-467.8 887.38,-495.4 1034.38,-495.4 1034.38,-467.8 887.38,-467.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-476.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-440.2 549.38,-467.8 597.38,-467.8 597.38,-440.2 549.38,-440.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-452" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-440.2 597.38,-467.8 887.38,-467.8 887.38,-440.2 597.38,-440.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-448.8" font-family="Consolas" font-size="13.00" fill="#182d45">investment_trust_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-440.2 887.38,-467.8 1034.38,-467.8 1034.38,-440.2 887.38,-440.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-449.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-412.6 549.38,-440.2 597.38,-440.2 597.38,-412.6 549.38,-412.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-424.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-412.6 597.38,-440.2 887.38,-440.2 887.38,-412.6 597.38,-412.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-421.2" font-family="Consolas" font-size="13.00" fill="#182d45">investment_trust_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-412.6 887.38,-440.2 1034.38,-440.2 1034.38,-412.6 887.38,-412.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-421.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-385 549.38,-412.6 597.38,-412.6 597.38,-385 549.38,-385"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-396.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-385 597.38,-412.6 887.38,-412.6 887.38,-385 597.38,-385"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-393.6" font-family="Consolas" font-size="13.00" fill="#182d45">private_fund_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-385 887.38,-412.6 1034.38,-412.6 1034.38,-385 887.38,-385"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-394" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-357.4 549.38,-385 597.38,-385 597.38,-357.4 549.38,-357.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-369.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-357.4 597.38,-385 887.38,-385 887.38,-357.4 597.38,-357.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-366" font-family="Consolas" font-size="13.00" fill="#182d45">private_fund_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-357.4 887.38,-385 1034.38,-385 1034.38,-357.4 887.38,-357.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-366.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-329.8 549.38,-357.4 597.38,-357.4 597.38,-329.8 549.38,-329.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-341.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-329.8 597.38,-357.4 887.38,-357.4 887.38,-329.8 597.38,-329.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-338.4" font-family="Consolas" font-size="13.00" fill="#182d45">bank_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-329.8 887.38,-357.4 1034.38,-357.4 1034.38,-329.8 887.38,-329.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-338.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-302.2 549.38,-329.8 597.38,-329.8 597.38,-302.2 549.38,-302.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-314" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-302.2 597.38,-329.8 887.38,-329.8 887.38,-302.2 597.38,-302.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-310.8" font-family="Consolas" font-size="13.00" fill="#182d45">bank_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-302.2 887.38,-329.8 1034.38,-329.8 1034.38,-302.2 887.38,-302.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-311.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-274.6 549.38,-302.2 597.38,-302.2 597.38,-274.6 549.38,-274.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-286.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-274.6 597.38,-302.2 887.38,-302.2 887.38,-274.6 597.38,-274.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-283.2" font-family="Consolas" font-size="13.00" fill="#182d45">insurance_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-274.6 887.38,-302.2 1034.38,-302.2 1034.38,-274.6 887.38,-274.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-283.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-247 549.38,-274.6 597.38,-274.6 597.38,-247 549.38,-247"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-258.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-247 597.38,-274.6 887.38,-274.6 887.38,-247 597.38,-247"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-255.6" font-family="Consolas" font-size="13.00" fill="#182d45">insurance_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-247 887.38,-274.6 1034.38,-274.6 1034.38,-247 887.38,-247"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-256" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-219.4 549.38,-247 597.38,-247 597.38,-219.4 549.38,-219.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-231.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-219.4 597.38,-247 887.38,-247 887.38,-219.4 597.38,-219.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-228" font-family="Consolas" font-size="13.00" fill="#182d45">fund_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-219.4 887.38,-247 1034.38,-247 1034.38,-219.4 887.38,-219.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-228.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-191.8 549.38,-219.4 597.38,-219.4 597.38,-191.8 549.38,-191.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-203.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-191.8 597.38,-219.4 887.38,-219.4 887.38,-191.8 597.38,-191.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-200.4" font-family="Consolas" font-size="13.00" fill="#182d45">fund_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-191.8 887.38,-219.4 1034.38,-219.4 1034.38,-191.8 887.38,-191.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-200.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-164.2 549.38,-191.8 597.38,-191.8 597.38,-164.2 549.38,-164.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-176" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-164.2 597.38,-191.8 887.38,-191.8 887.38,-164.2 597.38,-164.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-172.8" font-family="Consolas" font-size="13.00" fill="#182d45">other_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-164.2 887.38,-191.8 1034.38,-191.8 1034.38,-164.2 887.38,-164.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-173.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-136.6 549.38,-164.2 597.38,-164.2 597.38,-136.6 549.38,-136.6"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-148.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-136.6 597.38,-164.2 887.38,-164.2 887.38,-136.6 597.38,-136.6"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-145.2" font-family="Consolas" font-size="13.00" fill="#182d45">other_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-136.6 887.38,-164.2 1034.38,-164.2 1034.38,-136.6 887.38,-136.6"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-145.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-109 549.38,-136.6 597.38,-136.6 597.38,-109 549.38,-109"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-120.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-109 597.38,-136.6 887.38,-136.6 887.38,-109 597.38,-109"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-117.6" font-family="Consolas" font-size="13.00" fill="#182d45">source</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-109 887.38,-136.6 1034.38,-136.6 1034.38,-109 887.38,-109"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-118" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(50)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-81.4 549.38,-109 597.38,-109 597.38,-81.4 549.38,-81.4"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-93.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-81.4 597.38,-109 887.38,-109 887.38,-81.4 597.38,-81.4"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-90" font-family="Consolas" font-size="13.00" fill="#182d45">source_tr_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-81.4 887.38,-109 1034.38,-109 1034.38,-81.4 887.38,-81.4"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-90.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(20)</text>
+<polygon fill="#ffffff" stroke="none" points="549.38,-53.8 549.38,-81.4 597.38,-81.4 597.38,-53.8 549.38,-53.8"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-65.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597.38,-53.8 597.38,-81.4 887.38,-81.4 887.38,-53.8 597.38,-53.8"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-62.4" font-family="Consolas" font-size="13.00" fill="#182d45">created_at</text>
+<polygon fill="#ffffff" stroke="none" points="887.38,-53.8 887.38,-81.4 1034.38,-81.4 1034.38,-53.8 887.38,-53.8"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-62.8" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549.38,-26.2 549.38,-53.8 597.38,-53.8 597.38,-26.2 549.38,-26.2"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-38" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597.38,-26.2 597.38,-53.8 887.38,-53.8 887.38,-26.2 597.38,-26.2"/>
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-34.8" font-family="Consolas" font-size="13.00" fill="#182d45">updated_at</text>
+<polygon fill="#f5f8fc" stroke="none" points="887.38,-26.2 887.38,-53.8 1034.38,-53.8 1034.38,-26.2 887.38,-26.2"/>
+<text xml:space="preserve" text-anchor="start" x="893.38" y="-35.2" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#fff8e9" stroke="none" points="549.38,-1 549.38,-26.2 1034.38,-26.2 1034.38,-1 549.38,-1"/>
+<text xml:space="preserve" text-anchor="start" x="555.38" y="-9.2" font-family="Consolas" font-size="11.00" fill="#805914">UQ (stock_id, trade_date, source)</text>
+</a>
+</g>
+</g>
+<!-- market_investor_flow -->
+<g id="table&#45;market_investor_flow" class="node">
+<title>market_investor_flow</title>
+<g id="a_table&#45;market_investor_flow"><a xlink:title="시장·업종·거래일·출처별 투자자 수급. 코드 컬럼에 FK 없음&#10;market_investor_flow_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;market_code varchar(16) NOT NULL | 시장 코드&#10;industry_code varchar(32) NOT NULL | 업종 코드&#10;trade_date date NOT NULL | 거래일&#10;foreign_net_buy_qty decimal(24,0) NULL | 외국인 순매수 수량&#10;foreign_net_buy_value_million decimal(24,0) NULL | 외국인 순매수 금액; 백만 단위&#10;individual_net_buy_qty decimal(24,0) NULL | 개인 순매수 수량&#10;individual_net_buy_value_million decimal(24,0) NULL | 개인 순매수 금액; 백만 단위&#10;institution_net_buy_qty decimal(24,0) NULL | 기관 순매수 수량&#10;institution_net_buy_value_million decimal(24,0) NULL | 기관 순매수 금액; 백만 단위&#10;source varchar(50) NOT NULL DEFAULT KIS | 데이터 출처&#10;source_tr_id varchar(20) NOT NULL DEFAULT FHPTJ04040000 | 원천 거래/API ID&#10;created_at datetime(6) NOT NULL | 생성 시각&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;UNIQUE uk_market_investor_flow_market_industry_date_source (market_code, industry_code, trade_date, source)&#10;INDEX idx_market_investor_flow_market_date (market_code, trade_date)&#10;INDEX idx_market_investor_flow_trade_date (trade_date)">
+<polygon fill="none" stroke="#c8d2e0" points="0,-2011.4 0,-2499.8 487,-2499.8 487,-2011.4 0,-2011.4"/>
+<polygon fill="#92600b" stroke="none" points="1,-2453.2 1,-2498.8 486,-2498.8 486,-2453.2 1,-2453.2"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-2471.6" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">market_investor_flow</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-2424 1,-2453.2 486,-2453.2 486,-2424 1,-2424"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-2434.2" font-family="Arial" font-size="11.00" fill="#43536a">14 COLUMNS / 3 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="1,-2396.4 1,-2424 49,-2424 49,-2396.4 1,-2396.4"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2408.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-2396.4 49,-2424 339,-2424 339,-2396.4 49,-2396.4"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2405" font-family="Consolas" font-size="13.00" fill="#182d45">market_investor_flow_id</text>
+<polygon fill="#ffffff" stroke="none" points="339,-2396.4 339,-2424 486,-2424 486,-2396.4 339,-2396.4"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2405.4" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-2368.8 1,-2396.4 49,-2396.4 49,-2368.8 1,-2368.8"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2380.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-2368.8 49,-2396.4 339,-2396.4 339,-2368.8 49,-2368.8"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2377.4" font-family="Consolas" font-size="13.00" fill="#182d45">market_code</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-2368.8 339,-2396.4 486,-2396.4 486,-2368.8 339,-2368.8"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2377.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(16)</text>
+<polygon fill="#ffffff" stroke="none" points="1,-2341.2 1,-2368.8 49,-2368.8 49,-2341.2 1,-2341.2"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2353" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="49,-2341.2 49,-2368.8 339,-2368.8 339,-2341.2 49,-2341.2"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2349.8" font-family="Consolas" font-size="13.00" fill="#182d45">industry_code</text>
+<polygon fill="#ffffff" stroke="none" points="339,-2341.2 339,-2368.8 486,-2368.8 486,-2341.2 339,-2341.2"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2350.2" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(32)</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-2313.6 1,-2341.2 49,-2341.2 49,-2313.6 1,-2313.6"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2325.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-2313.6 49,-2341.2 339,-2341.2 339,-2313.6 49,-2313.6"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2322.2" font-family="Consolas" font-size="13.00" fill="#182d45">trade_date</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-2313.6 339,-2341.2 486,-2341.2 486,-2313.6 339,-2313.6"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2322.6" font-family="Consolas" font-size="12.00" fill="#53637b">date</text>
+<polygon fill="#ffffff" stroke="none" points="1,-2286 1,-2313.6 49,-2313.6 49,-2286 1,-2286"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2297.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="49,-2286 49,-2313.6 339,-2313.6 339,-2286 49,-2286"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2294.6" font-family="Consolas" font-size="13.00" fill="#182d45">foreign_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="339,-2286 339,-2313.6 486,-2313.6 486,-2286 339,-2286"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2295" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-2258.4 1,-2286 49,-2286 49,-2258.4 1,-2258.4"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2270.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-2258.4 49,-2286 339,-2286 339,-2258.4 49,-2258.4"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2267" font-family="Consolas" font-size="13.00" fill="#182d45">foreign_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-2258.4 339,-2286 486,-2286 486,-2258.4 339,-2258.4"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2267.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="1,-2230.8 1,-2258.4 49,-2258.4 49,-2230.8 1,-2230.8"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2242.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="49,-2230.8 49,-2258.4 339,-2258.4 339,-2230.8 49,-2230.8"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2239.4" font-family="Consolas" font-size="13.00" fill="#182d45">individual_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="339,-2230.8 339,-2258.4 486,-2258.4 486,-2230.8 339,-2230.8"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2239.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-2203.2 1,-2230.8 49,-2230.8 49,-2203.2 1,-2203.2"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2215" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-2203.2 49,-2230.8 339,-2230.8 339,-2203.2 49,-2203.2"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2211.8" font-family="Consolas" font-size="13.00" fill="#182d45">individual_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-2203.2 339,-2230.8 486,-2230.8 486,-2203.2 339,-2203.2"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2212.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="1,-2175.6 1,-2203.2 49,-2203.2 49,-2175.6 1,-2175.6"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2187.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="49,-2175.6 49,-2203.2 339,-2203.2 339,-2175.6 49,-2175.6"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2184.2" font-family="Consolas" font-size="13.00" fill="#182d45">institution_net_buy_qty</text>
+<polygon fill="#ffffff" stroke="none" points="339,-2175.6 339,-2203.2 486,-2203.2 486,-2175.6 339,-2175.6"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2184.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-2148 1,-2175.6 49,-2175.6 49,-2148 1,-2148"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2159.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-2148 49,-2175.6 339,-2175.6 339,-2148 49,-2148"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2156.6" font-family="Consolas" font-size="13.00" fill="#182d45">institution_net_buy_value_million</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-2148 339,-2175.6 486,-2175.6 486,-2148 339,-2148"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2157" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(24,0) ?</text>
+<polygon fill="#ffffff" stroke="none" points="1,-2120.4 1,-2148 49,-2148 49,-2120.4 1,-2120.4"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2132.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="49,-2120.4 49,-2148 339,-2148 339,-2120.4 49,-2120.4"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2129" font-family="Consolas" font-size="13.00" fill="#182d45">source</text>
+<polygon fill="#ffffff" stroke="none" points="339,-2120.4 339,-2148 486,-2148 486,-2120.4 339,-2120.4"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2129.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(50)</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-2092.8 1,-2120.4 49,-2120.4 49,-2092.8 1,-2092.8"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2104.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-2092.8 49,-2120.4 339,-2120.4 339,-2092.8 49,-2092.8"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2101.4" font-family="Consolas" font-size="13.00" fill="#182d45">source_tr_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-2092.8 339,-2120.4 486,-2120.4 486,-2092.8 339,-2092.8"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2101.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(20)</text>
+<polygon fill="#ffffff" stroke="none" points="1,-2065.2 1,-2092.8 49,-2092.8 49,-2065.2 1,-2065.2"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2077" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="49,-2065.2 49,-2092.8 339,-2092.8 339,-2065.2 49,-2065.2"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2073.8" font-family="Consolas" font-size="13.00" fill="#182d45">created_at</text>
+<polygon fill="#ffffff" stroke="none" points="339,-2065.2 339,-2092.8 486,-2092.8 486,-2065.2 339,-2065.2"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2074.2" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-2037.6 1,-2065.2 49,-2065.2 49,-2037.6 1,-2037.6"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2049.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-2037.6 49,-2065.2 339,-2065.2 339,-2037.6 49,-2037.6"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-2046.2" font-family="Consolas" font-size="13.00" fill="#182d45">updated_at</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-2037.6 339,-2065.2 486,-2065.2 486,-2037.6 339,-2037.6"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-2046.6" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#fff8e9" stroke="none" points="1,-2012.4 1,-2037.6 486,-2037.6 486,-2012.4 1,-2012.4"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-2020.6" font-family="Consolas" font-size="11.00" fill="#805914">UQ (market_code, industry_code, trade_date, source)</text>
+</a>
+</g>
+</g>
+<!-- stock -->
+<g id="table&#45;stock" class="node">
+<title>stock</title>
+<g id="a_table&#45;stock"><a xlink:title="종목 기본 정보 및 DART·SEC 기업 식별자/동기화 시각&#10;stock_id bigint NOT NULL AUTO_INCREMENT | 종목 ID&#10;exchange_id bigint NOT NULL | 거래소 ID&#10;stock_code varchar(32) NOT NULL | 종목 코드/티커&#10;isin varchar(20) NULL | 국제증권식별번호&#10;company_name varchar(255) NOT NULL | 회사명/종목명&#10;sector_id bigint NULL | 섹터 ID&#10;industry_id bigint NULL | 산업 ID&#10;asset_type varchar(20) NULL | 자산 유형&#10;currency varchar(3) NULL DEFAULT KRW | 통화&#10;share_class varchar(20) NOT NULL DEFAULT OTHER | 주식 종류&#10;dart_corp_code varchar(8) NULL | DART 기업 고유번호&#10;dart_corp_name varchar(255) NULL | DART 기업명&#10;dart_modified_date date NULL | DART 기업정보 수정일&#10;dart_synced_at datetime(6) NULL | DART 기업정보 동기화 시각&#10;sec_cik varchar(10) NULL | SEC 기업 식별번호 CIK&#10;sec_company_name varchar(255) NULL | SEC 기업명&#10;sec_synced_at datetime(6) NULL | SEC 기업정보 동기화 시각&#10;sec_issued_shares_synced_at datetime(6) NULL | SEC 발행주식 동기화 시각&#10;listed_at date NULL | 상장일&#10;delisted_at date NULL | 상장폐지일&#10;UNIQUE uk_exchange_stock_code (exchange_id, stock_code)&#10;INDEX idx_stock_exchange_id (exchange_id)&#10;INDEX idx_stock_sector_id (sector_id)&#10;INDEX idx_stock_industry_id (industry_id)&#10;INDEX idx_stock_dart_corp_code (dart_corp_code)&#10;INDEX idx_stock_dart_modified_date (dart_modified_date)&#10;INDEX idx_stock_share_class (share_class)&#10;INDEX idx_stock_sec_cik (sec_cik)&#10;INDEX idx_stock_sec_synced_at (sec_synced_at)&#10;INDEX idx_stock_sec_issued_shares_synced_at (sec_issued_shares_synced_at)">
+<polygon fill="none" stroke="#c8d2e0" points="0,-1872.4 0,-1976.8 487,-1976.8 487,-1872.4 0,-1872.4"/>
+<polygon fill="#65758a" stroke="none" points="1,-1930.2 1,-1975.8 486,-1975.8 486,-1930.2 1,-1930.2"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-1948.6" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">stock</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-1901 1,-1930.2 486,-1930.2 486,-1901 1,-1901"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-1911.2" font-family="Arial" font-size="11.00" fill="#43536a">EXTERNAL REFERENCE / PK ONLY</text>
+<polygon fill="#ffffff" stroke="none" points="1,-1873.4 1,-1901 49,-1901 49,-1873.4 1,-1873.4"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-1885.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-1873.4 49,-1901 339,-1901 339,-1873.4 49,-1873.4"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-1882" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#ffffff" stroke="none" points="339,-1873.4 339,-1901 486,-1901 486,-1873.4 339,-1873.4"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-1882.4" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+</a>
+</g>
+</g>
+</g>
+</g>
+<line x1="30" y1="3941" x2="1106" y2="3941" stroke="#d7e1ed"/>
+<text x="31" y="3963" font-family="Arial, sans-serif" font-size="12" fill="#526478">PK = primary key   FK = foreign key   UQ = single-column unique   AI = auto increment   ? = nullable</text>
+</svg>

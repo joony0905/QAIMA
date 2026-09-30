@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1135" height="1798" viewBox="0 0 1135 1798" role="img" aria-labelledby="erd-title erd-desc">
+<title id="erd-title">QAIMA / News &amp; sentiment</title><desc id="erd-desc">QAIMA ERD derived from Flyway V1 through V51. All columns of included domain tables are shown; external referenced tables show their primary keys only. Foreign keys: 6. Source: docs/erd/qaima_flyway_v51.dbml.</desc>
+<rect width="1135" height="1798" fill="#ffffff"/>
+<rect width="1135" height="122" fill="#10243a"/>
+<rect x="0" y="0" width="8" height="122" fill="#43c6ac"/>
+<text x="30" y="43" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">QAIMA / News &amp; sentiment</text>
+<text x="31" y="73" font-family="Arial, sans-serif" font-size="14" fill="#c8d7e9">5 domain tables · all columns · external references use PK-only cards</text>
+<text x="31" y="99" font-family="Arial, sans-serif" font-size="12" fill="#8fb5cf">MYSQL / FLYWAY V1–V51 / QAIMA</text>
+<g transform="translate(32.00,146)">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 1578)">
+<title>QAIMA</title>
+<polygon fill="#ffffff" stroke="none" points="-18,18 -18,-1578 1053,-1578 1053,18 -18,18"/>
+<!-- news&#45;&gt;news_security_map -->
+<g id="fk&#45;fk_news_security_map_news" class="edge">
+<title>news:e&#45;&gt;news_security_map:w</title>
+<g id="a_fk&#45;fk_news_security_map_news"><a xlink:title="fk_news_security_map_news: news_security_map.news_id &#45;&gt; news.news_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#aa446b" stroke-width="1.5" d="M487.64,-1159.88C493.54,-1096.5 538.13,-617.12 546.61,-525.95"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="490.65,-1166.39 483.48,-1165.72 483.62,-1164.29 490.79,-1164.95 490.65,-1166.39"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="487,-1166.77 487.34,-1163.19"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="490.99,-1162.77 483.82,-1162.11 483.95,-1160.67 491.12,-1161.34 490.99,-1162.77"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="487.34,-1163.16 487.67,-1159.57"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="547.29,-518.67 551.18,-511.8 547.67,-514.58 547.91,-512 547.91,-512 547.91,-512 547.67,-514.58 544.73,-511.2 547.29,-518.67"/>
+<ellipse fill="none" stroke="#aa446b" stroke-width="1.5" cx="546.78" cy="-524.1" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- news&#45;&gt;sentiment_result -->
+<g id="fk&#45;fk_sentiment_result_news" class="edge">
+<title>news:e&#45;&gt;sentiment_result:w</title>
+<g id="a_fk&#45;fk_sentiment_result_news"><a xlink:title="fk_sentiment_result_news: sentiment_result.news_id &#45;&gt; news.news_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#aa446b" stroke-width="1.5" d="M488.39,-1173.71C496.14,-1212.28 534.09,-1401.15 545.04,-1455.65"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="483.62,-1168.24 490.68,-1166.83 490.96,-1168.24 483.9,-1169.66 483.62,-1168.24"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="487.01,-1166.83 487.72,-1170.36"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="484.33,-1171.8 491.39,-1170.38 491.68,-1171.8 484.62,-1173.22 484.33,-1171.8"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="487.72,-1170.39 488.43,-1173.92"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="546.48,-1462.85 544.72,-1470.55 547.29,-1466.87 547.8,-1469.42 547.8,-1469.42 547.8,-1469.42 547.29,-1466.87 551.08,-1469.27 546.48,-1462.85"/>
+<ellipse fill="none" stroke="#aa446b" stroke-width="1.5" cx="545.41" cy="-1457.5" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- news&#45;&gt;news_sentiment_observation -->
+<g id="fk&#45;fk_news_sentiment_observation_news" class="edge">
+<title>news:e&#45;&gt;news_sentiment_observation:w</title>
+<g id="a_fk&#45;fk_news_sentiment_observation_news"><a xlink:title="fk_news_sentiment_observation_news: news_sentiment_observation.news_id &#45;&gt; news.news_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#aa446b" stroke-width="1.5" d="M494,-1166.87C503.51,-1166.96 520.77,-1167.13 533.21,-1167.25"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="487.71,-1170.41 487.79,-1163.21 489.23,-1163.22 489.15,-1170.42 487.71,-1170.41"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="487.03,-1166.8 490.63,-1166.84"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="491.34,-1170.44 491.42,-1163.24 492.86,-1163.26 492.78,-1170.46 491.34,-1170.44"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="490.66,-1166.84 494.26,-1166.87"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="540.3,-1167.32 547.47,-1170.63 544.4,-1167.36 547,-1167.39 547,-1167.39 547,-1167.39 544.4,-1167.36 547.53,-1164.16 540.3,-1167.32"/>
+<ellipse fill="none" stroke="#aa446b" stroke-width="1.5" cx="534.84" cy="-1167.27" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- stock&#45;&gt;news_security_map -->
+<g id="fk&#45;fk_news_security_map_stock" class="edge">
+<title>stock:e&#45;&gt;news_security_map:w</title>
+<g id="a_fk&#45;fk_news_security_map_stock"><a xlink:title="fk_news_security_map_stock: news_security_map.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#aa446b" stroke-width="1.5" d="M491.79,-420.92C501.79,-432.03 525.06,-457.9 538.31,-472.63"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="484.83,-418.57 490.18,-413.75 491.14,-414.82 485.79,-419.64 484.83,-418.57"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="487.02,-415.62 489.43,-418.3"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="487.25,-421.26 492.61,-416.45 493.57,-417.52 488.22,-422.33 487.25,-421.26"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="489.45,-418.32 491.86,-421"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="542.85,-477.67 545.26,-485.19 545.59,-480.72 547.33,-482.65 547.33,-482.65 547.33,-482.65 545.59,-480.72 550.07,-480.86 542.85,-477.67"/>
+<ellipse fill="none" stroke="#aa446b" stroke-width="1.5" cx="539.2" cy="-473.62" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- stock&#45;&gt;sentiment_daily_agg -->
+<g id="fk&#45;fk_sentiment_daily_agg_stock" class="edge">
+<title>stock:e&#45;&gt;sentiment_daily_agg:w</title>
+<g id="a_fk&#45;fk_sentiment_daily_agg_stock"><a xlink:title="fk_sentiment_daily_agg_stock: sentiment_daily_agg.stock_id &#45;&gt; stock.stock_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#aa446b" stroke-width="1.5" d="M489.17,-409.19C497.94,-383.33 530.84,-286.24 543.24,-249.66"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="490.65,-416.05 483.83,-413.73 484.29,-412.37 491.11,-414.68 490.65,-416.05"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="487.01,-415.57 488.17,-412.16"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="491.82,-412.61 485,-410.3 485.46,-408.93 492.28,-411.24 491.82,-412.61"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="488.17,-412.13 489.33,-408.72"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="545.53,-242.89 550.91,-237.12 546.84,-239.01 547.68,-236.55 547.68,-236.55 547.68,-236.55 546.84,-239.01 544.77,-235.04 545.53,-242.89"/>
+<ellipse fill="none" stroke="#aa446b" stroke-width="1.5" cx="543.78" cy="-248.06" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- industry&#45;&gt;sentiment_daily_agg -->
+<g id="fk&#45;fk_sentiment_daily_agg_industry" class="edge">
+<title>industry:e&#45;&gt;sentiment_daily_agg:w</title>
+<g id="a_fk&#45;fk_sentiment_daily_agg_industry"><a xlink:title="fk_sentiment_daily_agg_industry: sentiment_daily_agg.industry_id &#45;&gt; industry.industry_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#aa446b" stroke-width="1.5" d="M494,-207.65C503.51,-207.71 520.77,-207.82 533.21,-207.9"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="487.73,-211.2 487.77,-204.01 489.21,-204.01 489.17,-211.21 487.73,-211.2"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="487.03,-207.6 490.63,-207.62"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="491.36,-211.23 491.4,-204.03 492.84,-204.04 492.8,-211.24 491.36,-211.23"/>
+<polyline fill="none" stroke="#aa446b" stroke-width="1.5" points="490.66,-207.62 494.26,-207.65"/>
+<polygon fill="#aa446b" stroke="#aa446b" stroke-width="1.5" points="540.3,-207.95 547.48,-211.24 544.4,-207.98 547,-207.99 547,-207.99 547,-207.99 544.4,-207.98 547.52,-204.76 540.3,-207.95"/>
+<ellipse fill="none" stroke="#aa446b" stroke-width="1.5" cx="534.84" cy="-207.91" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- news -->
+<g id="table&#45;news" class="node">
+<title>news</title>
+<g id="a_table&#45;news"><a xlink:title="뉴스 메타데이터. URL 앞 255자에 유니크 접두 인덱스 적용&#10;news_id bigint NOT NULL AUTO_INCREMENT | 뉴스 ID&#10;title varchar(500) NOT NULL | 제목&#10;url varchar(1000) NULL | 원문 URL&#10;published_at datetime(6) NOT NULL | 기사 발행 시각&#10;source varchar(100) NULL | 데이터 출처&#10;lang varchar(10) NULL | 언어 코드&#10;summary text NULL | 기사 요약&#10;content_uri varchar(1000) NULL | 본문 저장 위치&#10;UNIQUE uk_news_url (url) | MySQL UNIQUE KEY uk_news_url (url(255)); URL 전체가 아닌 앞 255자에 적용되는 유니크 접두 인덱스">
+<polygon fill="none" stroke="#c8d2e0" points="0,-933.6 0,-1256.4 487,-1256.4 487,-933.6 0,-933.6"/>
+<polygon fill="#aa446b" stroke="none" points="1,-1209.8 1,-1255.4 486,-1255.4 486,-1209.8 1,-1209.8"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-1228.2" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">news</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-1180.6 1,-1209.8 486,-1209.8 486,-1180.6 1,-1180.6"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-1190.8" font-family="Arial" font-size="11.00" fill="#43536a">8 COLUMNS / 1 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="1,-1153 1,-1180.6 49,-1180.6 49,-1153 1,-1153"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-1164.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-1153 49,-1180.6 339,-1180.6 339,-1153 49,-1153"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-1161.6" font-family="Consolas" font-size="13.00" fill="#182d45">news_id</text>
+<polygon fill="#ffffff" stroke="none" points="339,-1153 339,-1180.6 486,-1180.6 486,-1153 339,-1153"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-1162" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-1125.4 1,-1153 49,-1153 49,-1125.4 1,-1125.4"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-1137.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-1125.4 49,-1153 339,-1153 339,-1125.4 49,-1125.4"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-1134" font-family="Consolas" font-size="13.00" fill="#182d45">title</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-1125.4 339,-1153 486,-1153 486,-1125.4 339,-1125.4"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-1134.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(500)</text>
+<polygon fill="#ffffff" stroke="none" points="1,-1097.8 1,-1125.4 49,-1125.4 49,-1097.8 1,-1097.8"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-1109.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778">UQ</text>
+<polygon fill="#ffffff" stroke="none" points="49,-1097.8 49,-1125.4 339,-1125.4 339,-1097.8 49,-1097.8"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-1106.4" font-family="Consolas" font-size="13.00" fill="#182d45">url</text>
+<polygon fill="#ffffff" stroke="none" points="339,-1097.8 339,-1125.4 486,-1125.4 486,-1097.8 339,-1097.8"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-1106.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(1000) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-1070.2 1,-1097.8 49,-1097.8 49,-1070.2 1,-1070.2"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-1082" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-1070.2 49,-1097.8 339,-1097.8 339,-1070.2 49,-1070.2"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-1078.8" font-family="Consolas" font-size="13.00" fill="#182d45">published_at</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-1070.2 339,-1097.8 486,-1097.8 486,-1070.2 339,-1070.2"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-1079.2" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#ffffff" stroke="none" points="1,-1042.6 1,-1070.2 49,-1070.2 49,-1042.6 1,-1042.6"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-1054.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="49,-1042.6 49,-1070.2 339,-1070.2 339,-1042.6 49,-1042.6"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-1051.2" font-family="Consolas" font-size="13.00" fill="#182d45">source</text>
+<polygon fill="#ffffff" stroke="none" points="339,-1042.6 339,-1070.2 486,-1070.2 486,-1042.6 339,-1042.6"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-1051.6" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(100) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-1015 1,-1042.6 49,-1042.6 49,-1015 1,-1015"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-1026.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-1015 49,-1042.6 339,-1042.6 339,-1015 49,-1015"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-1023.6" font-family="Consolas" font-size="13.00" fill="#182d45">lang</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-1015 339,-1042.6 486,-1042.6 486,-1015 339,-1015"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-1024" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(10) ?</text>
+<polygon fill="#ffffff" stroke="none" points="1,-987.4 1,-1015 49,-1015 49,-987.4 1,-987.4"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-999.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="49,-987.4 49,-1015 339,-1015 339,-987.4 49,-987.4"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-996" font-family="Consolas" font-size="13.00" fill="#182d45">summary</text>
+<polygon fill="#ffffff" stroke="none" points="339,-987.4 339,-1015 486,-1015 486,-987.4 339,-987.4"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-996.4" font-family="Consolas" font-size="12.00" fill="#53637b">text ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-959.8 1,-987.4 49,-987.4 49,-959.8 1,-959.8"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-971.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-959.8 49,-987.4 339,-987.4 339,-959.8 49,-959.8"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-968.4" font-family="Consolas" font-size="13.00" fill="#182d45">content_uri</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-959.8 339,-987.4 486,-987.4 486,-959.8 339,-959.8"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-968.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(1000) ?</text>
+<polygon fill="#fff8e9" stroke="none" points="1,-934.6 1,-959.8 486,-959.8 486,-934.6 1,-934.6"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-942.8" font-family="Consolas" font-size="11.00" fill="#805914">PREFIX: url(255) [UNIQUE]</text>
+</a>
+</g>
+</g>
+<!-- news_security_map -->
+<g id="table&#45;news_security_map" class="node">
+<title>news_security_map</title>
+<g id="a_table&#45;news_security_map"><a xlink:title="뉴스와 종목의 다대다 연결. 복합 PK와 같은 컬럼의 UNIQUE가 함께 선언됨&#10;news_id bigint NOT NULL | 뉴스 ID&#10;stock_id bigint NOT NULL | 종목 ID&#10;PRIMARY &#160;(news_id, stock_id)&#10;UNIQUE uk_news_security_map (news_id, stock_id)">
+<polygon fill="none" stroke="#c8d2e0" points="548,-443.4 548,-600.6 1035,-600.6 1035,-443.4 548,-443.4"/>
+<polygon fill="#aa446b" stroke="none" points="549,-554 549,-599.6 1034,-599.6 1034,-554 549,-554"/>
+<text xml:space="preserve" text-anchor="start" x="561" y="-572.4" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">news_security_map</text>
+<polygon fill="#edf2f8" stroke="none" points="549,-524.8 549,-554 1034,-554 1034,-524.8 549,-524.8"/>
+<text xml:space="preserve" text-anchor="start" x="557" y="-535" font-family="Arial" font-size="11.00" fill="#43536a">2 COLUMNS / 1 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549,-497.2 549,-524.8 597,-524.8 597,-497.2 549,-497.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-509" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-497.2 597,-524.8 887,-524.8 887,-497.2 597,-497.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-505.8" font-family="Consolas" font-size="13.00" fill="#182d45">news_id</text>
+<polygon fill="#ffffff" stroke="none" points="887,-497.2 887,-524.8 1034,-524.8 1034,-497.2 887,-497.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-506.2" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-469.6 549,-497.2 597,-497.2 597,-469.6 549,-469.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-481.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-469.6 597,-497.2 887,-497.2 887,-469.6 597,-469.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-478.2" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-469.6 887,-497.2 1034,-497.2 1034,-469.6 887,-469.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-478.6" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#fff8e9" stroke="none" points="549,-444.4 549,-469.6 1034,-469.6 1034,-444.4 549,-444.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-452.6" font-family="Consolas" font-size="11.00" fill="#805914">UQ (news_id, stock_id)</text>
+</a>
+</g>
+</g>
+<!-- sentiment_result -->
+<g id="table&#45;sentiment_result" class="node">
+<title>sentiment_result</title>
+<g id="a_table&#45;sentiment_result"><a xlink:title="뉴스·모델별 감성 결과. 복합 PK와 같은 컬럼의 UNIQUE가 함께 선언됨&#10;news_id bigint NOT NULL | 뉴스 ID&#10;model varchar(255) NOT NULL | 감성 모델명&#10;score decimal(10,6) NOT NULL | 감성 점수&#10;label varchar(10) NULL | 감성 레이블&#10;created_at datetime(6) NULL | 생성 시각&#10;PRIMARY &#160;(news_id, model)&#10;UNIQUE uk_sentiment_result (news_id, model)">
+<polygon fill="none" stroke="#c8d2e0" points="548,-1320 548,-1560 1035,-1560 1035,-1320 548,-1320"/>
+<polygon fill="#aa446b" stroke="none" points="549,-1513.4 549,-1559 1034,-1559 1034,-1513.4 549,-1513.4"/>
+<text xml:space="preserve" text-anchor="start" x="561" y="-1531.8" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">sentiment_result</text>
+<polygon fill="#edf2f8" stroke="none" points="549,-1484.2 549,-1513.4 1034,-1513.4 1034,-1484.2 549,-1484.2"/>
+<text xml:space="preserve" text-anchor="start" x="557" y="-1494.4" font-family="Arial" font-size="11.00" fill="#43536a">5 COLUMNS / 1 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549,-1456.6 549,-1484.2 597,-1484.2 597,-1456.6 549,-1456.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1468.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-1456.6 597,-1484.2 887,-1484.2 887,-1456.6 597,-1456.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1465.2" font-family="Consolas" font-size="13.00" fill="#182d45">news_id</text>
+<polygon fill="#ffffff" stroke="none" points="887,-1456.6 887,-1484.2 1034,-1484.2 1034,-1456.6 887,-1456.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1465.6" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-1429 549,-1456.6 597,-1456.6 597,-1429 549,-1429"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1440.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-1429 597,-1456.6 887,-1456.6 887,-1429 597,-1429"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1437.6" font-family="Consolas" font-size="13.00" fill="#182d45">model</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-1429 887,-1456.6 1034,-1456.6 1034,-1429 887,-1429"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1438" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(255)</text>
+<polygon fill="#ffffff" stroke="none" points="549,-1401.4 549,-1429 597,-1429 597,-1401.4 549,-1401.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1413.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-1401.4 597,-1429 887,-1429 887,-1401.4 597,-1401.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1410" font-family="Consolas" font-size="13.00" fill="#182d45">score</text>
+<polygon fill="#ffffff" stroke="none" points="887,-1401.4 887,-1429 1034,-1429 1034,-1401.4 887,-1401.4"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1410.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,6)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-1373.8 549,-1401.4 597,-1401.4 597,-1373.8 549,-1373.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1385.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-1373.8 597,-1401.4 887,-1401.4 887,-1373.8 597,-1373.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1382.4" font-family="Consolas" font-size="13.00" fill="#182d45">label</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-1373.8 887,-1401.4 1034,-1401.4 1034,-1373.8 887,-1373.8"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1382.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(10) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-1346.2 549,-1373.8 597,-1373.8 597,-1346.2 549,-1346.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1358" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-1346.2 597,-1373.8 887,-1373.8 887,-1346.2 597,-1346.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1354.8" font-family="Consolas" font-size="13.00" fill="#182d45">created_at</text>
+<polygon fill="#ffffff" stroke="none" points="887,-1346.2 887,-1373.8 1034,-1373.8 1034,-1346.2 887,-1346.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1355.2" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6) ?</text>
+<polygon fill="#fff8e9" stroke="none" points="549,-1321 549,-1346.2 1034,-1346.2 1034,-1321 549,-1321"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1329.2" font-family="Consolas" font-size="11.00" fill="#805914">UQ (news_id, model)</text>
+</a>
+</g>
+</g>
+<!-- sentiment_daily_agg -->
+<g id="table&#45;sentiment_daily_agg" class="node">
+<title>sentiment_daily_agg</title>
+<g id="a_table&#45;sentiment_daily_agg"><a xlink:title="일별 감성 집계. 실제 마이그레이션에서는 stock_id와 industry_id가 모두 NOT NULL이며 복합 PK에 포함됨&#10;date date NOT NULL | 집계 일자&#10;scope varchar(255) NOT NULL | 집계 범위 문자열&#10;model varchar(255) NOT NULL | 감성 모델명&#10;stock_id bigint NOT NULL | 종목 ID&#10;industry_id bigint NOT NULL | 산업 ID&#10;cnt_total int NULL | 전체 기사 수&#10;cnt_pos int NULL | 긍정 기사 수&#10;cnt_neg int NULL | 부정 기사 수&#10;cnt_neu int NULL | 중립 기사 수&#10;score_avg decimal(10,6) NULL | 감성 점수 평균&#10;score_std decimal(10,6) NULL | 감성 점수 표준편차&#10;updated_at datetime(6) NULL | 최종 수정 시각&#10;PRIMARY &#160;(date, scope, model, stock_id, industry_id)">
+<polygon fill="none" stroke="#c8d2e0" points="548,0 548,-408 1035,-408 1035,0 548,0"/>
+<polygon fill="#aa446b" stroke="none" points="549,-361.4 549,-407 1034,-407 1034,-361.4 549,-361.4"/>
+<text xml:space="preserve" text-anchor="start" x="561" y="-379.8" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">sentiment_daily_agg</text>
+<polygon fill="#edf2f8" stroke="none" points="549,-332.2 549,-361.4 1034,-361.4 1034,-332.2 549,-332.2"/>
+<text xml:space="preserve" text-anchor="start" x="557" y="-342.4" font-family="Arial" font-size="11.00" fill="#43536a">12 COLUMNS / 0 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549,-304.6 549,-332.2 597,-332.2 597,-304.6 549,-304.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-316.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-304.6 597,-332.2 887,-332.2 887,-304.6 597,-304.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-313.2" font-family="Consolas" font-size="13.00" fill="#182d45">date</text>
+<polygon fill="#ffffff" stroke="none" points="887,-304.6 887,-332.2 1034,-332.2 1034,-304.6 887,-304.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-313.6" font-family="Consolas" font-size="12.00" fill="#53637b">date</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-277 549,-304.6 597,-304.6 597,-277 549,-277"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-288.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-277 597,-304.6 887,-304.6 887,-277 597,-277"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-285.6" font-family="Consolas" font-size="13.00" fill="#182d45">scope</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-277 887,-304.6 1034,-304.6 1034,-277 887,-277"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-286" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(255)</text>
+<polygon fill="#ffffff" stroke="none" points="549,-249.4 549,-277 597,-277 597,-249.4 549,-249.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-261.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-249.4 597,-277 887,-277 887,-249.4 597,-249.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-258" font-family="Consolas" font-size="13.00" fill="#182d45">model</text>
+<polygon fill="#ffffff" stroke="none" points="887,-249.4 887,-277 1034,-277 1034,-249.4 887,-249.4"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-258.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(255)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-221.8 549,-249.4 597,-249.4 597,-221.8 549,-221.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-233.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-221.8 597,-249.4 887,-249.4 887,-221.8 597,-221.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-230.4" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-221.8 887,-249.4 1034,-249.4 1034,-221.8 887,-221.8"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-230.8" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#ffffff" stroke="none" points="549,-194.2 549,-221.8 597,-221.8 597,-194.2 549,-194.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-206" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-194.2 597,-221.8 887,-221.8 887,-194.2 597,-194.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-202.8" font-family="Consolas" font-size="13.00" fill="#182d45">industry_id</text>
+<polygon fill="#ffffff" stroke="none" points="887,-194.2 887,-221.8 1034,-221.8 1034,-194.2 887,-194.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-203.2" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-166.6 549,-194.2 597,-194.2 597,-166.6 549,-166.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-178.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-166.6 597,-194.2 887,-194.2 887,-166.6 597,-166.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-175.2" font-family="Consolas" font-size="13.00" fill="#182d45">cnt_total</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-166.6 887,-194.2 1034,-194.2 1034,-166.6 887,-166.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-175.6" font-family="Consolas" font-size="12.00" fill="#53637b">int ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-139 549,-166.6 597,-166.6 597,-139 549,-139"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-150.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-139 597,-166.6 887,-166.6 887,-139 597,-139"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-147.6" font-family="Consolas" font-size="13.00" fill="#182d45">cnt_pos</text>
+<polygon fill="#ffffff" stroke="none" points="887,-139 887,-166.6 1034,-166.6 1034,-139 887,-139"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-148" font-family="Consolas" font-size="12.00" fill="#53637b">int ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-111.4 549,-139 597,-139 597,-111.4 549,-111.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-123.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-111.4 597,-139 887,-139 887,-111.4 597,-111.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-120" font-family="Consolas" font-size="13.00" fill="#182d45">cnt_neg</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-111.4 887,-139 1034,-139 1034,-111.4 887,-111.4"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-120.4" font-family="Consolas" font-size="12.00" fill="#53637b">int ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-83.8 549,-111.4 597,-111.4 597,-83.8 549,-83.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-95.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-83.8 597,-111.4 887,-111.4 887,-83.8 597,-83.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-92.4" font-family="Consolas" font-size="13.00" fill="#182d45">cnt_neu</text>
+<polygon fill="#ffffff" stroke="none" points="887,-83.8 887,-111.4 1034,-111.4 1034,-83.8 887,-83.8"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-92.8" font-family="Consolas" font-size="12.00" fill="#53637b">int ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-56.2 549,-83.8 597,-83.8 597,-56.2 549,-56.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-68" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-56.2 597,-83.8 887,-83.8 887,-56.2 597,-56.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-64.8" font-family="Consolas" font-size="13.00" fill="#182d45">score_avg</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-56.2 887,-83.8 1034,-83.8 1034,-56.2 887,-56.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-65.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,6) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-28.6 549,-56.2 597,-56.2 597,-28.6 549,-28.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-40.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-28.6 597,-56.2 887,-56.2 887,-28.6 597,-28.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-37.2" font-family="Consolas" font-size="13.00" fill="#182d45">score_std</text>
+<polygon fill="#ffffff" stroke="none" points="887,-28.6 887,-56.2 1034,-56.2 1034,-28.6 887,-28.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-37.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,6) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-1 549,-28.6 597,-28.6 597,-1 549,-1"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-12.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-1 597,-28.6 887,-28.6 887,-1 597,-1"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-9.6" font-family="Consolas" font-size="13.00" fill="#182d45">updated_at</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-1 887,-28.6 1034,-28.6 1034,-1 887,-1"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-10" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6) ?</text>
+</a>
+</g>
+</g>
+<!-- news_sentiment_observation -->
+<g id="table&#45;news_sentiment_observation" class="node">
+<title>news_sentiment_observation</title>
+<g id="a_table&#45;news_sentiment_observation"><a xlink:title="종목별 기사 감성 관측 및 로컬 모델 확률. V26 인덱스는 일반 인덱스이며 UNIQUE 아님&#10;observation_id bigint NOT NULL AUTO_INCREMENT | 레코드 고유 ID&#10;news_id bigint NOT NULL | 뉴스 ID&#10;stock_code varchar(20) NOT NULL | 분석 대상 종목 코드 문자열; stock FK 없음&#10;title varchar(500) NOT NULL | 제목&#10;url varchar(1000) NULL | 원문 URL&#10;publisher varchar(100) NULL | 발행처&#10;published_at datetime(6) NULL | 기사 발행 시각&#10;focus_text longtext NOT NULL | 감성 분석 입력 텍스트&#10;predicted_score decimal(10,6) NOT NULL | 예측 감성 점수&#10;predicted_label varchar(20) NULL | 예측 감성 레이블&#10;negative_prob decimal(10,6) NULL | 부정 확률&#10;neutral_prob decimal(10,6) NULL | 중립 확률&#10;positive_prob decimal(10,6) NULL | 긍정 확률&#10;model_version varchar(100) NOT NULL | 모델 버전&#10;prompt_version varchar(100) NOT NULL | 프롬프트 버전&#10;focus_text_version varchar(64) NOT NULL | 입력 텍스트 생성 버전&#10;input_format_version varchar(100) NULL | 모델 입력 형식 버전&#10;created_at datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) | 생성 시각&#10;UNIQUE uk_news_sentiment_observation (news_id, stock_code, model_version, prompt_version, focus_text_version)&#10;INDEX idx_news_sentiment_observation_created_at (created_at)&#10;INDEX idx_news_sentiment_observation_model_format_created_at (model_version, input_format_version, created_at)&#10;INDEX idx_news_sentiment_observation_dedup_news (stock_code, model_version, input_format_version, published_at, title) | MySQL 원본: (stock_code, model_version, input_format_version, published_at, title(191)). 마지막 title 컬럼의 앞 191자만 사용. 일반 인덱스이며 UNIQUE 아님">
+<polygon fill="none" stroke="#c8d2e0" points="548,-635.4 548,-1284.6 1035,-1284.6 1035,-635.4 548,-635.4"/>
+<polygon fill="#aa446b" stroke="none" points="549,-1238 549,-1283.6 1034,-1283.6 1034,-1238 549,-1238"/>
+<text xml:space="preserve" text-anchor="start" x="561" y="-1256.4" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">news_sentiment_observation</text>
+<polygon fill="#edf2f8" stroke="none" points="549,-1208.8 549,-1238 1034,-1238 1034,-1208.8 549,-1208.8"/>
+<text xml:space="preserve" text-anchor="start" x="557" y="-1219" font-family="Arial" font-size="11.00" fill="#43536a">18 COLUMNS / 4 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549,-1181.2 549,-1208.8 597,-1208.8 597,-1181.2 549,-1181.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1193" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-1181.2 597,-1208.8 887,-1208.8 887,-1181.2 597,-1181.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1189.8" font-family="Consolas" font-size="13.00" fill="#182d45">observation_id</text>
+<polygon fill="#ffffff" stroke="none" points="887,-1181.2 887,-1208.8 1034,-1208.8 1034,-1181.2 887,-1181.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1190.2" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-1153.6 549,-1181.2 597,-1181.2 597,-1153.6 549,-1153.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1165.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#185a9d">FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-1153.6 597,-1181.2 887,-1181.2 887,-1153.6 597,-1153.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1162.2" font-family="Consolas" font-size="13.00" fill="#182d45">news_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-1153.6 887,-1181.2 1034,-1181.2 1034,-1153.6 887,-1153.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1162.6" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#ffffff" stroke="none" points="549,-1126 549,-1153.6 597,-1153.6 597,-1126 549,-1126"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1137.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-1126 597,-1153.6 887,-1153.6 887,-1126 597,-1126"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1134.6" font-family="Consolas" font-size="13.00" fill="#182d45">stock_code</text>
+<polygon fill="#ffffff" stroke="none" points="887,-1126 887,-1153.6 1034,-1153.6 1034,-1126 887,-1126"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1135" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(20)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-1098.4 549,-1126 597,-1126 597,-1098.4 549,-1098.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1110.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-1098.4 597,-1126 887,-1126 887,-1098.4 597,-1098.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1107" font-family="Consolas" font-size="13.00" fill="#182d45">title</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-1098.4 887,-1126 1034,-1126 1034,-1098.4 887,-1098.4"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1107.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(500)</text>
+<polygon fill="#ffffff" stroke="none" points="549,-1070.8 549,-1098.4 597,-1098.4 597,-1070.8 549,-1070.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1082.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-1070.8 597,-1098.4 887,-1098.4 887,-1070.8 597,-1070.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1079.4" font-family="Consolas" font-size="13.00" fill="#182d45">url</text>
+<polygon fill="#ffffff" stroke="none" points="887,-1070.8 887,-1098.4 1034,-1098.4 1034,-1070.8 887,-1070.8"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1079.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(1000) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-1043.2 549,-1070.8 597,-1070.8 597,-1043.2 549,-1043.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1055" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-1043.2 597,-1070.8 887,-1070.8 887,-1043.2 597,-1043.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1051.8" font-family="Consolas" font-size="13.00" fill="#182d45">publisher</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-1043.2 887,-1070.8 1034,-1070.8 1034,-1043.2 887,-1043.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1052.2" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(100) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-1015.6 549,-1043.2 597,-1043.2 597,-1015.6 549,-1015.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-1027.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-1015.6 597,-1043.2 887,-1043.2 887,-1015.6 597,-1015.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-1024.2" font-family="Consolas" font-size="13.00" fill="#182d45">published_at</text>
+<polygon fill="#ffffff" stroke="none" points="887,-1015.6 887,-1043.2 1034,-1043.2 1034,-1015.6 887,-1015.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-1024.6" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-988 549,-1015.6 597,-1015.6 597,-988 549,-988"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-999.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-988 597,-1015.6 887,-1015.6 887,-988 597,-988"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-996.6" font-family="Consolas" font-size="13.00" fill="#182d45">focus_text</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-988 887,-1015.6 1034,-1015.6 1034,-988 887,-988"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-997" font-family="Consolas" font-size="12.00" fill="#53637b">longtext</text>
+<polygon fill="#ffffff" stroke="none" points="549,-960.4 549,-988 597,-988 597,-960.4 549,-960.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-972.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-960.4 597,-988 887,-988 887,-960.4 597,-960.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-969" font-family="Consolas" font-size="13.00" fill="#182d45">predicted_score</text>
+<polygon fill="#ffffff" stroke="none" points="887,-960.4 887,-988 1034,-988 1034,-960.4 887,-960.4"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-969.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,6)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-932.8 549,-960.4 597,-960.4 597,-932.8 549,-932.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-944.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-932.8 597,-960.4 887,-960.4 887,-932.8 597,-932.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-941.4" font-family="Consolas" font-size="13.00" fill="#182d45">predicted_label</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-932.8 887,-960.4 1034,-960.4 1034,-932.8 887,-932.8"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-941.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(20) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-905.2 549,-932.8 597,-932.8 597,-905.2 549,-905.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-917" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-905.2 597,-932.8 887,-932.8 887,-905.2 597,-905.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-913.8" font-family="Consolas" font-size="13.00" fill="#182d45">negative_prob</text>
+<polygon fill="#ffffff" stroke="none" points="887,-905.2 887,-932.8 1034,-932.8 1034,-905.2 887,-905.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-914.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,6) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-877.6 549,-905.2 597,-905.2 597,-877.6 549,-877.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-889.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-877.6 597,-905.2 887,-905.2 887,-877.6 597,-877.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-886.2" font-family="Consolas" font-size="13.00" fill="#182d45">neutral_prob</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-877.6 887,-905.2 1034,-905.2 1034,-877.6 887,-877.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-886.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,6) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-850 549,-877.6 597,-877.6 597,-850 549,-850"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-861.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-850 597,-877.6 887,-877.6 887,-850 597,-850"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-858.6" font-family="Consolas" font-size="13.00" fill="#182d45">positive_prob</text>
+<polygon fill="#ffffff" stroke="none" points="887,-850 887,-877.6 1034,-877.6 1034,-850 887,-850"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-859" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(10,6) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-822.4 549,-850 597,-850 597,-822.4 549,-822.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-834.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-822.4 597,-850 887,-850 887,-822.4 597,-822.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-831" font-family="Consolas" font-size="13.00" fill="#182d45">model_version</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-822.4 887,-850 1034,-850 1034,-822.4 887,-822.4"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-831.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(100)</text>
+<polygon fill="#ffffff" stroke="none" points="549,-794.8 549,-822.4 597,-822.4 597,-794.8 549,-794.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-806.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-794.8 597,-822.4 887,-822.4 887,-794.8 597,-794.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-803.4" font-family="Consolas" font-size="13.00" fill="#182d45">prompt_version</text>
+<polygon fill="#ffffff" stroke="none" points="887,-794.8 887,-822.4 1034,-822.4 1034,-794.8 887,-794.8"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-803.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(100)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-767.2 549,-794.8 597,-794.8 597,-767.2 549,-767.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-779" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-767.2 597,-794.8 887,-794.8 887,-767.2 597,-767.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-775.8" font-family="Consolas" font-size="13.00" fill="#182d45">focus_text_version</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-767.2 887,-794.8 1034,-794.8 1034,-767.2 887,-767.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-776.2" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(64)</text>
+<polygon fill="#ffffff" stroke="none" points="549,-739.6 549,-767.2 597,-767.2 597,-739.6 549,-739.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-751.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-739.6 597,-767.2 887,-767.2 887,-739.6 597,-739.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-748.2" font-family="Consolas" font-size="13.00" fill="#182d45">input_format_version</text>
+<polygon fill="#ffffff" stroke="none" points="887,-739.6 887,-767.2 1034,-767.2 1034,-739.6 887,-739.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-748.6" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(100) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-712 549,-739.6 597,-739.6 597,-712 549,-712"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-723.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-712 597,-739.6 887,-739.6 887,-712 597,-712"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-720.6" font-family="Consolas" font-size="13.00" fill="#182d45">created_at</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-712 887,-739.6 1034,-739.6 1034,-712 887,-712"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-721" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#fff8e9" stroke="none" points="549,-686.8 549,-712 1034,-712 1034,-686.8 549,-686.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-695" font-family="Consolas" font-size="11.00" fill="#805914">UQ (news_id, stock_code, model_version, prompt_version,</text>
+<polygon fill="#fff8e9" stroke="none" points="549,-661.6 549,-686.8 1034,-686.8 1034,-661.6 549,-661.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-669.8" font-family="Consolas" font-size="11.00" fill="#805914">focus_text_version)</text>
+<polygon fill="#fff8e9" stroke="none" points="549,-636.4 549,-661.6 1034,-661.6 1034,-636.4 549,-636.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-644.6" font-family="Consolas" font-size="11.00" fill="#805914">PREFIX: title(191) [non&#45;unique composite index]</text>
+</a>
+</g>
+</g>
+<!-- stock -->
+<g id="table&#45;stock" class="node">
+<title>stock</title>
+<g id="a_table&#45;stock"><a xlink:title="종목 기본 정보 및 DART·SEC 기업 식별자/동기화 시각&#10;stock_id bigint NOT NULL AUTO_INCREMENT | 종목 ID&#10;exchange_id bigint NOT NULL | 거래소 ID&#10;stock_code varchar(32) NOT NULL | 종목 코드/티커&#10;isin varchar(20) NULL | 국제증권식별번호&#10;company_name varchar(255) NOT NULL | 회사명/종목명&#10;sector_id bigint NULL | 섹터 ID&#10;industry_id bigint NULL | 산업 ID&#10;asset_type varchar(20) NULL | 자산 유형&#10;currency varchar(3) NULL DEFAULT KRW | 통화&#10;share_class varchar(20) NOT NULL DEFAULT OTHER | 주식 종류&#10;dart_corp_code varchar(8) NULL | DART 기업 고유번호&#10;dart_corp_name varchar(255) NULL | DART 기업명&#10;dart_modified_date date NULL | DART 기업정보 수정일&#10;dart_synced_at datetime(6) NULL | DART 기업정보 동기화 시각&#10;sec_cik varchar(10) NULL | SEC 기업 식별번호 CIK&#10;sec_company_name varchar(255) NULL | SEC 기업명&#10;sec_synced_at datetime(6) NULL | SEC 기업정보 동기화 시각&#10;sec_issued_shares_synced_at datetime(6) NULL | SEC 발행주식 동기화 시각&#10;listed_at date NULL | 상장일&#10;delisted_at date NULL | 상장폐지일&#10;UNIQUE uk_exchange_stock_code (exchange_id, stock_code)&#10;INDEX idx_stock_exchange_id (exchange_id)&#10;INDEX idx_stock_sector_id (sector_id)&#10;INDEX idx_stock_industry_id (industry_id)&#10;INDEX idx_stock_dart_corp_code (dart_corp_code)&#10;INDEX idx_stock_dart_modified_date (dart_modified_date)&#10;INDEX idx_stock_share_class (share_class)&#10;INDEX idx_stock_sec_cik (sec_cik)&#10;INDEX idx_stock_sec_synced_at (sec_synced_at)&#10;INDEX idx_stock_sec_issued_shares_synced_at (sec_issued_shares_synced_at)">
+<polygon fill="none" stroke="#c8d2e0" points="0,-400.8 0,-505.2 487,-505.2 487,-400.8 0,-400.8"/>
+<polygon fill="#65758a" stroke="none" points="1,-458.6 1,-504.2 486,-504.2 486,-458.6 1,-458.6"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-477" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">stock</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-429.4 1,-458.6 486,-458.6 486,-429.4 1,-429.4"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-439.6" font-family="Arial" font-size="11.00" fill="#43536a">EXTERNAL REFERENCE / PK ONLY</text>
+<polygon fill="#ffffff" stroke="none" points="1,-401.8 1,-429.4 49,-429.4 49,-401.8 1,-401.8"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-413.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-401.8 49,-429.4 339,-429.4 339,-401.8 49,-401.8"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-410.4" font-family="Consolas" font-size="13.00" fill="#182d45">stock_id</text>
+<polygon fill="#ffffff" stroke="none" points="339,-401.8 339,-429.4 486,-429.4 486,-401.8 339,-401.8"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-410.8" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+</a>
+</g>
+</g>
+<!-- industry -->
+<g id="table&#45;industry" class="node">
+<title>industry</title>
+<g id="a_table&#45;industry"><a xlink:title="거래소·섹터·분류 체계별 산업 마스터&#10;industry_id bigint NOT NULL AUTO_INCREMENT | 산업 ID&#10;exchange_id bigint NOT NULL | 거래소 ID&#10;sector_id bigint NOT NULL | 섹터 ID&#10;scheme varchar(30) NOT NULL | 분류 체계 코드&#10;code varchar(50) NOT NULL | 코드&#10;name varchar(100) NOT NULL | 산업명&#10;UNIQUE uk_industry_exchange_sector_scheme_code (exchange_id, sector_id, scheme, code)&#10;INDEX idx_industry_exchange_id (exchange_id)&#10;INDEX idx_industry_name (name)&#10;INDEX idx_industry_sector_id (sector_id)">
+<polygon fill="none" stroke="#c8d2e0" points="0,-192.8 0,-297.2 487,-297.2 487,-192.8 0,-192.8"/>
+<polygon fill="#65758a" stroke="none" points="1,-250.6 1,-296.2 486,-296.2 486,-250.6 1,-250.6"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-269" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">industry</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-221.4 1,-250.6 486,-250.6 486,-221.4 1,-221.4"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-231.6" font-family="Arial" font-size="11.00" fill="#43536a">EXTERNAL REFERENCE / PK ONLY</text>
+<polygon fill="#ffffff" stroke="none" points="1,-193.8 1,-221.4 49,-221.4 49,-193.8 1,-193.8"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-205.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-193.8 49,-221.4 339,-221.4 339,-193.8 49,-193.8"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-202.4" font-family="Consolas" font-size="13.00" fill="#182d45">industry_id</text>
+<polygon fill="#ffffff" stroke="none" points="339,-193.8 339,-221.4 486,-221.4 486,-193.8 339,-193.8"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-202.8" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+</a>
+</g>
+</g>
+</g>
+</g>
+<line x1="30" y1="1758" x2="1105" y2="1758" stroke="#d7e1ed"/>
+<text x="31" y="1780" font-family="Arial, sans-serif" font-size="12" fill="#526478">PK = primary key   FK = foreign key   UQ = single-column unique   AI = auto increment   ? = nullable</text>
+</svg>

@@ -1,0 +1,1289 @@
+////////////////////////////////////////////////////////////
+// QAIMA ERD — dbdiagram.io용 DBML
+// 기준: backend/src/main/resources/db/migration/V1__*.sql ~ V51__*.sql
+// 작성일: 2026-09-30
+// 51개 Flyway 파일을 버전 순서로 합친 최종 스키마:
+//   47개 테이블 / 570개 컬럼 / 41개 FK / SQL ENUM 2종
+//
+// 사용: 이 파일 전체를 dbdiagram.io에 붙여넣거나 DBML로 가져오기.
+// 아래 설명은 읽기용이며, 스키마의 원본은 Flyway SQL이다.
+//
+// 반영 기준
+// - CREATE TABLE 이후 ADD/MODIFY COLUMN 및 추가 인덱스를 누적 반영.
+// - V37 조건부 동적 DDL도 새 DB에 V1~V51을 순서 적용한 결과로 반영.
+// - V39/V40 임시 seed 테이블은 종료 시 삭제되므로 ERD에서 제외.
+// - 데이터 INSERT/UPDATE의 행 내용과 Flyway 이력 테이블은 표시하지 않음.
+// - PK, UNIQUE, 명시된 인덱스 이름, NULL, DB 기본값, FK 동작을 반영.
+// - FK 지원용으로 MySQL이 자동 생성하는 인덱스는 별도 기재하지 않음.
+// - 관계선은 SQL에 선언된 FK만 표시. 이름이 비슷한 컬럼 간 관계를 추정하지 않음.
+// - 기본값이 없는 시각/상태 컬럼에는 now()/false 등의 기본값을 추가하지 않음.
+// - CURRENT_TIMESTAMP는 문자열이 아닌 DBML의 백틱 표현식으로 표기.
+// - JSON처럼 이름 붙은 VARCHAR 컬럼은 실제 VARCHAR 타입 그대로 유지.
+//
+// MySQL 표현 주의
+// - news.url(255), news_sentiment_observation.title(191)은 접두 인덱스.
+//   DBML에는 구성 컬럼을 표시하고 실제 접두 길이는 index note에 명시.
+//   SQL로 변환하면 접두 길이가 보존되지 않으므로 실행 DDL은 Flyway를 사용할 것.
+// - ENGINE/CHARSET 및 DB 실행 환경 설정은 Flyway SQL을 참조.
+// - NULL 허용은 [null]로, SQL에 없는 DEFAULT는 생략해서 표현.
+// - portfolio.user_id 및 stock_realtime_cache.stock_id의 유일성은 1:1 관계로 표시.
+//
+// 주요 버전 변경
+// - V23 비밀번호 NULL 허용 / V33 가입 전 이메일 인증.
+// - V34 credit_balance 기본값 5 / V35 공매도 거래량 DECIMAL(24,6).
+// - V36~V41 SEC 매핑·발행주식·13F 및 집계 인덱스.
+// - V42~V47 위험계수·포트폴리오·리포트·사용자 프로필 확장.
+// - V48~V50 영문 용어 설명 추가·TINYTEXT 확정·데이터 채움.
+// - V51 login_session.user_agent VARCHAR(512), api_request_log.query_string TEXT.
+////////////////////////////////////////////////////////////
+
+Project QAIMA_Flyway_V51 {
+  database_type: 'MySQL'
+  Note: 'Flyway V1~V51 최종 스키마. 47 tables / 570 columns / 41 foreign keys. 원본: backend/src/main/resources/db/migration. 접두 인덱스는 시각화용 표현이므로 실행 DDL은 Flyway를 사용한다.'
+}
+
+////////////////////////////////////////////////////////////
+// DB에 실제 선언된 Enum
+////////////////////////////////////////////////////////////
+
+Enum users_role_enum {
+  user
+  admin
+}
+
+Enum indicator_value_freq_enum {
+  one_min
+  five_min
+  fifteen_min
+  one_h
+  one_d
+  one_w
+  one_m
+}
+
+
+////////////////////////////////////////////////////////////
+// 종목 기준정보 (Reference)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V1
+Table exchange [note: '거래소 마스터'] {
+  exchange_id bigint [pk, not null, increment, note: '거래소 ID']
+  code varchar(20) [not null, note: '코드']
+  name varchar(100) [not null, note: '거래소명']
+  timezone varchar(50) [null, note: '거래소 기준 타임존']
+  country varchar(2) [null, note: '거래소 국가 코드']
+
+  indexes {
+    code [unique, name: 'uk_exchange_code']
+  }
+}
+
+// 스키마 정의/변경: V1
+Table sector [note: '거래소·분류 체계별 섹터 마스터'] {
+  sector_id bigint [pk, not null, increment, note: '섹터 ID']
+  exchange_id bigint [not null, note: '거래소 ID']
+  scheme varchar(30) [not null, note: '분류 체계 코드']
+  code varchar(50) [not null, note: '코드']
+  name varchar(100) [not null, note: '섹터명']
+
+  indexes {
+    (exchange_id, scheme, code) [unique, name: 'uk_sector_exchange_scheme_code']
+    exchange_id [name: 'idx_sector_exchange_id']
+    name [name: 'idx_sector_name']
+  }
+}
+
+// 스키마 정의/변경: V1
+Table industry [note: '거래소·섹터·분류 체계별 산업 마스터'] {
+  industry_id bigint [pk, not null, increment, note: '산업 ID']
+  exchange_id bigint [not null, note: '거래소 ID']
+  sector_id bigint [not null, note: '섹터 ID']
+  scheme varchar(30) [not null, note: '분류 체계 코드']
+  code varchar(50) [not null, note: '코드']
+  name varchar(100) [not null, note: '산업명']
+
+  indexes {
+    (exchange_id, sector_id, scheme, code) [unique, name: 'uk_industry_exchange_sector_scheme_code']
+    exchange_id [name: 'idx_industry_exchange_id']
+    name [name: 'idx_industry_name']
+    sector_id [name: 'idx_industry_sector_id']
+  }
+}
+
+// 스키마 정의/변경: V1, V15, V17, V36, V37
+Table stock [note: '종목 기본 정보 및 DART·SEC 기업 식별자/동기화 시각'] {
+  stock_id bigint [pk, not null, increment, note: '종목 ID']
+  exchange_id bigint [not null, note: '거래소 ID']
+  stock_code varchar(32) [not null, note: '종목 코드/티커']
+  isin varchar(20) [null, note: '국제증권식별번호']
+  company_name varchar(255) [not null, note: '회사명/종목명']
+  sector_id bigint [null, note: '섹터 ID']
+  industry_id bigint [null, note: '산업 ID']
+  asset_type varchar(20) [null, note: '자산 유형']
+  currency varchar(3) [default: 'KRW', null, note: '통화']
+  share_class varchar(20) [not null, default: 'OTHER', note: '주식 종류']
+  dart_corp_code varchar(8) [null, note: 'DART 기업 고유번호']
+  dart_corp_name varchar(255) [null, note: 'DART 기업명']
+  dart_modified_date date [null, note: 'DART 기업정보 수정일']
+  dart_synced_at datetime(6) [null, note: 'DART 기업정보 동기화 시각']
+  sec_cik varchar(10) [null, note: 'SEC 기업 식별번호 CIK']
+  sec_company_name varchar(255) [null, note: 'SEC 기업명']
+  sec_synced_at datetime(6) [null, note: 'SEC 기업정보 동기화 시각']
+  sec_issued_shares_synced_at datetime(6) [null, note: 'SEC 발행주식 동기화 시각']
+  listed_at date [null, note: '상장일']
+  delisted_at date [null, note: '상장폐지일']
+
+  indexes {
+    (exchange_id, stock_code) [unique, name: 'uk_exchange_stock_code']
+    exchange_id [name: 'idx_stock_exchange_id']
+    sector_id [name: 'idx_stock_sector_id']
+    industry_id [name: 'idx_stock_industry_id']
+    dart_corp_code [name: 'idx_stock_dart_corp_code']
+    dart_modified_date [name: 'idx_stock_dart_modified_date']
+    share_class [name: 'idx_stock_share_class']
+    sec_cik [name: 'idx_stock_sec_cik']
+    sec_synced_at [name: 'idx_stock_sec_synced_at']
+    sec_issued_shares_synced_at [name: 'idx_stock_sec_issued_shares_synced_at']
+  }
+}
+
+// 스키마 정의/변경: V9
+Table stock_alias [note: '종목 검색용 별칭과 정규화 별칭'] {
+  alias_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  alias_name varchar(255) [not null, note: '종목 별칭']
+  normalized_alias varchar(255) [not null, note: '정규화된 종목 별칭']
+  created_at datetime(6) [not null, note: '생성 시각']
+
+  indexes {
+    (stock_id, normalized_alias) [unique, name: 'uk_stock_alias_stock_norm']
+    normalized_alias [name: 'idx_stock_alias_norm']
+    stock_id [name: 'idx_stock_alias_stock']
+  }
+}
+
+// 스키마 정의/변경: V38
+Table stock_security_identifier [note: 'CUSIP 등 외부 증권 식별자와 종목 매핑'] {
+  stock_security_identifier_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  identifier_type varchar(20) [not null, note: '외부 식별자 유형']
+  identifier_value varchar(32) [not null, note: '외부 식별자 값']
+  issuer_name varchar(255) [null, note: '발행사명']
+  source varchar(50) [not null, note: '데이터 출처']
+  confidence int [not null, default: 100, note: '매핑 신뢰도']
+  active boolean [not null, default: true, note: '활성 여부']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (stock_id, identifier_type, identifier_value) [unique, name: 'uk_stock_security_identifier_stock_type_value']
+    (identifier_type, identifier_value) [name: 'idx_stock_security_identifier_type_value']
+    stock_id [name: 'idx_stock_security_identifier_stock']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// 시세·기술지표·시장 스냅샷 (Market_Data)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V5
+Table price_ohlcv [note: '종목별 시계열 OHLCV. freq는 SQL ENUM이 아닌 TINYINT'] {
+  stock_id bigint [not null, note: '종목 ID']
+  ts datetime(6) [not null, note: '데이터 기준 시각']
+  freq tinyint [not null, note: '주기 코드; 실제 DB 타입은 TINYINT']
+  open decimal(18,6) [null, note: '시가']
+  high decimal(18,6) [null, note: '고가']
+  low decimal(18,6) [null, note: '저가']
+  close decimal(18,6) [null, note: '종가']
+  volume decimal(20,0) [null, note: '거래량']
+
+  indexes {
+    (stock_id, ts, freq) [pk]
+  }
+}
+
+// 스키마 정의/변경: V5
+Table indicator_value [note: '기술지표 값 캐시. id PK와 종목·시각·주기·지표 키 UNIQUE 사용'] {
+  id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  ts datetime(6) [not null, note: '데이터 기준 시각']
+  freq indicator_value_freq_enum [not null, note: '기술지표 주기; DB에 선언된 7개 ENUM 값']
+  indicator_key varchar(50) [not null, note: '기술지표 키']
+  value_num decimal(20,8) [null, note: '단일 수치형 지표 값']
+  value_json varchar(255) [null, note: '지표 복합 값 문자열; 실제 타입 VARCHAR(255)']
+
+  indexes {
+    (stock_id, ts, freq, indicator_key) [unique, name: 'uq_indicator_unique']
+  }
+}
+
+// 스키마 정의/변경: V5
+Table stock_realtime_cache [note: '종목별 최신 시세 캐시. stock_id PK로 종목당 최대 1행'] {
+  stock_id bigint [pk, not null, note: '종목 ID']
+  ts datetime(6) [not null, note: '데이터 기준 시각']
+  prev_close decimal(18,6) [null, note: '전일 종가']
+  last decimal(18,6) [null, note: '최신 가격']
+  change_ratio decimal(10,6) [null, note: '등락 비율']
+  volume decimal(20,0) [null, note: '거래량']
+  turnover decimal(20,6) [null, note: '거래대금']
+}
+
+// 스키마 정의/변경: V10, V16, V18, V19
+Table market_snapshot [note: '종목·기준일별 시가총액·재무비율·배치 산출값 스냅샷'] {
+  snapshot_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  as_of_date date [not null, note: '스냅샷 기준일']
+  market_cap decimal(20,0) [null, note: '시가총액']
+  float_market_cap decimal(20,0) [null, note: '유통주식 기준 시가총액']
+  per decimal(10,4) [null, note: '주가수익비율']
+  pbr decimal(10,4) [null, note: '주가순자산비율']
+  float_ratio decimal(10,4) [null, note: '유통주식 비율']
+  treasury_ratio decimal(10,4) [null, note: '자기주식 비율']
+  shares_outstanding decimal(20,0) [null, note: '발행주식 수']
+  eps_ttm decimal(20,6) [null, note: '최근 12개월 주당순이익']
+  bps decimal(20,6) [null, note: '주당순자산']
+  sps decimal(20,6) [null, note: '주당매출액']
+  roe decimal(10,4) [null, note: '자기자본이익률']
+  roa decimal(10,4) [null, note: '총자산이익률']
+  operating_margin decimal(10,4) [null, note: '영업이익률']
+  net_margin decimal(10,4) [null, note: '순이익률']
+  debt_ratio decimal(10,4) [null, note: '부채비율']
+  current_assets decimal(20,2) [null, note: '유동자산']
+  current_liabilities decimal(20,2) [null, note: '유동부채']
+  inventory decimal(20,2) [null, note: '재고자산']
+  interest_expense decimal(20,2) [null, note: '이자비용']
+  operating_cash_flow decimal(20,2) [null, note: '영업활동 현금흐름']
+  capex decimal(20,2) [null, note: '자본적 지출']
+  warning_flags varchar(255) [null, note: '산출/데이터 경고 플래그']
+  source varchar(50) [null, note: '데이터 출처']
+  created_at datetime(6) [not null, note: '생성 시각']
+
+  indexes {
+    (stock_id, as_of_date) [unique, name: 'uk_market_snapshot_stock_date']
+    (stock_id, as_of_date) [name: 'idx_market_snapshot_stock_date']
+  }
+}
+
+// 스키마 정의/변경: V20
+Table market_holiday [note: '시장별 휴장일. V20에서 테이블 생성 및 2026년 KRX 휴장일 seed'] {
+  id bigint [pk, not null, increment, note: '휴장일 PK; 원본 DDL의 CONSTRAINT pk_market_holiday']
+  market varchar(20) [not null, note: '시장 구분']
+  holiday_date date [not null, note: '휴장일']
+  name varchar(100) [not null, note: '휴장일명']
+  source varchar(100) [not null, note: '데이터 출처']
+  created_at datetime [not null, default: `CURRENT_TIMESTAMP`, note: '생성 시각']
+
+  indexes {
+    (market, holiday_date) [unique, name: 'uq_market_holiday']
+    (market, holiday_date) [name: 'idx_market_holiday_market_date']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// 재무·발행주식·공매도·투자자 수급 (Financials_and_Flows)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V5
+Table financial [note: '재무 데이터. 종목·회계연도·기간 유형·기간 번호 UNIQUE; version은 PK에 포함되지 않음'] {
+  financial_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  report_date date [not null, note: '보고 기준일']
+  version int [not null, note: '재무 데이터 버전']
+  fiscal_year int [not null, note: '회계연도']
+  period_no int [not null, note: '기간 번호; 재무 데이터 UNIQUE 구성 컬럼']
+  fiscal_quarter int [null, note: '회계분기']
+  period_type varchar(10) [not null, note: '재무 기간 유형; VARCHAR 저장']
+  filing_date date [null, note: '공시/제출일']
+  currency varchar(10) [null, note: '통화']
+  source varchar(50) [null, note: '데이터 출처']
+  revenue decimal(20,2) [null, note: '매출액']
+  gross_profit decimal(20,2) [null, note: '매출총이익']
+  operating_income decimal(20,2) [null, note: '영업이익']
+  net_income decimal(20,2) [null, note: '당기순이익']
+  assets decimal(20,2) [null, note: '자산총계']
+  current_assets decimal(20,2) [null, note: '유동자산']
+  liabilities decimal(20,2) [null, note: '부채총계']
+  current_liabilities decimal(20,2) [null, note: '유동부채']
+  equity decimal(20,2) [null, note: '자본총계']
+  capital_stock decimal(20,2) [null, note: '자본금']
+  retained_earnings decimal(20,2) [null, note: '이익잉여금']
+  cash_and_equivalents decimal(20,2) [null, note: '현금 및 현금성 자산']
+  accounts_receivable decimal(20,2) [null, note: '매출채권']
+  inventories decimal(20,2) [null, note: '재고자산']
+  short_term_borrowings decimal(20,2) [null, note: '단기차입금']
+  current_portion_of_long_term_borrowings decimal(20,2) [null, note: '유동성 장기차입금']
+  long_term_borrowings decimal(20,2) [null, note: '장기차입금']
+  operating_cash_flow decimal(20,2) [null, note: '영업활동 현금흐름']
+  investing_cash_flow decimal(20,2) [null, note: '투자활동 현금흐름']
+  financing_cash_flow decimal(20,2) [null, note: '재무활동 현금흐름']
+  interest_expense decimal(20,2) [null, note: '이자비용']
+  capex_ppe decimal(20,2) [null, note: '유형자산 취득 지출']
+  capex_intangible decimal(20,2) [null, note: '무형자산 취득 지출']
+  depreciation_expense decimal(20,2) [null, note: '감가상각비']
+  amortization_expense decimal(20,2) [null, note: '무형자산상각비']
+  income_tax_expense decimal(20,2) [null, note: '법인세비용']
+  market_cap decimal(20,2) [null, note: '시가총액']
+  operating_margin decimal(10,4) [null, note: '영업이익률']
+  net_margin decimal(10,4) [null, note: '순이익률']
+  roe decimal(10,4) [null, note: '자기자본이익률']
+  per decimal(10,4) [null, note: '주가수익비율']
+  pbr decimal(10,4) [null, note: '주가순자산비율']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (stock_id, fiscal_year, period_type, period_no) [unique, name: 'uk_financial_stock_period']
+    (stock_id, period_type, fiscal_year, period_no) [name: 'idx_financials_stock_fiscal_period']
+  }
+}
+
+// 스키마 정의/변경: V14, V37
+Table issued_shares [note: 'DART·SEC 발행주식 및 자기주식·유통주식 데이터'] {
+  issued_shares_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  rcept_no varchar(32) [not null, note: '공시 접수번호; SEC 지원으로 VARCHAR(32)']
+  corp_cls varchar(10) [null, note: '기업 구분']
+  corp_code varchar(10) [not null, note: '공시 기업 코드']
+  corp_name varchar(255) [null, note: '기업명']
+  share_type varchar(50) [not null, note: '주식 종류']
+  authorized_shares bigint [null, note: '발행할 주식 총수']
+  issued_shares_to_date bigint [null, note: '누적 발행주식 수']
+  decreased_shares_to_date bigint [null, note: '누적 감소주식 수']
+  decreased_by_reduction bigint [null, note: '감자로 감소한 주식 수']
+  decreased_by_profit_incineration bigint [null, note: '이익소각으로 감소한 주식 수']
+  decreased_by_redemption bigint [null, note: '상환으로 감소한 주식 수']
+  decreased_by_other bigint [null, note: '기타 사유로 감소한 주식 수']
+  issued_shares_total bigint [null, note: '발행주식 총수']
+  treasury_shares bigint [null, note: '자기주식 수']
+  floating_shares bigint [null, note: '유통주식 수']
+  base_date date [not null, note: '기준일']
+  source varchar(50) [not null, default: 'OPENDART', note: '데이터 출처']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (stock_id, base_date, share_type) [unique, name: 'uk_issued_shares_stock_date_type']
+    (stock_id, base_date) [name: 'idx_issued_shares_stock_date']
+    (corp_code, base_date) [name: 'idx_issued_shares_corp_code_date']
+  }
+}
+
+// 스키마 정의/변경: V11, V35
+Table short_selling [note: '종목·보고일별 공매도 거래량/거래대금. V35에서 거래량 소수 정밀도 확장'] {
+  short_selling_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  report_date date [not null, note: '보고 기준일']
+  market_code varchar(20) [not null, note: '시장 코드']
+  security_type varchar(30) [not null, note: '증권 유형']
+  short_volume_total decimal(24,6) [null, note: '공매도 총거래량']
+  short_volume_uptick_applied decimal(24,6) [null, note: '업틱룰 적용 공매도 거래량']
+  short_volume_uptick_exempt decimal(24,6) [null, note: '업틱룰 예외 공매도 거래량']
+  total_volume decimal(24,6) [null, note: '전체 거래량']
+  short_volume_ratio decimal(10,6) [null, note: '공매도 거래량 비율']
+  short_amount_total decimal(20,0) [null, note: '공매도 총거래대금']
+  short_amount_uptick_applied decimal(20,0) [null, note: '업틱룰 적용 공매도 거래대금']
+  short_amount_uptick_exempt decimal(20,0) [null, note: '업틱룰 예외 공매도 거래대금']
+  total_amount decimal(20,0) [null, note: '전체 거래대금']
+  short_amount_ratio decimal(10,6) [null, note: '공매도 거래대금 비율']
+  source varchar(50) [not null, default: 'KRX', note: '데이터 출처']
+  source_screen_id varchar(20) [not null, default: 'MDCSTAT301', note: '원천 조회 화면 ID']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (stock_id, report_date) [unique, name: 'uk_short_selling_stock_date']
+    report_date [name: 'idx_short_selling_report_date']
+    (market_code, report_date) [name: 'idx_short_selling_market_date']
+  }
+}
+
+// 스키마 정의/변경: V29
+Table stock_investor_flow [note: '종목·거래일·출처별 투자자 유형별 순매수 수량/금액'] {
+  stock_investor_flow_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  stock_code varchar(32) [not null, note: '종목 코드/티커']
+  trade_date date [not null, note: '거래일']
+  market_div_code varchar(8) [not null, default: 'J', note: '시장 구분 코드']
+  close_price decimal(20,4) [null, note: '종가']
+  accumulated_volume decimal(24,0) [null, note: '누적 거래량']
+  accumulated_trading_value_million decimal(24,0) [null, note: '누적 거래대금; 백만 단위']
+  foreign_net_buy_qty decimal(24,0) [null, note: '외국인 순매수 수량']
+  foreign_net_buy_value_million decimal(24,0) [null, note: '외국인 순매수 금액; 백만 단위']
+  individual_net_buy_qty decimal(24,0) [null, note: '개인 순매수 수량']
+  individual_net_buy_value_million decimal(24,0) [null, note: '개인 순매수 금액; 백만 단위']
+  institution_net_buy_qty decimal(24,0) [null, note: '기관 순매수 수량']
+  institution_net_buy_value_million decimal(24,0) [null, note: '기관 순매수 금액; 백만 단위']
+  securities_net_buy_qty decimal(24,0) [null, note: '증권 순매수 수량']
+  securities_net_buy_value_million decimal(24,0) [null, note: '증권 순매수 금액; 백만 단위']
+  investment_trust_net_buy_qty decimal(24,0) [null, note: '투신 순매수 수량']
+  investment_trust_net_buy_value_million decimal(24,0) [null, note: '투신 순매수 금액; 백만 단위']
+  private_fund_net_buy_qty decimal(24,0) [null, note: '사모펀드 순매수 수량']
+  private_fund_net_buy_value_million decimal(24,0) [null, note: '사모펀드 순매수 금액; 백만 단위']
+  bank_net_buy_qty decimal(24,0) [null, note: '은행 순매수 수량']
+  bank_net_buy_value_million decimal(24,0) [null, note: '은행 순매수 금액; 백만 단위']
+  insurance_net_buy_qty decimal(24,0) [null, note: '보험 순매수 수량']
+  insurance_net_buy_value_million decimal(24,0) [null, note: '보험 순매수 금액; 백만 단위']
+  fund_net_buy_qty decimal(24,0) [null, note: '기금 순매수 수량']
+  fund_net_buy_value_million decimal(24,0) [null, note: '기금 순매수 금액; 백만 단위']
+  other_net_buy_qty decimal(24,0) [null, note: '기타 순매수 수량']
+  other_net_buy_value_million decimal(24,0) [null, note: '기타 순매수 금액; 백만 단위']
+  source varchar(50) [not null, default: 'KIS', note: '데이터 출처']
+  source_tr_id varchar(20) [not null, default: 'FHPTJ04160001', note: '원천 거래/API ID']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (stock_id, trade_date, source) [unique, name: 'uk_stock_investor_flow_stock_date_source']
+    (stock_code, trade_date) [name: 'idx_stock_investor_flow_code_date']
+    trade_date [name: 'idx_stock_investor_flow_trade_date']
+  }
+}
+
+// 스키마 정의/변경: V30
+Table market_investor_flow [note: '시장·업종·거래일·출처별 투자자 수급. 코드 컬럼에 FK 없음'] {
+  market_investor_flow_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  market_code varchar(16) [not null, note: '시장 코드']
+  industry_code varchar(32) [not null, note: '업종 코드']
+  trade_date date [not null, note: '거래일']
+  foreign_net_buy_qty decimal(24,0) [null, note: '외국인 순매수 수량']
+  foreign_net_buy_value_million decimal(24,0) [null, note: '외국인 순매수 금액; 백만 단위']
+  individual_net_buy_qty decimal(24,0) [null, note: '개인 순매수 수량']
+  individual_net_buy_value_million decimal(24,0) [null, note: '개인 순매수 금액; 백만 단위']
+  institution_net_buy_qty decimal(24,0) [null, note: '기관 순매수 수량']
+  institution_net_buy_value_million decimal(24,0) [null, note: '기관 순매수 금액; 백만 단위']
+  source varchar(50) [not null, default: 'KIS', note: '데이터 출처']
+  source_tr_id varchar(20) [not null, default: 'FHPTJ04040000', note: '원천 거래/API ID']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (market_code, industry_code, trade_date, source) [unique, name: 'uk_market_investor_flow_market_industry_date_source']
+    (market_code, trade_date) [name: 'idx_market_investor_flow_market_date']
+    trade_date [name: 'idx_market_investor_flow_trade_date']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// 금리·채권·환율 (Macro)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V12
+Table base_rate [note: '기준금리 시계열 및 원천 통계 메타데이터'] {
+  base_rate_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  base_date date [not null, note: '기준일']
+  raw_time varchar(16) [not null, note: '원천 통계 시점 문자열']
+  cycle varchar(1) [not null, note: '원천 통계 주기 코드']
+  rate_value decimal(10,6) [not null, note: '금리/환율 값']
+  unit_name varchar(20) [not null, note: '단위명']
+  stat_code varchar(20) [not null, note: '통계 코드']
+  stat_name varchar(255) [not null, note: '통계명']
+  item_code varchar(20) [not null, note: '통계 항목 코드']
+  item_name varchar(100) [not null, note: '통계 항목명']
+  source varchar(50) [not null, default: 'BOK_ECOS', note: '데이터 출처']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (cycle, raw_time, stat_code, item_code) [unique, name: 'uk_base_rate_cycle_time_stat_item']
+    base_date [name: 'idx_base_rate_base_date']
+    (stat_code, item_code, base_date) [name: 'idx_base_rate_stat_item_base_date']
+  }
+}
+
+// 스키마 정의/변경: V27
+Table bond_yield [note: '국가·채권 상품별 수익률 시계열 및 원천 통계 메타데이터'] {
+  bond_yield_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  yield_date date [not null, note: '채권 수익률 기준일']
+  raw_time varchar(16) [not null, note: '원천 통계 시점 문자열']
+  cycle varchar(1) [not null, note: '원천 통계 주기 코드']
+  country_code varchar(2) [not null, note: '국가 코드']
+  instrument_code varchar(20) [not null, note: '채권 상품 코드']
+  instrument_name varchar(100) [not null, note: '채권 상품명']
+  maturity_months int [null, note: '만기 개월 수']
+  yield_value decimal(10,6) [not null, note: '채권 수익률']
+  unit_name varchar(20) [not null, note: '단위명']
+  stat_code varchar(20) [not null, note: '통계 코드']
+  stat_name varchar(255) [not null, note: '통계명']
+  item_code varchar(20) [not null, note: '통계 항목 코드']
+  item_name varchar(100) [not null, note: '통계 항목명']
+  source varchar(50) [not null, default: 'BOK_ECOS', note: '데이터 출처']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (source, instrument_code, cycle, raw_time) [unique, name: 'uk_bond_yield_source_instrument_cycle_time']
+    yield_date [name: 'idx_bond_yield_yield_date']
+    (instrument_code, yield_date) [name: 'idx_bond_yield_instrument_date']
+    (country_code, yield_date) [name: 'idx_bond_yield_country_date']
+  }
+}
+
+// 스키마 정의/변경: V31
+Table exchange_rate [note: '통화쌍별 환율 시계열 및 원천 통계 메타데이터'] {
+  exchange_rate_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  rate_date date [not null, note: '환율 기준일']
+  raw_time varchar(16) [not null, note: '원천 통계 시점 문자열']
+  cycle varchar(1) [not null, note: '원천 통계 주기 코드']
+  pair_code varchar(20) [not null, note: '통화쌍 코드']
+  base_currency varchar(3) [not null, note: '기준 통화']
+  quote_currency varchar(3) [not null, note: '상대 통화']
+  rate_value decimal(20,6) [not null, note: '금리/환율 값']
+  unit_name varchar(20) [not null, note: '단위명']
+  stat_code varchar(20) [not null, note: '통계 코드']
+  stat_name varchar(255) [not null, note: '통계명']
+  item_code varchar(20) [not null, note: '통계 항목 코드']
+  item_name varchar(100) [not null, note: '통계 항목명']
+  source varchar(50) [not null, default: 'BOK_ECOS', note: '데이터 출처']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (pair_code, cycle, raw_time, source) [unique, name: 'uk_exchange_rate_pair_cycle_time_source']
+    rate_date [name: 'idx_exchange_rate_rate_date']
+    (pair_code, rate_date) [name: 'idx_exchange_rate_pair_date']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// 산업 지수·비교 캐시 (Industry_Comparison)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V5
+Table industry_index [note: '산업 지수 마스터. V13·V28에서 지수 seed 추가'] {
+  index_id bigint [pk, not null, increment, note: '지수 ID']
+  name varchar(100) [not null, note: '지수명']
+  code varchar(50) [not null, note: '코드']
+  provider varchar(50) [null, note: '제공자']
+  currency varchar(3) [null, note: '통화']
+
+  indexes {
+    code [unique, name: 'uk_industry_index_code']
+  }
+}
+
+// 스키마 정의/변경: V5
+Table industry_index_map [note: '산업과 지수의 연결. industry_id·index_id 복합 PK'] {
+  industry_id bigint [not null, note: '산업 ID']
+  index_id bigint [not null, note: '지수 ID']
+
+  indexes {
+    (industry_id, index_id) [pk]
+  }
+}
+
+// 스키마 정의/변경: V5
+Table industry_index_ohlcv [note: '산업 지수별 OHLCV. freq는 TINYINT'] {
+  index_id bigint [not null, note: '지수 ID']
+  ts datetime(6) [not null, note: '데이터 기준 시각']
+  freq tinyint [not null, note: '주기 코드; 실제 DB 타입은 TINYINT']
+  open decimal(18,6) [null, note: '시가']
+  high decimal(18,6) [null, note: '고가']
+  low decimal(18,6) [null, note: '저가']
+  close decimal(18,6) [null, note: '종가']
+  volume decimal(20,0) [null, note: '거래량']
+
+  indexes {
+    (index_id, ts, freq) [pk]
+  }
+}
+
+// 스키마 정의/변경: V5
+Table peer_cluster_cache [note: '산업·시각·방법별 클러스터 결과. JSON 명칭 컬럼도 실제 SQL 타입은 VARCHAR(255)'] {
+  industry_id bigint [not null, note: '산업 ID']
+  ts datetime(6) [not null, note: '데이터 기준 시각']
+  method varchar(255) [not null, note: '클러스터링 방법; DB 기본값 없음']
+  params_json varchar(255) [null, note: '클러스터 파라미터 문자열; VARCHAR(255)']
+  cluster_json varchar(255) [not null, note: '클러스터 결과 문자열; VARCHAR(255)']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (industry_id, ts, method) [pk]
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// 뉴스·감성 분석 (News_and_Sentiment)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V6
+Table news [note: '뉴스 메타데이터. URL 앞 255자에 유니크 접두 인덱스 적용'] {
+  news_id bigint [pk, not null, increment, note: '뉴스 ID']
+  title varchar(500) [not null, note: '제목']
+  url varchar(1000) [null, note: '원문 URL']
+  published_at datetime(6) [not null, note: '기사 발행 시각']
+  source varchar(100) [null, note: '데이터 출처']
+  lang varchar(10) [null, note: '언어 코드']
+  summary text [null, note: '기사 요약']
+  content_uri varchar(1000) [null, note: '본문 저장 위치']
+
+  indexes {
+    url [unique, name: 'uk_news_url', note: 'MySQL UNIQUE KEY uk_news_url (url(255)); URL 전체가 아닌 앞 255자에 적용되는 유니크 접두 인덱스']
+  }
+}
+
+// 스키마 정의/변경: V6
+Table news_security_map [note: '뉴스와 종목의 다대다 연결. 복합 PK와 같은 컬럼의 UNIQUE가 함께 선언됨'] {
+  news_id bigint [not null, note: '뉴스 ID']
+  stock_id bigint [not null, note: '종목 ID']
+
+  indexes {
+    (news_id, stock_id) [pk]
+    (news_id, stock_id) [unique, name: 'uk_news_security_map']
+  }
+}
+
+// 스키마 정의/변경: V6
+Table sentiment_result [note: '뉴스·모델별 감성 결과. 복합 PK와 같은 컬럼의 UNIQUE가 함께 선언됨'] {
+  news_id bigint [not null, note: '뉴스 ID']
+  model varchar(255) [not null, note: '감성 모델명']
+  score decimal(10,6) [not null, note: '감성 점수']
+  label varchar(10) [null, note: '감성 레이블']
+  created_at datetime(6) [null, note: '생성 시각']
+
+  indexes {
+    (news_id, model) [pk]
+    (news_id, model) [unique, name: 'uk_sentiment_result']
+  }
+}
+
+// 스키마 정의/변경: V6
+Table sentiment_daily_agg [note: '일별 감성 집계. 실제 마이그레이션에서는 stock_id와 industry_id가 모두 NOT NULL이며 복합 PK에 포함됨'] {
+  date date [not null, note: '집계 일자']
+  scope varchar(255) [not null, note: '집계 범위 문자열']
+  model varchar(255) [not null, note: '감성 모델명']
+  stock_id bigint [not null, note: '종목 ID']
+  industry_id bigint [not null, note: '산업 ID']
+  cnt_total int [null, note: '전체 기사 수']
+  cnt_pos int [null, note: '긍정 기사 수']
+  cnt_neg int [null, note: '부정 기사 수']
+  cnt_neu int [null, note: '중립 기사 수']
+  score_avg decimal(10,6) [null, note: '감성 점수 평균']
+  score_std decimal(10,6) [null, note: '감성 점수 표준편차']
+  updated_at datetime(6) [null, note: '최종 수정 시각']
+
+  indexes {
+    (date, scope, model, stock_id, industry_id) [pk]
+  }
+}
+
+// 스키마 정의/변경: V21, V25, V26
+Table news_sentiment_observation [note: '종목별 기사 감성 관측 및 로컬 모델 확률. V26 인덱스는 일반 인덱스이며 UNIQUE 아님'] {
+  observation_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  news_id bigint [not null, note: '뉴스 ID']
+  stock_code varchar(20) [not null, note: '분석 대상 종목 코드 문자열; stock FK 없음']
+  title varchar(500) [not null, note: '제목']
+  url varchar(1000) [null, note: '원문 URL']
+  publisher varchar(100) [null, note: '발행처']
+  published_at datetime(6) [null, note: '기사 발행 시각']
+  focus_text longtext [not null, note: '감성 분석 입력 텍스트']
+  predicted_score decimal(10,6) [not null, note: '예측 감성 점수']
+  predicted_label varchar(20) [null, note: '예측 감성 레이블']
+  negative_prob decimal(10,6) [null, note: '부정 확률']
+  neutral_prob decimal(10,6) [null, note: '중립 확률']
+  positive_prob decimal(10,6) [null, note: '긍정 확률']
+  model_version varchar(100) [not null, note: '모델 버전']
+  prompt_version varchar(100) [not null, note: '프롬프트 버전']
+  focus_text_version varchar(64) [not null, note: '입력 텍스트 생성 버전']
+  input_format_version varchar(100) [null, note: '모델 입력 형식 버전']
+  created_at datetime(6) [not null, default: `CURRENT_TIMESTAMP(6)`, note: '생성 시각']
+
+  indexes {
+    (news_id, stock_code, model_version, prompt_version, focus_text_version) [unique, name: 'uk_news_sentiment_observation']
+    created_at [name: 'idx_news_sentiment_observation_created_at']
+    (model_version, input_format_version, created_at) [name: 'idx_news_sentiment_observation_model_format_created_at']
+    (stock_code, model_version, input_format_version, published_at, title) [name: 'idx_news_sentiment_observation_dedup_news', note: 'MySQL 원본: (stock_code, model_version, input_format_version, published_at, title(191)). 마지막 title 컬럼의 앞 191자만 사용. 일반 인덱스이며 UNIQUE 아님']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// SEC 13F 기관 보유 데이터 (SEC_13F)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V38
+Table sec_13f_import_file [note: 'SEC 13F 파일 가져오기 작업 상태 및 처리 건수'] {
+  sec_13f_import_file_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  source_file varchar(255) [not null, note: '원천 파일명']
+  source_path varchar(1000) [null, note: '원천 파일 경로']
+  status varchar(30) [not null, note: '상태']
+  started_at datetime(6) [not null, note: '작업 시작 시각']
+  finished_at datetime(6) [null, note: '작업 종료 시각']
+  submission_rows bigint [not null, default: 0, note: '제출 데이터 행 수']
+  cover_page_rows bigint [not null, default: 0, note: '표지 데이터 행 수']
+  info_table_rows bigint [not null, default: 0, note: '보유명세 데이터 행 수']
+  matched_info_table_rows bigint [not null, default: 0, note: '종목이 매핑된 보유명세 행 수']
+  skipped_unmapped_rows bigint [not null, default: 0, note: '종목 미매핑 제외 행 수']
+  skipped_derivative_rows bigint [not null, default: 0, note: '파생상품 제외 행 수']
+  skipped_non_share_rows bigint [not null, default: 0, note: '주식 수량 외 유형 제외 행 수']
+  parsed_holding_rows bigint [not null, default: 0, note: '파싱한 보유 행 수']
+  created_filings int [not null, default: 0, note: '신규 제출 문서 수']
+  updated_filings int [not null, default: 0, note: '갱신 제출 문서 수']
+  created_holdings int [not null, default: 0, note: '신규 보유 레코드 수']
+  updated_holdings int [not null, default: 0, note: '갱신 보유 레코드 수']
+  unchanged_holdings int [not null, default: 0, note: '변경 없는 보유 레코드 수']
+  aggregated_rows int [not null, default: 0, note: '집계 행 수']
+  error_message varchar(1000) [null, note: '오류 메시지']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    source_file [unique, name: 'uk_sec_13f_import_file_source_file']
+    (status, started_at) [name: 'idx_sec_13f_import_file_status']
+  }
+}
+
+// 스키마 정의/변경: V38
+Table sec_13f_filing [note: '기관 운용사의 SEC 13F 제출 문서와 수정 제출 메타데이터'] {
+  sec_13f_filing_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  accession_number varchar(32) [not null, note: 'SEC 제출 문서 접수번호']
+  manager_cik varchar(10) [not null, note: '기관 운용사 CIK']
+  manager_name varchar(255) [null, note: '기관 운용사명']
+  filing_date date [not null, note: '공시/제출일']
+  report_period date [not null, note: '보고 대상 분기 기준일']
+  submission_type varchar(20) [not null, note: '제출 문서 유형']
+  is_amendment boolean [not null, default: false, note: '수정 제출 여부']
+  amendment_no varchar(16) [null, note: '수정 번호']
+  amendment_type varchar(50) [null, note: '수정 유형']
+  source_file varchar(255) [not null, note: '원천 파일명']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    accession_number [unique, name: 'uk_sec_13f_filing_accession']
+    (manager_cik, report_period) [name: 'idx_sec_13f_filing_manager_period']
+    report_period [name: 'idx_sec_13f_filing_report_period']
+    source_file [name: 'idx_sec_13f_filing_source_file']
+  }
+}
+
+// 스키마 정의/변경: V38, V41
+Table sec_13f_holding [note: 'SEC 13F 제출 문서별 종목·CUSIP 보유 수량 및 평가액'] {
+  sec_13f_holding_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  sec_13f_filing_id bigint [not null, note: 'SEC 13F 제출 문서 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  accession_number varchar(32) [not null, note: 'SEC 제출 문서 접수번호']
+  manager_cik varchar(10) [not null, note: '기관 운용사 CIK']
+  report_period date [not null, note: '보고 대상 분기 기준일']
+  filing_date date [not null, note: '공시/제출일']
+  cusip varchar(16) [not null, note: 'CUSIP 증권 식별번호']
+  name_of_issuer varchar(255) [null, note: '제출 문서의 발행사명']
+  title_of_class varchar(150) [null, note: '증권 종류명']
+  filing_row_count int [not null, default: 1, note: '집계에 포함된 제출 행 수']
+  shares decimal(30,0) [not null, note: '보유 주식 수']
+  value_raw decimal(30,0) [not null, note: '원문 평가액']
+  value_unit varchar(20) [not null, note: '원문 평가액 단위']
+  market_value_usd decimal(30,0) [not null, note: '달러 기준 평가액']
+  source varchar(50) [not null, default: 'SEC_13F_DATA_SET', note: '데이터 출처']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (accession_number, stock_id, cusip) [unique, name: 'uk_sec_13f_holding_accession_stock_cusip']
+    (stock_id, report_period) [name: 'idx_sec_13f_holding_stock_period']
+    (cusip, report_period) [name: 'idx_sec_13f_holding_cusip_period']
+    (manager_cik, report_period) [name: 'idx_sec_13f_holding_manager_period']
+    (stock_id, report_period, manager_cik, filing_date, accession_number) [name: 'idx_sec_13f_holding_aggregate']
+  }
+}
+
+// 스키마 정의/변경: V38
+Table stock_institutional_holding_quarterly [note: '종목·분기·출처별 기관 보유 집계'] {
+  stock_institutional_holding_quarterly_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  stock_code varchar(32) [not null, note: '종목 코드/티커']
+  report_period date [not null, note: '보고 대상 분기 기준일']
+  cusip varchar(16) [null, note: 'CUSIP 증권 식별번호']
+  institution_count int [not null, default: 0, note: '기관 수']
+  filing_row_count int [not null, default: 0, note: '집계에 포함된 제출 행 수']
+  shares_held decimal(30,0) [not null, note: '기관 보유 주식 수']
+  shares_change decimal(30,0) [null, note: '보유 주식 수 증감']
+  shares_change_rate decimal(20,8) [null, note: '보유 주식 수 증감률']
+  market_value_usd decimal(30,0) [not null, note: '달러 기준 평가액']
+  shares_outstanding decimal(30,0) [null, note: '발행주식 수']
+  holding_ratio decimal(20,8) [null, note: '기관 보유 비율']
+  source varchar(50) [not null, default: 'SEC_13F_DATA_SET', note: '데이터 출처']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (stock_id, report_period, source) [unique, name: 'uk_stock_inst_holding_quarterly_stock_period_source']
+    (stock_code, report_period) [name: 'idx_stock_inst_holding_quarterly_code_period']
+    report_period [name: 'idx_stock_inst_holding_quarterly_period']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// 사용자·인증 (Users_and_Auth)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V4, V23, V32, V34, V42, V45, V46, V47
+Table users [note: '사용자 계정·투자 설정·크레딧 잔액. 기본 크레딧은 V34 기준 5'] {
+  user_id bigint [pk, not null, increment, note: '사용자 ID']
+  email varchar(255) [not null, note: '이메일']
+  password_hash varchar(255) [null, note: '비밀번호 해시; 소셜 계정 등을 위해 NULL 허용']
+  name varchar(100) [null, note: '사용자 이름/닉네임']
+  phone varchar(30) [null, note: '전화번호']
+  experience varchar(20) [null, note: '투자 경험']
+  default_risk_gamma decimal(5,4) [null, note: '기본 위험회피계수']
+  birthdate varchar(7) [null, note: '생년월일 관련 문자열; VARCHAR(7)']
+  gender varchar(10) [null, note: '성별']
+  country varchar(50) [null, note: '사용자 국가 문자열; VARCHAR(50)']
+  role users_role_enum [not null, note: '사용자 역할']
+  status varchar(20) [not null, note: '상태']
+  email_verified bit(1) [not null, note: '이메일 인증 여부']
+  email_verified_at datetime(6) [null, note: '이메일 인증 완료 시각']
+  last_login_at datetime(6) [null, note: '마지막 로그인 시각']
+  last_login_ip varchar(45) [null, note: '마지막 로그인 IP']
+  locked_until datetime(6) [null, note: '계정 잠금 해제 예정 시각']
+  glossary_hover bit(1) [not null, note: '용어 설명 표시 설정']
+  investment_level varchar(20) [not null, default: 'BEGINNER', note: '투자 수준; VARCHAR, DB 기본값 BEGINNER']
+  credit_balance bigint [not null, default: 5, note: '사용 가능한 크레딧 잔액; BIGINT, DB 기본값 5']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    email [unique, name: 'uk_users_email']
+    phone [unique, name: 'uk_users_phone']
+  }
+}
+
+// 스키마 정의/변경: V4, V33
+Table email_verification [note: '가입 전 이메일 인증 지원. V33 이후 user_id는 NULL 허용, email은 NOT NULL'] {
+  id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  user_id bigint [null, note: '사용자 ID; 가입 전 인증을 위해 NULL 허용']
+  email varchar(255) [not null, note: '이메일']
+  token_hash varchar(64) [not null, note: '인증 토큰 해시']
+  expires_at datetime(6) [not null, note: '만료 시각']
+  used_at datetime(6) [null, note: '사용 시각']
+  created_at datetime(6) [not null, note: '생성 시각']
+
+  indexes {
+    token_hash [unique, name: 'uk_email_verification_token_hash']
+    user_id [name: 'idx_evt_user']
+    expires_at [name: 'idx_evt_expires']
+    (email, created_at) [name: 'idx_evt_email_created']
+  }
+}
+
+// 스키마 정의/변경: V4
+Table pwd_reset [note: '비밀번호 재설정 토큰 해시 및 유효기간'] {
+  id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  user_id bigint [not null, note: '사용자 ID']
+  token_hash varchar(64) [not null, note: '인증 토큰 해시']
+  expires_at datetime(6) [not null, note: '만료 시각']
+  used_at datetime(6) [null, note: '사용 시각']
+  created_at datetime(6) [not null, note: '생성 시각']
+
+  indexes {
+    token_hash [unique, name: 'uk_pwd_reset_token_hash']
+    user_id [name: 'idx_prt_user']
+    expires_at [name: 'idx_prt_expires']
+  }
+}
+
+// 스키마 정의/변경: V4, V51
+Table login_session [note: '로그인 세션 및 리프레시 토큰 해시. V51에서 user_agent를 VARCHAR(512)로 확장'] {
+  session_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  user_id bigint [not null, note: '사용자 ID']
+  device_id varchar(100) [null, note: '클라이언트 기기 식별자']
+  ip varchar(45) [null, note: 'IP 주소']
+  user_agent varchar(512) [null, note: '클라이언트 User-Agent']
+  refresh_token_hash varchar(200) [null, note: '리프레시 토큰 해시']
+  expires_at datetime(6) [not null, note: '만료 시각']
+  revoked_at datetime(6) [null, note: '세션 폐기 시각']
+  created_at datetime(6) [not null, note: '생성 시각']
+
+  indexes {
+    refresh_token_hash [unique, name: 'uk_login_session_refresh_token_hash']
+  }
+}
+
+// 스키마 정의/변경: V22
+Table social_account [note: '외부 인증 제공자 계정 연결'] {
+  social_account_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  user_id bigint [not null, note: '사용자 ID']
+  provider varchar(20) [not null, note: '제공자']
+  provider_user_id varchar(255) [not null, note: '외부 제공자의 사용자 ID']
+  provider_email varchar(255) [null, note: '외부 제공자의 이메일']
+  provider_name varchar(100) [null, note: '외부 제공자의 사용자 이름']
+  linked_at datetime(6) [not null, note: '외부 계정 연결 시각']
+  created_at datetime(6) [not null, default: `CURRENT_TIMESTAMP(6)`, note: '생성 시각']
+
+  indexes {
+    (provider, provider_user_id) [unique, name: 'uk_social_account_provider_user']
+    user_id [name: 'idx_social_account_user_id']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// 포트폴리오·관심종목·분석 리포트·크레딧 (User_Features)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V43
+Table portfolio [note: '사용자별 포트폴리오와 현금. user_id UNIQUE로 사용자당 최대 1개'] {
+  portfolio_id bigint [pk, not null, increment, note: '포트폴리오 ID']
+  user_id bigint [not null, note: '사용자 ID']
+  cash_amount decimal(24,6) [not null, default: 0, note: '포트폴리오 현금']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    user_id [unique, name: 'uk_portfolio_user']
+  }
+}
+
+// 스키마 정의/변경: V43
+Table portfolio_holding [note: '포트폴리오 보유 항목. 종목 코드·종목명을 직접 저장하며 stock FK 및 동일 종목 UNIQUE는 없음'] {
+  portfolio_holding_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  portfolio_id bigint [not null, note: '포트폴리오 ID']
+  stock_code varchar(32) [not null, note: '보유 종목 코드 문자열; stock FK 없음']
+  stock_name varchar(255) [not null, note: '저장된 종목명']
+  quantity decimal(24,6) [not null, note: '보유 수량']
+  average_price decimal(24,6) [not null, note: '평균 매입 가격']
+  position int [not null, note: '표시 순서']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    portfolio_id [name: 'idx_portfolio_holding_portfolio']
+  }
+}
+
+// 스키마 정의/변경: V7
+Table watchlist [note: '사용자별 관심종목 목록과 정렬 설정'] {
+  watchlist_id bigint [pk, not null, increment, note: '관심목록 ID']
+  user_id bigint [not null, note: '사용자 ID']
+  name varchar(50) [not null, note: '관심목록 이름']
+  sort_pref varchar(50) [null, note: '정렬 설정']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (user_id, name) [unique, name: 'uk_user_watchlist_name']
+  }
+}
+
+// 스키마 정의/변경: V7
+Table watchlist_item [note: '관심목록별 종목 및 표시 순서. 동일 목록·종목 UNIQUE'] {
+  watchlist_item_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  watchlist_id bigint [not null, note: '관심목록 ID']
+  stock_id bigint [not null, note: '종목 ID']
+  position int [null, note: '표시 순서']
+  note varchar(255) [null, note: '메모']
+  created_at datetime(6) [not null, note: '생성 시각']
+
+  indexes {
+    (watchlist_id, stock_id) [unique, name: 'uk_watchlist_stock']
+  }
+}
+
+// 스키마 정의/변경: V44
+Table analysis_report [note: '사용자 분석 리포트와 요청·결과 JSON 스냅샷. stock_code는 FK가 아닌 문자열'] {
+  report_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  user_id bigint [not null, note: '사용자 ID']
+  feature_type varchar(20) [not null, note: '분석 기능 구분']
+  subject_type varchar(20) [not null, note: '분석 대상 구분']
+  title varchar(255) [not null, note: '제목']
+  user_name varchar(100) [not null, note: '리포트 생성 당시 사용자 이름']
+  stock_code varchar(32) [null, note: '리포트 대상 종목 코드 문자열; stock FK 없음']
+  company_name varchar(255) [null, note: '회사명/종목명']
+  portfolio_summary varchar(500) [null, note: '포트폴리오 요약']
+  analysis_model varchar(100) [null, note: '분석 모델명']
+  invest_level varchar(30) [null, note: '분석 당시 투자 수준']
+  risk_profile varchar(50) [null, note: '분석 당시 위험 성향']
+  analysis_window varchar(50) [null, note: '분석 기간 설정']
+  price_basis varchar(50) [null, note: '가격 기준']
+  generated_at datetime(6) [not null, note: '분석 결과 생성 시각']
+  data_as_of varchar(100) [null, note: '분석 입력 데이터 기준 시점 문자열']
+  request_payload_json json [not null, note: '분석 요청 JSON 스냅샷']
+  result_snapshot_json json [not null, note: '분석 결과 JSON 스냅샷']
+  warnings_json json [null, note: '경고 JSON 스냅샷']
+  created_at datetime(6) [not null, note: '생성 시각']
+
+  indexes {
+    (user_id, generated_at) [name: 'idx_analysis_report_user_generated']
+    (feature_type, generated_at) [name: 'idx_analysis_report_feature']
+    (stock_code, generated_at) [name: 'idx_analysis_report_stock']
+  }
+}
+
+// 스키마 정의/변경: V32
+Table user_credit_ledger [note: '사용자 크레딧 증감 원장. reference_type/reference_id는 문자열 참조이며 FK 없음'] {
+  ledger_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  user_id bigint [not null, note: '사용자 ID']
+  amount bigint [not null, note: '크레딧 증감량']
+  balance_after bigint [not null, note: '변동 후 크레딧 잔액']
+  type varchar(30) [not null, note: '원장 변동 유형']
+  reason varchar(100) [null, note: '변동 사유']
+  reference_type varchar(30) [null, note: '참조 대상 종류; FK 없음']
+  reference_id varchar(100) [null, note: '참조 대상 ID 문자열; FK 없음']
+  created_at datetime(6) [not null, note: '생성 시각']
+
+  indexes {
+    (user_id, created_at) [name: 'idx_user_credit_ledger_user_created']
+    (reference_type, reference_id) [name: 'idx_user_credit_ledger_reference']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// 금융 용어 사전 (Dictionary)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V8, V24, V48, V49
+Table dictionary [note: 'term 문자열이 PK인 금융 용어 사전. V49 기준 description_en은 TINYTEXT'] {
+  term varchar(255) [pk, not null, note: '사전 표제어; 문자열 PK']
+  initial varchar(2) [not null, note: '초성/첫 문자 분류']
+  description tinytext [not null, note: '용어 설명']
+  description_en tinytext [null, note: '영문 설명; V49 최종 타입 TINYTEXT']
+  source varchar(255) [null, note: '데이터 출처']
+  source_org varchar(100) [null, note: '출처 기관']
+  source_url varchar(500) [null, note: '출처 URL']
+  source_type varchar(50) [null, note: '출처 유형']
+  status varchar(30) [not null, default: 'PUBLISHED', note: '상태']
+  reviewed_at datetime(6) [null, note: '검토 시각']
+  tag varchar(255) [null, note: '태그']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    (initial, term) [name: 'idx_dictionary_initial_term']
+  }
+}
+
+// 스키마 정의/변경: V24
+Table dictionary_alias [note: '사전 표제어에 연결되는 별칭. 표제어 삭제 시 CASCADE'] {
+  alias_id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  canonical_term varchar(255) [not null, note: '연결된 사전 표제어']
+  alias_term varchar(255) [not null, note: '용어 별칭']
+  normalized_alias_term varchar(255) [not null, note: '정규화된 용어 별칭']
+  source_type varchar(50) [null, note: '출처 유형']
+  notes varchar(255) [null, note: '비고']
+  created_at datetime(6) [not null, note: '생성 시각']
+  updated_at datetime(6) [not null, note: '최종 수정 시각']
+
+  indexes {
+    normalized_alias_term [unique, name: 'uk_dictionary_alias_normalized']
+    canonical_term [name: 'idx_dictionary_alias_canonical_term']
+    alias_term [name: 'idx_dictionary_alias_alias_term']
+    normalized_alias_term [name: 'idx_dictionary_alias_normalized']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// 인증·API 요청 로그 (Logs)
+////////////////////////////////////////////////////////////
+
+// 스키마 정의/변경: V4
+Table auth_login_log [note: '인증 이벤트 로그. user_id 컬럼에 DB 외래키 제약 없음'] {
+  id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  occurred_at datetime(6) [not null, note: '이벤트 발생 시각']
+  event_type varchar(64) [not null, note: '인증 이벤트 유형']
+  success bit(1) [not null, note: '인증 성공 여부']
+  email varchar(190) [null, note: '이메일']
+  user_id bigint [null, note: '인증 사용자 ID; FK 없음']
+  ip varchar(45) [null, note: 'IP 주소']
+  user_agent varchar(512) [null, note: '클라이언트 User-Agent']
+  error_code varchar(64) [null, note: '오류 코드']
+  message varchar(512) [null, note: '인증 이벤트 메시지']
+
+  indexes {
+    occurred_at [name: 'idx_login_occurred_at']
+    user_id [name: 'idx_login_user_id']
+    email [name: 'idx_login_email']
+    event_type [name: 'idx_login_event_type']
+  }
+}
+
+// 스키마 정의/변경: V3, V51
+Table api_request_log [note: 'API 요청·오류·응답 시간 로그. V51 기준 query_string은 TEXT; user_id에 FK 없음'] {
+  id bigint [pk, not null, increment, note: '레코드 고유 ID']
+  request_id varchar(36) [not null, note: '요청 추적 ID']
+  occurred_at datetime(6) [not null, note: '이벤트 발생 시각']
+  method varchar(10) [not null, note: 'HTTP 메서드']
+  path varchar(512) [not null, note: '요청 경로']
+  query_string text [null, note: '요청 쿼리 문자열; V51 TEXT']
+  status int [not null, note: 'HTTP 응답 상태 코드']
+  error_code varchar(64) [null, note: '오류 코드']
+  latency_ms int [not null, note: '응답 지연 시간; 밀리초']
+  user_id bigint [null, note: '요청 사용자 ID; FK 없음']
+  principal varchar(190) [null, note: '인증 주체 문자열']
+  ip varchar(45) [null, note: 'IP 주소']
+  user_agent varchar(512) [null, note: '클라이언트 User-Agent']
+
+  indexes {
+    occurred_at [name: 'idx_api_log_occurred_at']
+    user_id [name: 'idx_api_log_user_id']
+    status [name: 'idx_api_log_status']
+    path [name: 'idx_api_log_path']
+  }
+}
+
+
+////////////////////////////////////////////////////////////
+// Foreign Keys — Flyway에 선언된 41개 관계
+////////////////////////////////////////////////////////////
+
+// 종목 기준정보
+Ref fk_sector_exchange: sector.exchange_id > exchange.exchange_id [delete: restrict, update: cascade]
+Ref fk_industry_exchange: industry.exchange_id > exchange.exchange_id [delete: restrict, update: cascade]
+Ref fk_industry_sector: industry.sector_id > sector.sector_id [delete: restrict, update: cascade]
+Ref fk_stock_exchange: stock.exchange_id > exchange.exchange_id [delete: restrict, update: cascade]
+Ref fk_stock_sector: stock.sector_id > sector.sector_id [delete: set null, update: cascade]
+Ref fk_stock_industry: stock.industry_id > industry.industry_id [delete: set null, update: cascade]
+Ref fk_stock_alias_stock: stock_alias.stock_id > stock.stock_id
+Ref fk_stock_security_identifier_stock: stock_security_identifier.stock_id > stock.stock_id
+
+// 시세·기술지표·시장 스냅샷
+Ref fk_price_ohlcv_stock: price_ohlcv.stock_id > stock.stock_id
+Ref fk_indicator_value_stock: indicator_value.stock_id > stock.stock_id
+Ref fk_stock_realtime_cache_stock: stock.stock_id - stock_realtime_cache.stock_id
+Ref fk_market_snapshot_stock: market_snapshot.stock_id > stock.stock_id
+
+// 재무·발행주식·공매도·투자자 수급
+Ref fk_financial_stock: financial.stock_id > stock.stock_id
+Ref fk_issued_shares_stock: issued_shares.stock_id > stock.stock_id
+Ref fk_short_selling_stock: short_selling.stock_id > stock.stock_id
+Ref fk_stock_investor_flow_stock: stock_investor_flow.stock_id > stock.stock_id
+
+// 산업 지수·비교 캐시
+Ref fk_industry_index_map_industry: industry_index_map.industry_id > industry.industry_id
+Ref fk_industry_index_map_index: industry_index_map.index_id > industry_index.index_id
+Ref fk_industry_index_ohlcv_index: industry_index_ohlcv.index_id > industry_index.index_id
+Ref fk_peer_cluster_cache_industry: peer_cluster_cache.industry_id > industry.industry_id
+
+// 뉴스·감성 분석
+Ref fk_news_security_map_news: news_security_map.news_id > news.news_id
+Ref fk_news_security_map_stock: news_security_map.stock_id > stock.stock_id
+Ref fk_sentiment_result_news: sentiment_result.news_id > news.news_id
+Ref fk_sentiment_daily_agg_stock: sentiment_daily_agg.stock_id > stock.stock_id
+Ref fk_sentiment_daily_agg_industry: sentiment_daily_agg.industry_id > industry.industry_id
+Ref fk_news_sentiment_observation_news: news_sentiment_observation.news_id > news.news_id
+
+// SEC 13F 기관 보유 데이터
+Ref fk_sec_13f_holding_filing: sec_13f_holding.sec_13f_filing_id > sec_13f_filing.sec_13f_filing_id
+Ref fk_sec_13f_holding_stock: sec_13f_holding.stock_id > stock.stock_id
+Ref fk_stock_inst_holding_quarterly_stock: stock_institutional_holding_quarterly.stock_id > stock.stock_id
+
+// 사용자·인증
+Ref fk_email_verification_user: email_verification.user_id > users.user_id
+Ref fk_pwd_reset_user: pwd_reset.user_id > users.user_id
+Ref fk_login_session_user: login_session.user_id > users.user_id
+Ref fk_social_account_user: social_account.user_id > users.user_id
+
+// 포트폴리오·관심종목·분석 리포트·크레딧
+Ref fk_portfolio_user: users.user_id - portfolio.user_id
+Ref fk_portfolio_holding_portfolio: portfolio_holding.portfolio_id > portfolio.portfolio_id
+Ref fk_watchlist_user: watchlist.user_id > users.user_id
+Ref fk_watchlist_item_watchlist: watchlist_item.watchlist_id > watchlist.watchlist_id
+Ref fk_watchlist_item_stock: watchlist_item.stock_id > stock.stock_id
+Ref fk_analysis_report_user: analysis_report.user_id > users.user_id
+Ref fk_user_credit_ledger_user: user_credit_ledger.user_id > users.user_id
+
+// 금융 용어 사전
+Ref fk_dictionary_alias_canonical_term: dictionary_alias.canonical_term > dictionary.term [delete: cascade]
+
+
+////////////////////////////////////////////////////////////
+// 영역별 그룹 — dbdiagram.io에서 탐색/배치용
+////////////////////////////////////////////////////////////
+
+// 종목 기준정보
+TableGroup Reference {
+  exchange
+  sector
+  industry
+  stock
+  stock_alias
+  stock_security_identifier
+}
+
+// 시세·기술지표·시장 스냅샷
+TableGroup Market_Data {
+  price_ohlcv
+  indicator_value
+  stock_realtime_cache
+  market_snapshot
+  market_holiday
+}
+
+// 재무·발행주식·공매도·투자자 수급
+TableGroup Financials_and_Flows {
+  financial
+  issued_shares
+  short_selling
+  stock_investor_flow
+  market_investor_flow
+}
+
+// 금리·채권·환율
+TableGroup Macro {
+  base_rate
+  bond_yield
+  exchange_rate
+}
+
+// 산업 지수·비교 캐시
+TableGroup Industry_Comparison {
+  industry_index
+  industry_index_map
+  industry_index_ohlcv
+  peer_cluster_cache
+}
+
+// 뉴스·감성 분석
+TableGroup News_and_Sentiment {
+  news
+  news_security_map
+  sentiment_result
+  sentiment_daily_agg
+  news_sentiment_observation
+}
+
+// SEC 13F 기관 보유 데이터
+TableGroup SEC_13F {
+  sec_13f_import_file
+  sec_13f_filing
+  sec_13f_holding
+  stock_institutional_holding_quarterly
+}
+
+// 사용자·인증
+TableGroup Users_and_Auth {
+  users
+  email_verification
+  pwd_reset
+  login_session
+  social_account
+}
+
+// 포트폴리오·관심종목·분석 리포트·크레딧
+TableGroup User_Features {
+  portfolio
+  portfolio_holding
+  watchlist
+  watchlist_item
+  analysis_report
+  user_credit_ledger
+}
+
+// 금융 용어 사전
+TableGroup Dictionary {
+  dictionary
+  dictionary_alias
+}
+
+// 인증·API 요청 로그
+TableGroup Logs {
+  auth_login_log
+  api_request_log
+}

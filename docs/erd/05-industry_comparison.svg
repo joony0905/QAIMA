@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1135" height="980" viewBox="0 0 1135 980" role="img" aria-labelledby="erd-title erd-desc">
+<title id="erd-title">QAIMA / Industry comparison</title><desc id="erd-desc">QAIMA ERD derived from Flyway V1 through V51. All columns of included domain tables are shown; external referenced tables show their primary keys only. Foreign keys: 4. Source: docs/erd/qaima_flyway_v51.dbml.</desc>
+<rect width="1135" height="980" fill="#ffffff"/>
+<rect width="1135" height="122" fill="#10243a"/>
+<rect x="0" y="0" width="8" height="122" fill="#43c6ac"/>
+<text x="30" y="43" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">QAIMA / Industry comparison</text>
+<text x="31" y="73" font-family="Arial, sans-serif" font-size="14" fill="#c8d7e9">4 domain tables · all columns · external references use PK-only cards</text>
+<text x="31" y="99" font-family="Arial, sans-serif" font-size="12" fill="#8fb5cf">MYSQL / FLYWAY V1–V51 / QAIMA</text>
+<g transform="translate(32.00,146)">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 760)">
+<title>QAIMA</title>
+<polygon fill="#ffffff" stroke="none" points="-18,18 -18,-760 1053,-760 1053,18 -18,18"/>
+<!-- industry_index&#45;&gt;industry_index_map -->
+<g id="fk&#45;fk_industry_index_map_index" class="edge">
+<title>industry_index:e&#45;&gt;industry_index_map:w</title>
+<g id="a_fk&#45;fk_industry_index_map_index"><a xlink:title="fk_industry_index_map_index: industry_index_map.index_id &#45;&gt; industry_index.index_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#23794f" stroke-width="1.5" d="M491.79,-289.54C501.67,-299.75 524.54,-323.37 537.86,-337.13"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="484.94,-287.64 490.11,-282.63 491.11,-283.67 485.94,-288.68 484.94,-287.64"/>
+<polyline fill="none" stroke="#23794f" stroke-width="1.5" points="487.02,-284.62 489.53,-287.21"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="487.46,-290.25 492.63,-285.24 493.63,-286.28 488.46,-291.29 487.46,-290.25"/>
+<polyline fill="none" stroke="#23794f" stroke-width="1.5" points="489.55,-287.23 492.05,-289.82"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="542.64,-342.07 545.32,-349.49 545.5,-345.01 547.3,-346.88 547.3,-346.88 547.3,-346.88 545.5,-345.01 549.98,-344.99 542.64,-342.07"/>
+<ellipse fill="none" stroke="#23794f" stroke-width="1.5" cx="538.85" cy="-338.15" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- industry_index&#45;&gt;industry_index_ohlcv -->
+<g id="fk&#45;fk_industry_index_ohlcv_index" class="edge">
+<title>industry_index:e&#45;&gt;industry_index_ohlcv:w</title>
+<g id="a_fk&#45;fk_industry_index_ohlcv_index"><a xlink:title="fk_industry_index_ohlcv_index: industry_index_ohlcv.index_id &#45;&gt; industry_index.index_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#23794f" stroke-width="1.5" d="M491.39,-279.09C501.22,-266.74 525.21,-236.61 538.59,-219.81"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="490.28,-286.26 484.65,-281.77 485.55,-280.64 491.18,-285.13 490.28,-286.26"/>
+<polyline fill="none" stroke="#23794f" stroke-width="1.5" points="487.02,-284.58 489.26,-281.76"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="492.54,-283.42 486.91,-278.93 487.81,-277.8 493.44,-282.29 492.54,-283.42"/>
+<polyline fill="none" stroke="#23794f" stroke-width="1.5" points="489.28,-281.74 491.52,-278.92"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="543.2,-214.02 550.22,-210.41 545.76,-210.82 547.37,-208.78 547.37,-208.78 547.37,-208.78 545.76,-210.82 545.15,-206.37 543.2,-214.02"/>
+<ellipse fill="none" stroke="#23794f" stroke-width="1.5" cx="539.8" cy="-218.29" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- industry&#45;&gt;industry_index_map -->
+<g id="fk&#45;fk_industry_index_map_industry" class="edge">
+<title>industry:e&#45;&gt;industry_index_map:w</title>
+<g id="a_fk&#45;fk_industry_index_map_industry"><a xlink:title="fk_industry_index_map_industry: industry_index_map.industry_id &#45;&gt; industry.industry_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#23794f" stroke-width="1.5" d="M491.79,-432.52C501.67,-422.44 524.54,-399.13 537.86,-385.54"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="490.1,-439.39 484.95,-434.34 485.96,-433.32 491.1,-438.36 490.1,-439.39"/>
+<polyline fill="none" stroke="#23794f" stroke-width="1.5" points="487.02,-437.38 489.54,-434.81"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="492.64,-436.79 487.5,-431.75 488.5,-430.72 493.65,-435.77 492.64,-436.79"/>
+<polyline fill="none" stroke="#23794f" stroke-width="1.5" points="489.56,-434.79 492.08,-432.22"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="542.61,-380.7 549.96,-377.83 545.48,-377.77 547.3,-375.92 547.3,-375.92 547.3,-375.92 545.48,-377.77 545.34,-373.29 542.61,-380.7"/>
+<ellipse fill="none" stroke="#23794f" stroke-width="1.5" cx="538.79" cy="-384.6" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- industry&#45;&gt;peer_cluster_cache -->
+<g id="fk&#45;fk_peer_cluster_cache_industry" class="edge">
+<title>industry:e&#45;&gt;peer_cluster_cache:w</title>
+<g id="a_fk&#45;fk_peer_cluster_cache_industry"><a xlink:title="fk_peer_cluster_cache_industry: peer_cluster_cache.industry_id &#45;&gt; industry.industry_id | parent per child: 1 | children per parent: 0..N">
+<path fill="none" stroke="#23794f" stroke-width="1.5" d="M488.89,-444.07C497.38,-473.98 532.03,-596.11 543.95,-638.12"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="483.74,-439.1 490.67,-437.14 491.06,-438.52 484.13,-440.49 483.74,-439.1"/>
+<polyline fill="none" stroke="#23794f" stroke-width="1.5" points="487.01,-437.43 487.99,-440.89"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="484.73,-442.6 491.66,-440.63 492.05,-442.02 485.13,-443.98 484.73,-442.6"/>
+<polyline fill="none" stroke="#23794f" stroke-width="1.5" points="488,-440.92 488.98,-444.38"/>
+<polygon fill="#23794f" stroke="#23794f" stroke-width="1.5" points="545.9,-644.99 544.75,-652.8 547.02,-648.94 547.73,-651.43 547.73,-651.43 547.73,-651.43 547.02,-648.94 550.98,-651.03 545.9,-644.99"/>
+<ellipse fill="none" stroke="#23794f" stroke-width="1.5" cx="544.41" cy="-639.74" rx="2.88" ry="2.88"/>
+</a>
+</g>
+</g>
+<!-- industry_index -->
+<g id="table&#45;industry_index" class="node">
+<title>industry_index</title>
+<g id="a_table&#45;industry_index"><a xlink:title="산업 지수 마스터. V13·V28에서 지수 seed 추가&#10;index_id bigint NOT NULL AUTO_INCREMENT | 지수 ID&#10;name varchar(100) NOT NULL | 지수명&#10;code varchar(50) NOT NULL | 코드&#10;provider varchar(50) NULL | 제공자&#10;currency varchar(3) NULL | 통화&#10;UNIQUE uk_industry_index_code (code)">
+<polygon fill="none" stroke="#c8d2e0" points="0,-159.4 0,-374.2 487,-374.2 487,-159.4 0,-159.4"/>
+<polygon fill="#23794f" stroke="none" points="1,-327.6 1,-373.2 486,-373.2 486,-327.6 1,-327.6"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-346" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">industry_index</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-298.4 1,-327.6 486,-327.6 486,-298.4 1,-298.4"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-308.6" font-family="Arial" font-size="11.00" fill="#43536a">5 COLUMNS / 1 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="1,-270.8 1,-298.4 49,-298.4 49,-270.8 1,-270.8"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-282.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-270.8 49,-298.4 339,-298.4 339,-270.8 49,-270.8"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-279.4" font-family="Consolas" font-size="13.00" fill="#182d45">index_id</text>
+<polygon fill="#ffffff" stroke="none" points="339,-270.8 339,-298.4 486,-298.4 486,-270.8 339,-270.8"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-279.8" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-243.2 1,-270.8 49,-270.8 49,-243.2 1,-243.2"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-255" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-243.2 49,-270.8 339,-270.8 339,-243.2 49,-243.2"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-251.8" font-family="Consolas" font-size="13.00" fill="#182d45">name</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-243.2 339,-270.8 486,-270.8 486,-243.2 339,-243.2"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-252.2" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(100)</text>
+<polygon fill="#ffffff" stroke="none" points="1,-215.6 1,-243.2 49,-243.2 49,-215.6 1,-215.6"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-227.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778">UQ</text>
+<polygon fill="#ffffff" stroke="none" points="49,-215.6 49,-243.2 339,-243.2 339,-215.6 49,-215.6"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-224.2" font-family="Consolas" font-size="13.00" fill="#182d45">code</text>
+<polygon fill="#ffffff" stroke="none" points="339,-215.6 339,-243.2 486,-243.2 486,-215.6 339,-215.6"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-224.6" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(50)</text>
+<polygon fill="#f5f8fc" stroke="none" points="1,-188 1,-215.6 49,-215.6 49,-188 1,-188"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-199.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="49,-188 49,-215.6 339,-215.6 339,-188 49,-188"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-196.6" font-family="Consolas" font-size="13.00" fill="#182d45">provider</text>
+<polygon fill="#f5f8fc" stroke="none" points="339,-188 339,-215.6 486,-215.6 486,-188 339,-188"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-197" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(50) ?</text>
+<polygon fill="#ffffff" stroke="none" points="1,-160.4 1,-188 49,-188 49,-160.4 1,-160.4"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-172.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="49,-160.4 49,-188 339,-188 339,-160.4 49,-160.4"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-169" font-family="Consolas" font-size="13.00" fill="#182d45">currency</text>
+<polygon fill="#ffffff" stroke="none" points="339,-160.4 339,-188 486,-188 486,-160.4 339,-160.4"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-169.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(3) ?</text>
+</a>
+</g>
+</g>
+<!-- industry_index_map -->
+<g id="table&#45;industry_index_map" class="node">
+<title>industry_index_map</title>
+<g id="a_table&#45;industry_index_map"><a xlink:title="산업과 지수의 연결. industry_id·index_id 복합 PK&#10;industry_id bigint NOT NULL | 산업 ID&#10;index_id bigint NOT NULL | 지수 ID&#10;PRIMARY &#160;(industry_id, index_id)">
+<polygon fill="none" stroke="#c8d2e0" points="548,-332.8 548,-464.8 1035,-464.8 1035,-332.8 548,-332.8"/>
+<polygon fill="#23794f" stroke="none" points="549,-418.2 549,-463.8 1034,-463.8 1034,-418.2 549,-418.2"/>
+<text xml:space="preserve" text-anchor="start" x="561" y="-436.6" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">industry_index_map</text>
+<polygon fill="#edf2f8" stroke="none" points="549,-389 549,-418.2 1034,-418.2 1034,-389 549,-389"/>
+<text xml:space="preserve" text-anchor="start" x="557" y="-399.2" font-family="Arial" font-size="11.00" fill="#43536a">2 COLUMNS / 0 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549,-361.4 549,-389 597,-389 597,-361.4 549,-361.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-373.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-361.4 597,-389 887,-389 887,-361.4 597,-361.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-370" font-family="Consolas" font-size="13.00" fill="#182d45">industry_id</text>
+<polygon fill="#ffffff" stroke="none" points="887,-361.4 887,-389 1034,-389 1034,-361.4 887,-361.4"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-370.4" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-333.8 549,-361.4 597,-361.4 597,-333.8 549,-333.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-345.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-333.8 597,-361.4 887,-361.4 887,-333.8 597,-333.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-342.4" font-family="Consolas" font-size="13.00" fill="#182d45">index_id</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-333.8 887,-361.4 1034,-361.4 1034,-333.8 887,-333.8"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-342.8" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+</a>
+</g>
+</g>
+<!-- industry_index_ohlcv -->
+<g id="table&#45;industry_index_ohlcv" class="node">
+<title>industry_index_ohlcv</title>
+<g id="a_table&#45;industry_index_ohlcv"><a xlink:title="산업 지수별 OHLCV. freq는 TINYINT&#10;index_id bigint NOT NULL | 지수 ID&#10;ts datetime(6) NOT NULL | 데이터 기준 시각&#10;freq tinyint NOT NULL | 주기 코드; 실제 DB 타입은 TINYINT&#10;open decimal(18,6) NULL | 시가&#10;high decimal(18,6) NULL | 고가&#10;low decimal(18,6) NULL | 저가&#10;close decimal(18,6) NULL | 종가&#10;volume decimal(20,0) NULL | 거래량&#10;PRIMARY &#160;(index_id, ts, freq)">
+<polygon fill="none" stroke="#c8d2e0" points="548,0 548,-297.6 1035,-297.6 1035,0 548,0"/>
+<polygon fill="#23794f" stroke="none" points="549,-251 549,-296.6 1034,-296.6 1034,-251 549,-251"/>
+<text xml:space="preserve" text-anchor="start" x="561" y="-269.4" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">industry_index_ohlcv</text>
+<polygon fill="#edf2f8" stroke="none" points="549,-221.8 549,-251 1034,-251 1034,-221.8 549,-221.8"/>
+<text xml:space="preserve" text-anchor="start" x="557" y="-232" font-family="Arial" font-size="11.00" fill="#43536a">8 COLUMNS / 0 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549,-194.2 549,-221.8 597,-221.8 597,-194.2 549,-194.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-206" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-194.2 597,-221.8 887,-221.8 887,-194.2 597,-194.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-202.8" font-family="Consolas" font-size="13.00" fill="#182d45">index_id</text>
+<polygon fill="#ffffff" stroke="none" points="887,-194.2 887,-221.8 1034,-221.8 1034,-194.2 887,-194.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-203.2" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-166.6 549,-194.2 597,-194.2 597,-166.6 549,-166.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-178.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-166.6 597,-194.2 887,-194.2 887,-166.6 597,-166.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-175.2" font-family="Consolas" font-size="13.00" fill="#182d45">ts</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-166.6 887,-194.2 1034,-194.2 1034,-166.6 887,-166.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-175.6" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#ffffff" stroke="none" points="549,-139 549,-166.6 597,-166.6 597,-139 549,-139"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-150.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-139 597,-166.6 887,-166.6 887,-139 597,-139"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-147.6" font-family="Consolas" font-size="13.00" fill="#182d45">freq</text>
+<polygon fill="#ffffff" stroke="none" points="887,-139 887,-166.6 1034,-166.6 1034,-139 887,-139"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-148" font-family="Consolas" font-size="12.00" fill="#53637b">tinyint</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-111.4 549,-139 597,-139 597,-111.4 549,-111.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-123.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-111.4 597,-139 887,-139 887,-111.4 597,-111.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-120" font-family="Consolas" font-size="13.00" fill="#182d45">open</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-111.4 887,-139 1034,-139 1034,-111.4 887,-111.4"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-120.4" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(18,6) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-83.8 549,-111.4 597,-111.4 597,-83.8 549,-83.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-95.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-83.8 597,-111.4 887,-111.4 887,-83.8 597,-83.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-92.4" font-family="Consolas" font-size="13.00" fill="#182d45">high</text>
+<polygon fill="#ffffff" stroke="none" points="887,-83.8 887,-111.4 1034,-111.4 1034,-83.8 887,-83.8"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-92.8" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(18,6) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-56.2 549,-83.8 597,-83.8 597,-56.2 549,-56.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-68" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-56.2 597,-83.8 887,-83.8 887,-56.2 597,-56.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-64.8" font-family="Consolas" font-size="13.00" fill="#182d45">low</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-56.2 887,-83.8 1034,-83.8 1034,-56.2 887,-56.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-65.2" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(18,6) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-28.6 549,-56.2 597,-56.2 597,-28.6 549,-28.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-40.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-28.6 597,-56.2 887,-56.2 887,-28.6 597,-28.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-37.2" font-family="Consolas" font-size="13.00" fill="#182d45">close</text>
+<polygon fill="#ffffff" stroke="none" points="887,-28.6 887,-56.2 1034,-56.2 1034,-28.6 887,-28.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-37.6" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(18,6) ?</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-1 549,-28.6 597,-28.6 597,-1 549,-1"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-12.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-1 597,-28.6 887,-28.6 887,-1 597,-1"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-9.6" font-family="Consolas" font-size="13.00" fill="#182d45">volume</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-1 887,-28.6 1034,-28.6 1034,-1 887,-1"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-10" font-family="Consolas" font-size="12.00" fill="#53637b">decimal(20,0) ?</text>
+</a>
+</g>
+</g>
+<!-- peer_cluster_cache -->
+<g id="table&#45;peer_cluster_cache" class="node">
+<title>peer_cluster_cache</title>
+<g id="a_table&#45;peer_cluster_cache"><a xlink:title="산업·시각·방법별 클러스터 결과. JSON 명칭 컬럼도 실제 SQL 타입은 VARCHAR(255)&#10;industry_id bigint NOT NULL | 산업 ID&#10;ts datetime(6) NOT NULL | 데이터 기준 시각&#10;method varchar(255) NOT NULL | 클러스터링 방법; DB 기본값 없음&#10;params_json varchar(255) NULL | 클러스터 파라미터 문자열; VARCHAR(255)&#10;cluster_json varchar(255) NOT NULL | 클러스터 결과 문자열; VARCHAR(255)&#10;updated_at datetime(6) NOT NULL | 최종 수정 시각&#10;PRIMARY &#160;(industry_id, ts, method)">
+<polygon fill="none" stroke="#c8d2e0" points="548,-499.6 548,-742 1035,-742 1035,-499.6 548,-499.6"/>
+<polygon fill="#23794f" stroke="none" points="549,-695.4 549,-741 1034,-741 1034,-695.4 549,-695.4"/>
+<text xml:space="preserve" text-anchor="start" x="561" y="-713.8" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">peer_cluster_cache</text>
+<polygon fill="#edf2f8" stroke="none" points="549,-666.2 549,-695.4 1034,-695.4 1034,-666.2 549,-666.2"/>
+<text xml:space="preserve" text-anchor="start" x="557" y="-676.4" font-family="Arial" font-size="11.00" fill="#43536a">6 COLUMNS / 0 EXPLICIT INDEXES</text>
+<polygon fill="#ffffff" stroke="none" points="549,-638.6 549,-666.2 597,-666.2 597,-638.6 549,-638.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-650.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK FK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-638.6 597,-666.2 887,-666.2 887,-638.6 597,-638.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-647.2" font-family="Consolas" font-size="13.00" fill="#182d45">industry_id</text>
+<polygon fill="#ffffff" stroke="none" points="887,-638.6 887,-666.2 1034,-666.2 1034,-638.6 887,-638.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-647.6" font-family="Consolas" font-size="12.00" fill="#53637b">bigint</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-611 549,-638.6 597,-638.6 597,-611 549,-611"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-622.8" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-611 597,-638.6 887,-638.6 887,-611 597,-611"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-619.6" font-family="Consolas" font-size="13.00" fill="#182d45">ts</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-611 887,-638.6 1034,-638.6 1034,-611 887,-611"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-620" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+<polygon fill="#ffffff" stroke="none" points="549,-583.4 549,-611 597,-611 597,-583.4 549,-583.4"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-595.2" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="597,-583.4 597,-611 887,-611 887,-583.4 597,-583.4"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-592" font-family="Consolas" font-size="13.00" fill="#182d45">method</text>
+<polygon fill="#ffffff" stroke="none" points="887,-583.4 887,-611 1034,-611 1034,-583.4 887,-583.4"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-592.4" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(255)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-555.8 549,-583.4 597,-583.4 597,-555.8 549,-555.8"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-567.6" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-555.8 597,-583.4 887,-583.4 887,-555.8 597,-555.8"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-564.4" font-family="Consolas" font-size="13.00" fill="#182d45">params_json</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-555.8 887,-583.4 1034,-583.4 1034,-555.8 887,-555.8"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-564.8" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(255) ?</text>
+<polygon fill="#ffffff" stroke="none" points="549,-528.2 549,-555.8 597,-555.8 597,-528.2 549,-528.2"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-540" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#ffffff" stroke="none" points="597,-528.2 597,-555.8 887,-555.8 887,-528.2 597,-528.2"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-536.8" font-family="Consolas" font-size="13.00" fill="#182d45">cluster_json</text>
+<polygon fill="#ffffff" stroke="none" points="887,-528.2 887,-555.8 1034,-555.8 1034,-528.2 887,-528.2"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-537.2" font-family="Consolas" font-size="12.00" fill="#53637b">varchar(255)</text>
+<polygon fill="#f5f8fc" stroke="none" points="549,-500.6 549,-528.2 597,-528.2 597,-500.6 549,-500.6"/>
+<text xml:space="preserve" text-anchor="start" x="555" y="-512.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#5c6778"> </text>
+<polygon fill="#f5f8fc" stroke="none" points="597,-500.6 597,-528.2 887,-528.2 887,-500.6 597,-500.6"/>
+<text xml:space="preserve" text-anchor="start" x="603" y="-509.2" font-family="Consolas" font-size="13.00" fill="#182d45">updated_at</text>
+<polygon fill="#f5f8fc" stroke="none" points="887,-500.6 887,-528.2 1034,-528.2 1034,-500.6 887,-500.6"/>
+<text xml:space="preserve" text-anchor="start" x="893" y="-509.6" font-family="Consolas" font-size="12.00" fill="#53637b">datetime(6)</text>
+</a>
+</g>
+</g>
+<!-- industry -->
+<g id="table&#45;industry" class="node">
+<title>industry</title>
+<g id="a_table&#45;industry"><a xlink:title="거래소·섹터·분류 체계별 산업 마스터&#10;industry_id bigint NOT NULL AUTO_INCREMENT | 산업 ID&#10;exchange_id bigint NOT NULL | 거래소 ID&#10;sector_id bigint NOT NULL | 섹터 ID&#10;scheme varchar(30) NOT NULL | 분류 체계 코드&#10;code varchar(50) NOT NULL | 코드&#10;name varchar(100) NOT NULL | 산업명&#10;UNIQUE uk_industry_exchange_sector_scheme_code (exchange_id, sector_id, scheme, code)&#10;INDEX idx_industry_exchange_id (exchange_id)&#10;INDEX idx_industry_name (name)&#10;INDEX idx_industry_sector_id (sector_id)">
+<polygon fill="none" stroke="#c8d2e0" points="0,-422.6 0,-527 487,-527 487,-422.6 0,-422.6"/>
+<polygon fill="#65758a" stroke="none" points="1,-480.4 1,-526 486,-526 486,-480.4 1,-480.4"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-498.8" font-family="Arial" font-weight="bold" font-size="18.00" fill="#ffffff">industry</text>
+<polygon fill="#edf2f8" stroke="none" points="1,-451.2 1,-480.4 486,-480.4 486,-451.2 1,-451.2"/>
+<text xml:space="preserve" text-anchor="start" x="9" y="-461.4" font-family="Arial" font-size="11.00" fill="#43536a">EXTERNAL REFERENCE / PK ONLY</text>
+<polygon fill="#ffffff" stroke="none" points="1,-423.6 1,-451.2 49,-451.2 49,-423.6 1,-423.6"/>
+<text xml:space="preserve" text-anchor="start" x="7" y="-435.4" font-family="Arial" font-weight="bold" font-size="10.00" fill="#9a6700">PK</text>
+<polygon fill="#ffffff" stroke="none" points="49,-423.6 49,-451.2 339,-451.2 339,-423.6 49,-423.6"/>
+<text xml:space="preserve" text-anchor="start" x="55" y="-432.2" font-family="Consolas" font-size="13.00" fill="#182d45">industry_id</text>
+<polygon fill="#ffffff" stroke="none" points="339,-423.6 339,-451.2 486,-451.2 486,-423.6 339,-423.6"/>
+<text xml:space="preserve" text-anchor="start" x="345" y="-432.6" font-family="Consolas" font-size="12.00" fill="#53637b">bigint AI</text>
+</a>
+</g>
+</g>
+</g>
+</g>
+<line x1="30" y1="940" x2="1105" y2="940" stroke="#d7e1ed"/>
+<text x="31" y="962" font-family="Arial, sans-serif" font-size="12" fill="#526478">PK = primary key   FK = foreign key   UQ = single-column unique   AI = auto increment   ? = nullable</text>
+</svg>
